@@ -1,13 +1,30 @@
-# volumes:
+volumes:
+  wagegauge-data:
+    external: true
 services:
   fastapi:
     build:
-      context: sample_service
+      context: ./api
       dockerfile: Dockerfile.dev
+    environment:
+      DATABASE_URL: postgresql://wagegauge:secret@db/wagegauge-data
+      WAIT_HOSTS: db:5432
+      PORT: 8000
     ports:
       - 8000:8000
     volumes:
-      - ./sample_service:/app
+      - ./api:/app
+
+  db:
+    image: postgres:14.5-bullseye
+    environment:
+      POSTGRES_PASSWORD: secret
+      POSTGRES_USER: wagegauge
+      POSTGRES_DB: wagegauge-data
+    ports:
+      - "15432:5432"
+    volumes:
+      - wagegauge-data:/var/lib/postgresql/data
 
   ghi:
     image: node:lts-bullseye
@@ -22,4 +39,4 @@ services:
       NODE_ENV: development
       HOST: "0.0.0.0"
       PUBLIC_URL: http://localhost:3000
-      REACT_APP_SAMPLE_SERVICE_API_HOST: ${REACT_APP_SAMPLE_SERVICE_API_HOST}
+      # REACT_APP_SAMPLE_SERVICE_API_HOST: ${REACT_APP_SAMPLE_SERVICE_API_HOST}

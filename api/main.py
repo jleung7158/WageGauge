@@ -1,11 +1,19 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import os
+<<<<<<< HEAD
 from routers import accounts, companies
 
 app = FastAPI()
 app.include_router(accounts.router)
 app.include_router(companies.router)
+=======
+from routers import accounts, positions
+
+app = FastAPI()
+app.include_router(accounts.router)
+app.include_router(positions.router)
+>>>>>>> main
 
 app.add_middleware(
     CORSMiddleware,

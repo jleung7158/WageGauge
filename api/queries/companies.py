@@ -6,6 +6,7 @@ class CompanyIn(BaseModel):
     # position_id: int
 
 class CompanyOut(BaseModel):
+    id: int
     name: str
 
 class CompanyRepository:

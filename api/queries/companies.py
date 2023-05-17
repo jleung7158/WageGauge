@@ -8,11 +8,11 @@ class Error(BaseModel):
 
 class CompanyIn(BaseModel):
     name: str
-    # position_id: int
 
 class CompanyOut(BaseModel):
     id: int
     name: str
+
 
 class CompanyRepository:
     def create(self, company: CompanyIn) -> CompanyOut:
@@ -43,7 +43,7 @@ class CompanyRepository:
                 with conn.cursor() as db:
                     result = db.execute(
                         """
-                        SELECT id, name
+                        SELECT *
                         FROM company
                         ORDER BY id;
                         """
@@ -62,9 +62,9 @@ class CompanyRepository:
                 with conn.cursor() as db:
                     result = db.execute(
                         """
-                        SELECT id, name
+                        SELECT *
                         FROM company
-                        WHERE id = %s
+                        WHERE id = %s;
                         """,
                         [company_id]
                     )

@@ -5,6 +5,7 @@ import Nav from "./Nav";
 // import ErrorNotification from "./ErrorNotification";
 import "./App.css";
 import CompanyDetail from "./CompanyDetail.jsx";
+import CompanyList from "./CompanyList";
 
 function App() {
   // const [launchInfo, setLaunchInfo] = useState([]);
@@ -34,6 +35,9 @@ function App() {
       <Nav />
       <div className="container">
         <Routes>
+          <Route>
+            <Route path="companies" element={<CompanyList />} />
+          </Route>
           <Route path="positions">
             <Route path="" element={<CompanyDetail />} />
           </Route>

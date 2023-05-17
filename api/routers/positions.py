@@ -47,5 +47,5 @@ def get_one_position(
 ) -> PositionOut:
     position = repo.get_one(position_id)
     if position is None:
-      response.status_code = 404
+        response.status_code = 404
     return position

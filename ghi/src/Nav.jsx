@@ -6,6 +6,9 @@ function Nav() {
       <div className="container-fluid">
         <NavLink to="positions">Positions</NavLink>
       </div>
+      <div>
+        <NavLink to="/companies">Companies</NavLink>
+      </div>
     </nav>
   );
 }

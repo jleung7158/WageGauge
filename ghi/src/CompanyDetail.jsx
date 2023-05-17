@@ -19,15 +19,18 @@ function CompanyDetail() {
 
   return (
     <div>
-      <div className="container">
+      <div className="container text-3xl font-bold">
+        <div className="p-6 max-w-sm mx-0 bg-white rounded-xl shadow-lg flex items-center space-x-4">
+          Positions
+        </div>
         {positions.map((position) => {
           return <div key={position.id}>{position.name}</div>;
         })}
       </div>
-      <div className="chat-notification">
-        <div className="chat-notification-content">
-          <h4 className="chat-notification-title">ChitChat</h4>
-          <p className="chat-notification-message">You have a new message!</p>
+      <div class="p-6 max-w-sm mr-0 bg-white rounded-xl shadow-lg flex items-center space-x-4">
+        <div>
+          <div class="text-xl font-medium text-black">ChitChat</div>
+          <p class="text-slate-500">You have a new message!</p>
         </div>
       </div>
     </div>

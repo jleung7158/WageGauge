@@ -11,6 +11,4 @@ Today, I added Tailwind CSS to our React app. It should be fun to use for stylin
 
 The React page will have a sidebar with a list of positions in that company, with a sort and search function. Clicking on one position will bring up graphical data for the position, which will be over a 5 year time span, and be seperated by the level of that position.
 
-As a group, we ran over how to solve issues and start/resolve merge requests. We also decided on what route to go with for salaries.
-
-As for aha! moments, I basically have micro ones as I use Tailwind. The color gradient is super cool.
+> > > > > > > main

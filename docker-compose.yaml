@@ -10,6 +10,7 @@ services:
       DATABASE_URL: postgresql://wagegauge:secret@db/wagegauge-data
       WAIT_HOSTS: db:5432
       PORT: 8000
+      SIGNING_KEY: 7091da32cfdd6b4eb2991d9b9885860bdedc1de05d972b416791b941ad25a721
     ports:
       - 8000:8000
     volumes:
@@ -22,7 +23,7 @@ services:
       POSTGRES_USER: wagegauge
       POSTGRES_DB: wagegauge-data
     ports:
-      - "15432:5432"
+      - '15432:5432'
     volumes:
       - wagegauge-data:/var/lib/postgresql/data
 
@@ -33,10 +34,10 @@ services:
     volumes:
       - ./ghi:/app
     ports:
-      - "3000:3000"
+      - '3000:3000'
     environment:
       HOST_OS: ${OS}
       NODE_ENV: development
-      HOST: "0.0.0.0"
+      HOST: '0.0.0.0'
       PUBLIC_URL: http://localhost:3000
       # REACT_APP_SAMPLE_SERVICE_API_HOST: ${REACT_APP_SAMPLE_SERVICE_API_HOST}

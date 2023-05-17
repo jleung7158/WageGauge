@@ -22,6 +22,9 @@ lint-test-job:
   script:
     - pip install flake8
     - flake8 api
+<<<<<<< HEAD
+=======
+>>>>>>> main
 >>>>>>> main
 #
 # # Run the unit tests

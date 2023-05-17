@@ -19,18 +19,20 @@ function CompanyDetail() {
 
   return (
     <div>
-      <div className="container text-3xl font-bold">
-        <div className="p-6 max-w-sm mx-0 bg-white rounded-xl shadow-lg flex items-center space-x-4">
-          Positions
+      <div className="container flex flex-row">
+        <div className="flex-col p-6 w-1/4 mx-4 bg-white rounded-xl shadow-lg flex items-center space-x-4">
+          <h1 className="text-xl font-bold">Positions</h1>
+          <div>
+            {positions.map((position) => {
+              return <div key={position.id}>{position.name}</div>;
+            })}
+          </div>
         </div>
-        {positions.map((position) => {
-          return <div key={position.id}>{position.name}</div>;
-        })}
-      </div>
-      <div class="p-6 max-w-sm mr-0 bg-white rounded-xl shadow-lg flex items-center space-x-4">
-        <div>
-          <div class="text-xl font-medium text-black">ChitChat</div>
-          <p class="text-slate-500">You have a new message!</p>
+        <div class="p-6 w-3/4 mx-4 bg-white rounded-xl shadow-lg flex items-center space-x-4">
+          <div>
+            <div class="text-xl font-medium text-black">"Position1"</div>
+            <p class="text-slate-500">Position data here</p>
+          </div>
         </div>
       </div>
     </div>

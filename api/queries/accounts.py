@@ -41,7 +41,6 @@ class AccountRepository:
                 );
                 id= result.fetchone()[0]
                 old_account = info.dict()
-                # old_account["password"]=hashed_password/
                 return AccountOutWithPassword(
                         id=id,
                         first_name=info.first_name,
@@ -49,7 +48,6 @@ class AccountRepository:
                         email=info.email,
                         hashed_password=info.password,
                     )
-                # return self.account_in_to_out(id, info)
 
     def get(self, email:str)->AccountOutWithPassword:
         try:

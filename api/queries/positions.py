@@ -23,25 +23,25 @@ class PositionOut(BaseModel):
 class PositionRepository:
     def create(self, position: PositionIn) -> PositionOut:
         try:
-          with pool.connection() as conn:
-              with conn.cursor() as db:
-                  result = db.execute(
-                      """
-                      INSERT INTO positions
-                        (name, from_date, to_date, description)
-                      VALUES
-                        (%s, %s, %s, %s)
-                      RETURNING id;
-                      """,
-                      [
-                          position.name, 
-                          position.from_date, 
-                          position.to_date, 
-                          position.description
-                      ]
-                  )
-                  id = result.fetchone()[0]
-                  return self.position_in_to_out(id, position)
+            with pool.connection() as conn:
+                with conn.cursor() as db:
+                    result = db.execute(
+                        """
+                        INSERT INTO positions
+                            (name, from_date, to_date, description)
+                        VALUES
+                            (%s, %s, %s, %s)
+                        RETURNING id;
+                        """,
+                        [
+                            position.name, 
+                            position.from_date, 
+                            position.to_date, 
+                            position.description
+                        ]
+                    )
+                    id = result.fetchone()[0]
+                    return self.position_in_to_out(id, position)
         except Exception as e:
             print(e)
             return {"message": "Could not create position"}        
@@ -73,9 +73,9 @@ class PositionRepository:
                         """
                         UPDATE positions
                         SET name = %s
-                          , from_date = %s
-                          , to_date = %s
-                          , description = %s
+                            , from_date = %s
+                            , to_date = %s
+                            , description = %s
                         WHERE id = %s
                         """,
                         [
@@ -98,10 +98,10 @@ class PositionRepository:
                     result = db.execute(
                         """
                         SELECT id
-                          , name
-                          , from_date
-                          , to_date
-                          , description
+                            , name
+                            , from_date
+                            , to_date
+                            , description
                         FROM positions
                         WHERE id = %s
                         """,

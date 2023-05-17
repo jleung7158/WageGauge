@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 function Nav() {
   return (
-    <nav className="navbar navbar-expand-lg">
+    <nav className="container flex flex-row">
       <div className="container-fluid">
         <NavLink to="positions">Positions</NavLink>
       </div>

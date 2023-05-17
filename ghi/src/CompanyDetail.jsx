@@ -18,17 +18,63 @@ function CompanyDetail() {
   }, []);
 
   return (
-    <div>
-      <div className="container flex flex-row">
-        <div className="flex-col p-6 w-1/4 mx-4 bg-white rounded-xl shadow-lg flex items-center space-x-4">
-          <h1 className="text-xl font-bold">Positions</h1>
-          <div>
+    <div className="">
+      <div className="container flex flex-row h-full">
+        <div
+          className="
+        flex flex-col
+        p-6 mx-4 w-96 
+        bg-slate-300 
+        rounded-xl shadow-lg items-center
+        "
+        >
+          <h1
+            className="
+          p-6 my-4 w-48
+          text-xl font-bold text-center text-gray-700
+          rounded-xl shadow-lg 
+          bg-gradient-to-r bg-cyan-500
+          transition ease-in delay-50
+        hover:from-cyan-500 
+        hover:to-blue-500
+          hover:text-white
+          "
+          >
+            Positions
+          </h1>
+          <div className="mx-0">
             {positions.map((position) => {
-              return <div key={position.id}>{position.name}</div>;
+              return (
+                <button
+                  className="
+                  p-4 w-32 my-4
+                  flex items-center text-center text-gray-700 font-semibold
+                  rounded-xl shadow-lg
+                  bg-gradient-to-r bg-cyan-500
+                  transition ease-in delay-50
+                  hover:translate-x-4
+                  hover:scale-110
+                  hover:text-xl
+                hover:from-cyan-500 
+                hover:to-blue-500
+                  hover:text-white
+                  "
+                  key={position.id}
+                >
+                  {position.name}
+                </button>
+              );
             })}
           </div>
         </div>
-        <div class="p-6 w-3/4 mx-4 bg-white rounded-xl shadow-lg flex items-center space-x-4">
+        <div
+          class="
+        flex 
+        p-6 mx-4 
+        min-w-max w-screen
+        rounded-xl shadow-lg
+        bg-slate-300 items-center space-x-4"
+        >
           <div>
             <div class="text-xl font-medium text-black">"Position1"</div>
             <p class="text-slate-500">Position data here</p>

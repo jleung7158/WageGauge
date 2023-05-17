@@ -5,6 +5,7 @@ from queries.pool import pool
 class Error(BaseModel):
     message: str
 
+
 class CompanyIn(BaseModel):
     name: str
 
@@ -29,7 +30,7 @@ class CompanyRepository:
                         [
                             company.name
                         ]
-                    );
+                    )
                     id= result.fetchone()[0]
                     return self.company_in_to_out(id, company)
         except Exception as e:

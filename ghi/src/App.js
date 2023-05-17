@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
+// import Nav from ./Nav;
 import Construct from "./Construct.js";
 import ErrorNotification from "./ErrorNotification";
 import "./App.css";
+import CompanyList from "./CompanyList.js";
 
 function App() {
   const [launchInfo, setLaunchInfo] = useState([]);
@@ -27,10 +29,21 @@ function App() {
   }, []);
 
   return (
+    <>
     <div>
       <ErrorNotification error={error} />
       <Construct info={launchInfo} />
     </div>
+    {/* <BrowserRouter>
+    <Nav>
+    <div className="container">
+    <Routes>
+      <Route index element={<CompanyList />} />
+    </Routes>
+    </div>
+    </Nav>
+    </BrowserRouter> */}
+    </>
   );
 }
 

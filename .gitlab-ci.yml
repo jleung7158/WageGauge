@@ -24,6 +24,9 @@ lint-test-job:
     - flake8 api
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
+>>>>>>> main
 >>>>>>> main
 >>>>>>> main
 #

@@ -9,15 +9,13 @@ class Error(BaseModel):
 
 class PositionIn(BaseModel):
     name: str
-    from_date: date
-    to_date: date
+    company_id: Optional[int]
     description: Optional[str]
 
 class PositionOut(BaseModel):
     id: int
     name: str
-    from_date: date
-    to_date: date
+    company_id: Optional[int]
     description: Optional[str]    
 
 class PositionRepository:
@@ -28,15 +26,14 @@ class PositionRepository:
                     result = db.execute(
                         """
                         INSERT INTO positions
-                            (name, from_date, to_date, description)
+                            (name, company_id, description)
                         VALUES
-                            (%s, %s, %s, %s)
+                            (%s, %s, %s)
                         RETURNING id;
                         """,
                         [
                             position.name, 
-                            position.from_date, 
-                            position.to_date, 
+                            position.company_id,
                             position.description
                         ]
                     )
@@ -73,15 +70,13 @@ class PositionRepository:
                         """
                         UPDATE positions
                         SET name = %s
-                            , from_date = %s
-                            , to_date = %s
+                            , company_id = %s
                             , description = %s
                         WHERE id = %s
                         """,
                         [
                             position.name,
-                            position.from_date,
-                            position.to_date,
+                            position.company_id,
                             position.description,
                             position_id
                         ]

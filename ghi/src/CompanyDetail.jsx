@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import PositionFigure from "./PositionFigure";
 
 function CompanyDetail() {
   const [positions, setPositions] = useState([]);
@@ -16,6 +17,19 @@ function CompanyDetail() {
   useEffect(() => {
     fetchData();
   }, []);
+
+  const [isFigureOpen, setIsFigureOpen] = useState(false);
+  const [figureData, setFigureData] = useState(null);
+
+  const handleFunctionClick = (position) => {
+    setIsFigureOpen(!isFigureOpen);
+    setFigureData(position);
+    console.log(position);
+  };
+
+  const Function = () => {
+    return;
+  };
 
   return (
     <div className="">
@@ -60,6 +74,9 @@ function CompanyDetail() {
                   hover:text-white
                   "
                   key={position.id}
+                  onClick={() => {
+                    handleFunctionClick(position);
+                  }}
                 >
                   {position.name}
                 </button>
@@ -76,6 +93,7 @@ function CompanyDetail() {
         bg-slate-300 items-center space-x-4"
         >
           <div>
+            <div>{isFigureOpen ? <PositionFigure /> : "test"}</div>
             <div className="text-xl font-medium text-black">"Position1"</div>
             <p className="text-slate-500">Position data here</p>
           </div>

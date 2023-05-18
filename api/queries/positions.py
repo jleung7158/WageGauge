@@ -16,7 +16,8 @@ class PositionOut(BaseModel):
     id: int
     name: str
     company_id: Optional[int]
-    description: Optional[str]    
+    description: Optional[str]
+    company: Optional[str]    
 
 class PositionRepository:
     def create(self, position: PositionIn) -> PositionOut:
@@ -92,12 +93,16 @@ class PositionRepository:
                 with conn.cursor() as db:
                     result = db.execute(
                         """
-                        SELECT id
-                            , name
-                            , company_id
-                            , description
-                        FROM positions
-                        WHERE id = %s;
+                        SELECT p.id AS position_id,
+                        p.name AS positions,
+                        p.company_id AS company_id,
+                        p.description AS description,
+                        c.name AS company
+                        FROM positions AS p
+                        LEFT JOIN company c
+                        ON (c.id = p.company_id)
+                        WHERE p.id = %s
+                        ORDER BY p.name, c.name;
                         """,
                         [position_id]
                     )
@@ -134,5 +139,6 @@ class PositionRepository:
             id=record[0],
             name=record[1],
             company_id=record[2],
-            description=record[3]
+            description=record[3],
+            company=record[4]
         )

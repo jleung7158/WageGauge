@@ -49,7 +49,7 @@ class PositionRepository:
                 with conn.cursor() as db:
                     result = db.execute(
                         """
-                        SELECT id, name, from_date, to_date, description
+                        SELECT id, name, company_id, description
                         FROM positions
                         ORDER BY id;
                         """
@@ -94,8 +94,7 @@ class PositionRepository:
                         """
                         SELECT id
                             , name
-                            , from_date
-                            , to_date
+                            , company_id
                             , description
                         FROM positions
                         WHERE id = %s
@@ -134,7 +133,6 @@ class PositionRepository:
         return PositionOut(
             id=record[0],
             name=record[1],
-            from_date=record[2],
-            to_date=record[3],
-            description=record[4]
+            company_id=record[2],
+            description=record[3]
         )

@@ -68,7 +68,7 @@ function CompanyDetail() {
           </div>
         </div>
         <div
-          class="
+          className="
         flex 
         p-6 mx-4 
         min-w-max w-screen
@@ -76,8 +76,8 @@ function CompanyDetail() {
         bg-slate-300 items-center space-x-4"
         >
           <div>
-            <div class="text-xl font-medium text-black">"Position1"</div>
-            <p class="text-slate-500">Position data here</p>
+            <div className="text-xl font-medium text-black">"Position1"</div>
+            <p className="text-slate-500">Position data here</p>
           </div>
         </div>
       </div>

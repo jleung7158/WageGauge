@@ -50,9 +50,15 @@ class PositionRepository:
                 with conn.cursor() as db:
                     result = db.execute(
                         """
-                        SELECT id, name, company_id, description
-                        FROM positions
-                        ORDER BY id;
+                        SELECT p.id AS position_id,
+                        p.name AS positions,
+                        p.company_id AS company_id,
+                        p.description AS description,
+                        c.name AS company
+                        FROM positions AS p
+                        LEFT JOIN company c
+                        ON (c.id = p.company_id)
+                        ORDER BY p.name, c.name;
                         """
                     )
                     return [

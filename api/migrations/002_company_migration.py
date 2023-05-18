@@ -9,7 +9,7 @@ steps = [
         """,
         ## Drop the Table
         """
-        DROP TABLE vacations;
+        DROP TABLE company;
         """
     ]
 ]

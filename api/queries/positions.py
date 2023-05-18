@@ -9,15 +9,13 @@ class Error(BaseModel):
 
 class PositionIn(BaseModel):
     name: str
-    from_date: date
-    to_date: date
+    company_id: Optional[int]
     description: Optional[str]
 
 class PositionOut(BaseModel):
     id: int
     name: str
-    from_date: date
-    to_date: date
+    company_id: Optional[int]
     description: Optional[str]    
 
 class PositionRepository:
@@ -28,15 +26,14 @@ class PositionRepository:
                     result = db.execute(
                         """
                         INSERT INTO positions
-                            (name, from_date, to_date, description)
+                            (name, company_id, description)
                         VALUES
-                            (%s, %s, %s, %s)
+                            (%s, %s, %s)
                         RETURNING id;
                         """,
                         [
                             position.name, 
-                            position.from_date, 
-                            position.to_date, 
+                            position.company_id,
                             position.description
                         ]
                     )
@@ -52,7 +49,7 @@ class PositionRepository:
                 with conn.cursor() as db:
                     result = db.execute(
                         """
-                        SELECT id, name, from_date, to_date, description
+                        SELECT id, name, company_id, description
                         FROM positions
                         ORDER BY id;
                         """
@@ -73,15 +70,13 @@ class PositionRepository:
                         """
                         UPDATE positions
                         SET name = %s
-                            , from_date = %s
-                            , to_date = %s
+                            , company_id = %s
                             , description = %s
-                        WHERE id = %s
+                        WHERE id = %s;
                         """,
                         [
                             position.name,
-                            position.from_date,
-                            position.to_date,
+                            position.company_id,
                             position.description,
                             position_id
                         ]
@@ -99,11 +94,10 @@ class PositionRepository:
                         """
                         SELECT id
                             , name
-                            , from_date
-                            , to_date
+                            , company_id
                             , description
                         FROM positions
-                        WHERE id = %s
+                        WHERE id = %s;
                         """,
                         [position_id]
                     )
@@ -122,7 +116,7 @@ class PositionRepository:
                     db.execute(
                         """
                         DELETE FROM positions
-                        WHERE ID = %s
+                        WHERE ID = %s;
                         """,
                         [position_id]
                     )
@@ -139,7 +133,6 @@ class PositionRepository:
         return PositionOut(
             id=record[0],
             name=record[1],
-            from_date=record[2],
-            to_date=record[3],
-            description=record[4]
+            company_id=record[2],
+            description=record[3]
         )

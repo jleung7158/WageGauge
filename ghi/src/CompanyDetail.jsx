@@ -49,7 +49,7 @@ function CompanyDetail() {
           rounded
           bg-gradient-to-r color-bg
           transition ease-in delay-50
-        hover:from-cyan-500 
+        hover:from-cyan-500
         hover:to-blue-500
           hover:text-white
           "
@@ -69,7 +69,7 @@ function CompanyDetail() {
                   hover:translate-x-4
                   hover:scale-110
                   hover:text-xl
-                hover:from-cyan-500 
+                hover:from-cyan-500
                 hover:to-blue-500
                   hover:text-white
                   "

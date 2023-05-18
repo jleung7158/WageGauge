@@ -1,7 +1,7 @@
 function PositionFigure({ position }) {
   return (
     <div>
-      {position}
+      {position.name}
       test
     </div>
   );

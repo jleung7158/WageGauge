@@ -22,8 +22,8 @@ function CompanyDetail() {
   const [figureData, setFigureData] = useState(null);
 
   const handleFunctionClick = (position) => {
-    setIsFigureOpen(!isFigureOpen);
     setFigureData(position);
+    setIsFigureOpen(true);
     console.log(position);
   };
 
@@ -38,7 +38,7 @@ function CompanyDetail() {
           className="
         flex flex-col
         p-4 mx-4 w-96 
-        bg-slate-300 
+        color-bg 
         rounded-xl shadow-lg items-center
         "
         >
@@ -47,7 +47,7 @@ function CompanyDetail() {
           p-2 my-4 w-48
           text-xl font-bold text-center text-gray-700
           rounded
-          bg-gradient-to-r bg-cyan-500
+          bg-gradient-to-r color-bg
           transition ease-in delay-50
         hover:from-cyan-500 
         hover:to-blue-500
@@ -94,7 +94,13 @@ function CompanyDetail() {
           bg-slate-300 items-center space-x-4"
           >
             <div>
-              <div>{isFigureOpen ? <PositionFigure /> : "test"}</div>
+              <div>
+                {isFigureOpen ? (
+                  <PositionFigure position={figureData} />
+                ) : (
+                  "test"
+                )}
+              </div>
               <div className="text-xl font-medium text-black">"Position1"</div>
               <p className="text-slate-500">Position data here</p>
             </div>

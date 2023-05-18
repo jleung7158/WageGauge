@@ -10,6 +10,7 @@ steps = [
             company_id INT NULL,
             salary INT,
             location VARCHAR(1000) NOT NULL
+>>>>>>> 501663937f5de7105de365fb103d41d73a9a0d61
         );
         """,
         ## Drop the Table

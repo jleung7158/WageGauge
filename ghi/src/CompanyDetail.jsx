@@ -84,18 +84,20 @@ function CompanyDetail() {
             })}
           </div>
         </div>
-        <div
-          className="
-        flex 
-        p-6 mx-4 
-        min-w-max w-screen
-        rounded-xl shadow-lg
-        bg-slate-300 items-center space-x-4"
-        >
-          <div>
-            <div>{isFigureOpen ? <PositionFigure /> : "test"}</div>
-            <div className="text-xl font-medium text-black">"Position1"</div>
-            <p className="text-slate-500">Position data here</p>
+        <div className="p-6 w-3/4 mx-4 bg-white rounded-xl shadow-lg flex items-center space-x-4">
+          <div
+            className="
+          flex 
+          p-6 mx-4 
+          min-w-max w-screen
+          rounded-xl shadow-lg
+          bg-slate-300 items-center space-x-4"
+          >
+            <div>
+              <div>{isFigureOpen ? <PositionFigure /> : "test"}</div>
+              <div className="text-xl font-medium text-black">"Position1"</div>
+              <p className="text-slate-500">Position data here</p>
+            </div>
           </div>
         </div>
       </div>

@@ -1,4 +1,6 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
+
+
 
 
 
@@ -43,7 +45,7 @@ function Nav() {
                 Sign up to see detailed data for each position!
               </p>
               <div>
-                <NavLink to="companies"
+                <NavLink to="signup"
                 className="flex-none rounded-full bg-gray-900 px-3.5 py-1 text-sm font-semibold text-white shadow-sm hover:bg-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900"
               />
                 Sign up! <span aria-hidden="true">&rarr;</span>
@@ -86,14 +88,14 @@ function Nav() {
 						hover:text-white
 						block rounded-md px-3 py-2
 						text-base font-medium"
-					>
-						Positions
-					</NavLink>
-				</div>
-				<div>
-					<NavLink
-						to="companies"
-						className="text-gray-50
+          >
+            Positions
+          </NavLink>
+        </div>
+        <div>
+          <NavLink
+            to="companies"
+            className="text-gray-50
                 hover:bg-gray-700
                 hover:text-white block
                 rounded-md px-3 py-2

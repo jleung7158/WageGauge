@@ -53,7 +53,7 @@ function App() {
     <div className="bg-gradient-to-b from-slate-50 to-cyan-500 h-screen">
       <BrowserRouter>
         <Nav />
-        <div className="container">
+        <div className="container-flex">
           <Routes>
             <Route>
               <Route path="companies" element={<CompanyList />} />

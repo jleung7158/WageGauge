@@ -24,3 +24,10 @@ Today, I'm working on adjusting my positions database to account for company SQL
 We discussed how specifically to implement the positions and company databases to help with the salary db.
 
 As for aha! moments, not many today. It was cool to see how h-screen works in Tailwind I guess?
+
+5/18/23
+Today I'm working on solving more joins for our database and more styling. We're going to join employee with company and position. We also resolved merge conflicts.
+
+We discussed future organizational methods to reduce future method conflicts.
+
+As for aha! moments, I figured out how to send data via props with a button click, so that was cool.

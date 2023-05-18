@@ -33,27 +33,29 @@ function App() {
 	// }, []);
 
 	return (
-		<BrowserRouter>
-			<Nav />
-			<div className="container-flex">
-				<Routes>
-					<Route>
-						<Route path="companies" element={<CompanyList />} />
-					</Route>
-					<Route path="positions">
-						<Route path="" element={<CompanyDetail />} />
-					</Route>
-					<Route path="Signup">
-						<Route path="" element={<SignUpForm />} />
-					</Route>
-					<Route path="Login">
-						<Route path="" element={<LoginForm />} />
-					</Route>
-				</Routes>
-			</div>
-			{/* <ErrorNotification error={error} /> */}
-			{/* <Construct info={launchInfo} /> */}
-		</BrowserRouter>
+		<div className="bg-gradient-to-b from-slate-50 to-cyan-500 h-screen">
+			<BrowserRouter>
+				<Nav />
+				<div className="container-flex">
+					<Routes>
+						<Route>
+							<Route path="companies" element={<CompanyList />} />
+						</Route>
+						<Route path="positions">
+							<Route path="" element={<CompanyDetail />} />
+						</Route>
+						<Route path="Signup">
+							<Route path="" element={<SignUpForm />} />
+						</Route>
+						<Route path="Login">
+							<Route path="" element={<LoginForm />} />
+						</Route>
+					</Routes>
+				</div>
+				{/* <ErrorNotification error={error} /> */}
+				{/* <Construct info={launchInfo} /> */}
+			</BrowserRouter>
+		</div>
 	);
 }
 

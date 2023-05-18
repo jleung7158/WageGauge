@@ -1,6 +1,8 @@
 from pydantic import BaseModel
 from queries.pool import pool
 
+class Error(BaseModel):
+    message: str
 
 class EmployeeIn(BaseModel):
     salary: int

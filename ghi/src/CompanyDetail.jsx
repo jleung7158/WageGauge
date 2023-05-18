@@ -28,10 +28,10 @@ function CompanyDetail() {
             })}
           </div>
         </div>
-        <div class="p-6 w-3/4 mx-4 bg-white rounded-xl shadow-lg flex items-center space-x-4">
+        <div className="p-6 w-3/4 mx-4 bg-white rounded-xl shadow-lg flex items-center space-x-4">
           <div>
-            <div class="text-xl font-medium text-black">"Position1"</div>
-            <p class="text-slate-500">Position data here</p>
+            <div className="text-xl font-medium text-black">"Position1"</div>
+            <p className="text-slate-500">Position data here</p>
           </div>
         </div>
       </div>

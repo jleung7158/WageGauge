@@ -2,10 +2,15 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx}"],
   theme: {
-    colors: {
-      'wageblue': '#1999ff',
+    extend: {
+            colors: {
+        'wageblue': '#1999ff',
+        'grey': '#f9fafb',
+        'lightblue': '#75BDE0'
+        // 'one': '#ff80b5',
+        // 'two': '#9089fc',
+      },
     },
-    extend: {},
   },
   plugins: [],
 };

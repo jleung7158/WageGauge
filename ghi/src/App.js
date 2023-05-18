@@ -3,14 +3,9 @@ import Nav from "./Nav";
 // import { useEffect, useState } from "react";
 // import Construct from "./Construct.js";
 // import ErrorNotification from "./ErrorNotification";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Nav from "./Nav";
-// import { useEffect, useState } from "react";
-// import Construct from "./Construct.js";
-// import ErrorNotification from "./ErrorNotification";
 import "./App.css";
 import CompanyDetail from "./CompanyDetail.jsx";
-import CompanyDetail from "./CompanyDetail.jsx";
+import CompanyList from "./CompanyList";
 
 function App() {
   // const [launchInfo, setLaunchInfo] = useState([]);
@@ -60,6 +55,9 @@ function App() {
         <Nav />
         <div className="container">
           <Routes>
+            <Route>
+              <Route path="companies" element={<CompanyList />} />
+            </Route>
             <Route path="positions">
               <Route path="" element={<CompanyDetail />} />
             </Route>

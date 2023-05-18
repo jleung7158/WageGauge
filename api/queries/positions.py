@@ -72,7 +72,7 @@ class PositionRepository:
                         SET name = %s
                             , company_id = %s
                             , description = %s
-                        WHERE id = %s
+                        WHERE id = %s;
                         """,
                         [
                             position.name,
@@ -97,7 +97,7 @@ class PositionRepository:
                             , company_id
                             , description
                         FROM positions
-                        WHERE id = %s
+                        WHERE id = %s;
                         """,
                         [position_id]
                     )
@@ -116,7 +116,7 @@ class PositionRepository:
                     db.execute(
                         """
                         DELETE FROM positions
-                        WHERE ID = %s
+                        WHERE ID = %s;
                         """,
                         [position_id]
                     )

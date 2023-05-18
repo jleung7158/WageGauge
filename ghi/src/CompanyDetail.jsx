@@ -23,16 +23,16 @@ function CompanyDetail() {
         <div
           className="
         flex flex-col
-        p-6 mx-4 w-96 
+        p-4 mx-4 w-96 
         bg-slate-300 
         rounded-xl shadow-lg items-center
         "
         >
           <h1
             className="
-          p-6 my-4 w-48
+          p-2 my-4 w-48
           text-xl font-bold text-center text-gray-700
-          rounded-xl shadow-lg 
+          rounded
           bg-gradient-to-r bg-cyan-500
           transition ease-in delay-50
         hover:from-cyan-500 
@@ -47,9 +47,9 @@ function CompanyDetail() {
               return (
                 <button
                   className="
-                  p-4 w-32 my-4
+                  p-2 w-32 my-4
                   flex items-center text-center text-gray-700 font-semibold
-                  rounded-xl shadow-lg
+                  rounded shadow-lg
                   bg-gradient-to-r bg-cyan-500
                   transition ease-in delay-50
                   hover:translate-x-4

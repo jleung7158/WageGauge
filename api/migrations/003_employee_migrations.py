@@ -9,7 +9,7 @@ steps = [
             account_id INT NULL,
             company_id INT NULL,
             salary INT,
-            location varchar(200) NOT NULL
+            location VARCHAR(1000) NOT NULL
         );
         """,
         ## Drop the Table

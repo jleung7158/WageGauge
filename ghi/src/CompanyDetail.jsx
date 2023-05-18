@@ -84,6 +84,10 @@ function CompanyDetail() {
             })}
           </div>
         </div>
+<<<<<<< HEAD
+        <div className="p-6 w-3/4 mx-4 bg-white rounded-xl shadow-lg flex items-center space-x-4">
+          <div>
+=======
         <div
           className="
         flex 
@@ -94,6 +98,7 @@ function CompanyDetail() {
         >
           <div>
             <div>{isFigureOpen ? <PositionFigure /> : "test"}</div>
+>>>>>>> 501663937f5de7105de365fb103d41d73a9a0d61
             <div className="text-xl font-medium text-black">"Position1"</div>
             <p className="text-slate-500">Position data here</p>
           </div>

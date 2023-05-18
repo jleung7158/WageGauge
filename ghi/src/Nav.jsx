@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 function Nav() {
 	return (
-    <div className="container-flex flex-row w-screen p-2 mb-8 color-bg">
+    <div className="container-flex flex-row w-screen p-2 mb-8 bg-wageblue">
     <div
 			className="
       color-bg"
@@ -15,11 +15,11 @@ function Nav() {
         color-bg
         "
 			>
-				<div className="relative flex h-16 items-center justify-between">
+				<div>
 					<NavLink
 						to="positions"
 						className="text-gray-50
-						hover:bg-gray-700
+						hover:bg-blue-700
 						hover:text-white
 						block rounded-md px-3 py-2
 						text-base font-medium"
@@ -47,7 +47,10 @@ function Nav() {
                 hover:bg-gray-700
                 hover:text-white block
                 rounded-md px-3 py-2
-                text-base font-medium">SignUp</NavLink>
+                text-base font-medium"
+                >
+                SignUp
+                </NavLink>
 				</div>
 			</div>
 		</div>

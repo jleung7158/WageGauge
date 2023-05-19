@@ -27,9 +27,6 @@ function CompanyDetail() {
     console.log(position);
   };
 
-  const Function = () => {
-    return;
-  };
   const handleCloseFigure = () => {
     setIsFigureOpen(false);
   };
@@ -91,14 +88,14 @@ function CompanyDetail() {
           className="
         flex
         p-6 mx-4
-        min-w-max w-screen
+        w-screen
         rounded-xl shadow-lg
         bg-slate-300 items-center space-x-4"
         >
           <div>
-            <div className="text-xl font-medium text-black">"Position1"</div>
+            <div className="text-xl font-medium text-black"></div>
             <p className="text-slate-500">Position data here</p>
-            <div>
+            <div className="w-screen">
               {isFigureOpen ? <PositionFigure position={figureData} /> : ""}
             </div>
             <button
@@ -106,7 +103,7 @@ function CompanyDetail() {
                 handleCloseFigure();
               }}
             >
-              Close data
+              {isFigureOpen ? "Clear" : ""}
             </button>
           </div>
         </div>

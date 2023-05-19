@@ -137,7 +137,7 @@ const colorScale = scaleOrdinal({
 
 let tooltipTimeout;
 
-function TemperatureBarStack({
+export default function TemperatureBarStack({
   width,
   height,
   event = false,
@@ -275,5 +275,3 @@ function TemperatureBarStack({
     </div>
   );
 }
-
-export default TemperatureBarStack;

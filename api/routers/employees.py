@@ -4,34 +4,36 @@ from queries.employees import (
     Error,
     EmployeeIn,
     EmployeeOut,
-    EmployeeRepository
+    EmployeeRepository,
 )
 
-router= APIRouter()
-depend= Depends()
+router = APIRouter()
+depend = Depends()
 
 
-@router.post("/employees", response_model = EmployeeOut)
+@router.post("/employees", response_model=EmployeeOut)
 def create_employee(
-    employee: EmployeeIn,
-    repo: EmployeeRepository = Depends()
+    employee: EmployeeIn, repo: EmployeeRepository = Depends()
 ):
     repo.create(employee)
     return employee
 
+
 @router.get("/employees", response_model=List[EmployeeOut])
-def get_all(
-    repo: EmployeeRepository = Depends()
-):
+def get_all(repo: EmployeeRepository = Depends()):
     return repo.get_all()
 
-@router.put("employees/{employee_id}", response_model=Union[EmployeeOut, Error])
+
+@router.put(
+    "/employees/{employee_id}", response_model=Union[EmployeeOut, Error]
+)
 def update_employee(
     employee_id: int,
     employee: EmployeeIn,
     repo: EmployeeRepository = Depends(),
-) -> Union [EmployeeOut, Error]:
+) -> Union[EmployeeOut, Error]:
     return repo.update(employee_id, employee)
+
 
 @router.delete("/employees/{employee_id}", response_model=bool)
 def delete_employee(
@@ -39,6 +41,7 @@ def delete_employee(
     repo: EmployeeRepository = Depends(),
 ) -> bool:
     return repo.delete(employee_id)
+
 
 @router.get("/employee/{employee_id}", response_model=Optional[EmployeeOut])
 def get_one_employee(

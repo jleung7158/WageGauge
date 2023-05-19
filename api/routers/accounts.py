@@ -14,20 +14,24 @@ from pydantic import BaseModel
 from queries.accounts import (
     AccountIn,
     AccountOut,
-    AccountOutWithPassword,
+    # AccountOutWithPassword,
     AccountRepository,
     DuplicateAccountError,
 )
+
 
 class AccountForm(BaseModel):
     username: str
     password: str
 
+
 class AccountToken(Token):
     account: AccountOut
 
+
 class HttpError(BaseModel):
     detail: str
+
 
 router = APIRouter()
 

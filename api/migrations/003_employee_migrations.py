@@ -3,18 +3,18 @@ steps = [
         ##Create the table
         """
 
-        CREATE TABLE employee (
+        CREATE TABLE employees (
             id SERIAL PRIMARY KEY NOT NULL,
-            position_id INT NULL,
+            salary INT NOT NULL,
+            location VARCHAR(1000) NOT NULL,
             account_id INT NULL,
             company_id INT NULL,
-            salary INT,
-            location VARCHAR(1000) NOT NULL
+            position_id INT NULL
         );
         """,
         ## Drop the Table
         """
-        DROP TABLE employee;
+        DROP TABLE employees;
         """
     ]
 ]

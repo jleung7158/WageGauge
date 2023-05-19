@@ -2,8 +2,8 @@ from fastapi import APIRouter, Depends, Response
 from typing import List, Optional, Union
 from queries.positions import (
     Error,
-    PositionIn, 
-    PositionOut, 
+    PositionIn,
+    PositionOut,
     PositionRepository,
 )
 
@@ -13,10 +13,10 @@ router = APIRouter()
 
 @router.post("/positions", response_model=Union[PositionOut, Error])
 def create_position(
-    position: PositionIn, 
-    repo: PositionRepository = Depends()
+    position: PositionIn, repo: PositionRepository = Depends()
 ):
     return repo.create(position)
+
 
 @router.get("/positions", response_model=List[PositionOut])
 def get_all(
@@ -24,7 +24,10 @@ def get_all(
 ):
     return repo.get_all()
 
-@router.put("/positions/{position_id}", response_model=Union[PositionOut, Error])
+
+@router.put(
+    "/positions/{position_id}", response_model=Union[PositionOut, Error]
+)
 def update_position(
     position_id: int,
     position: PositionIn,
@@ -32,12 +35,14 @@ def update_position(
 ) -> Union[PositionOut, Error]:
     return repo.update(position_id, position)
 
+
 @router.delete("/positions/{position_id}", response_model=bool)
 def delete_position(
     position_id: int,
     repo: PositionRepository = Depends(),
 ) -> bool:
     return repo.delete(position_id)
+
 
 @router.get("/positions/{position_id}", response_model=Optional[PositionOut])
 def get_one_position(

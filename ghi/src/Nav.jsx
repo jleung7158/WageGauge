@@ -22,28 +22,28 @@ function Nav() {
 						hover:text-white
 						block rounded-md px-3 py-2
 						text-base font-medium"
-          >
-            Positions
-          </NavLink>
-        </div>
-        <div>
-          <NavLink
-            to="companies"
-            className="text-gray-50
-                hover:bg-gray-700
-                hover:text-white block
-                rounded-md px-3 py-2
-                text-base font-medium"
-          >
-            Companies
-          </NavLink>
-        </div>
-        <div className="mx-2">
-          <NavLink to="/signup">SignUp</NavLink>
-        </div>
-      </div>
-    </div>
-  );
+					>
+						Positions
+					</NavLink>
+				</div>
+				<div>
+					<NavLink
+						to="positions"
+						className="text-gray-50
+						hover:bg-gray-700
+						hover:text-white
+						block rounded-md px-3 py-2
+						text-base font-medium"
+					>
+						Companies
+					</NavLink>
+				</div>
+				<div className="mx-2">
+					<NavLink to="/signup">SignUp</NavLink>
+				</div>
+			</div>
+		</div>
+	);
 }
 
 export default Nav;

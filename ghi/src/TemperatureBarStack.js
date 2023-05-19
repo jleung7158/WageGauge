@@ -18,7 +18,7 @@ const tooltipStyles = {
   ...defaultStyles,
   minWidth: 60,
   backgroundColor: "rgba(0,0,0,0.9)",
-  color: "white"
+  color: "white",
 };
 
 const data = [
@@ -26,86 +26,86 @@ const data = [
     date: "2020-10-01",
     London: "60",
     Paris: "68",
-    Berlin: "61"
+    Berlin: "61",
   },
   {
     date: "2020-10-02",
     London: "57",
     Paris: "58",
-    Berlin: "62"
+    Berlin: "62",
   },
   {
     date: "2020-10-03",
     London: "59",
     Paris: "57",
-    Berlin: "72"
+    Berlin: "72",
   },
   {
     date: "2020-10-04",
     London: "52",
     Paris: "59",
-    Berlin: "68"
+    Berlin: "68",
   },
   {
     date: "2020-10-05",
     London: "63",
     Paris: "57",
-    Berlin: "63"
+    Berlin: "63",
   },
   {
     date: "2020-10-06",
     London: "61",
     Paris: "62",
-    Berlin: "61"
+    Berlin: "61",
   },
   {
     date: "2020-10-07",
     London: "61",
     Paris: "64",
-    Berlin: "61"
+    Berlin: "61",
   },
   {
     date: "2020-10-08",
     London: "64",
     Paris: "66",
-    Berlin: "60"
+    Berlin: "60",
   },
   {
     date: "2020-10-09",
     London: "58",
     Paris: "62",
-    Berlin: "60"
+    Berlin: "60",
   },
   {
     date: "2020-10-10",
     London: "56",
     Paris: "59",
-    Berlin: "55"
+    Berlin: "55",
   },
   {
     date: "2020-10-11",
     London: "57",
     Paris: "58",
-    Berlin: "52"
+    Berlin: "52",
   },
   {
     date: "2020-10-12",
     London: "56",
     Paris: "58",
-    Berlin: "54"
+    Berlin: "54",
   },
   {
     date: "2020-10-13",
     London: "52",
     Paris: "56",
-    Berlin: "55"
+    Berlin: "55",
   },
   {
     date: "2020-10-14",
     London: "58",
     Paris: "57",
-    Berlin: "51"
-  }
+    Berlin: "51",
+  },
 ];
 const keys = ["London", "Paris", "Berlin"];
 
@@ -128,20 +128,20 @@ const getDate = (d) => d.date;
 const dateScale = scaleBand({ domain: data.map(getDate), padding: 0.2 });
 const temparatureScale = scaleLinear({
   domain: [0, Math.max(...temperatureTotals)],
-  nice: true
+  nice: true,
 });
 const colorScale = scaleOrdinal({
   domain: keys,
-  range: [purple1, purple2, purple3]
+  range: [purple1, purple2, purple3],
 });
 
 let tooltipTimeout;
 
-export default function TemperatureBarStack({
+function TemperatureBarStack({
   width,
   height,
   event = false,
-  margin = defaultMargin
+  margin = defaultMargin,
 }) {
   const {
     tooltipOpen,
@@ -149,7 +149,7 @@ export default function TemperatureBarStack({
     tooltipLeft,
     hideTooltip,
     showTooltip,
-    tooltipData
+    tooltipData,
   } = useTooltip();
 
   const { containerRef, TooltipInPortal } = useTooltipInPortal();
@@ -218,7 +218,7 @@ export default function TemperatureBarStack({
                       showTooltip({
                         tooltipData: bar,
                         tooltipTop: top,
-                        tooltipLeft: left
+                        tooltipLeft: left,
                       });
                     }}
                   />
@@ -236,7 +236,7 @@ export default function TemperatureBarStack({
           tickLabelProps={() => ({
             fill: purple3,
             fontSize: 11,
-            textAnchor: "middle"
+            textAnchor: "middle",
           })}
         />
       </svg>
@@ -247,7 +247,7 @@ export default function TemperatureBarStack({
           width: "100%",
           display: "flex",
           justifyContent: "center",
-          fontSize: 14
+          fontSize: 14,
         }}
       >
         <LegendOrdinal
@@ -275,3 +275,5 @@ export default function TemperatureBarStack({
     </div>
   );
 }
+
+export default TemperatureBarStack;

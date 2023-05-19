@@ -27,6 +27,10 @@ function CompanyDetail() {
     console.log(position);
   };
 
+  const handleCloseFigure = () => {
+    setIsFigureOpen(false);
+  };
+
   const Function = () => {
     return;
   };
@@ -94,15 +98,18 @@ function CompanyDetail() {
           bg-slate-300 items-center space-x-4"
           >
             <div>
-              <div>
-                {isFigureOpen ? (
-                  <PositionFigure position={figureData} />
-                ) : (
-                  "test"
-                )}
-              </div>
-              <div className="text-xl font-medium text-black">"Position1"</div>
+              <div className="text-xl font-medium text-black">Test</div>
               <p className="text-slate-500">Position data here</p>
+              <div>
+                {isFigureOpen ? <PositionFigure position={figureData} /> : ""}
+              </div>
+              <button
+                onClick={() => {
+                  handleCloseFigure();
+                }}
+              >
+                Close data
+              </button>
             </div>
           </div>
         </div>

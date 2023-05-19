@@ -119,5 +119,4 @@ class CompanyRepository:
         return CompanyOut(
             id=record[0],
             name=record[1],
-            # position_id=record[2]
         )

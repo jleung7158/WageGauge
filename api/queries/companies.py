@@ -2,12 +2,14 @@ from pydantic import BaseModel
 from typing import List, Optional, Union
 from queries.pool import pool
 
+
 class Error(BaseModel):
     message: str
 
 
 class CompanyIn(BaseModel):
     name: str
+
 
 class CompanyOut(BaseModel):
     id: int
@@ -27,11 +29,9 @@ class CompanyRepository:
                             (%s)
                         RETURNING id;
                         """,
-                        [
-                            company.name
-                        ]
+                        [company.name],
                     )
-                    id= result.fetchone()[0]
+                    id = result.fetchone()[0]
                     return self.company_in_to_out(id, company)
         except Exception as e:
             print(e)
@@ -49,8 +49,7 @@ class CompanyRepository:
                         """
                     )
                     return [
-                        self.record_to_company_out(record)
-                        for record in result
+                        self.record_to_company_out(record) for record in result
                     ]
         except Exception as e:
             print(e)
@@ -66,7 +65,7 @@ class CompanyRepository:
                         FROM company
                         WHERE id = %s;
                         """,
-                        [company_id]
+                        [company_id],
                     )
                     record = result.fetchone()
                     if record is None:
@@ -76,7 +75,9 @@ class CompanyRepository:
             print(e)
             return {"message": "Could not get that position cuh"}
 
-    def update(self, company_id: int, company: CompanyIn) -> Union[CompanyOut, Error]:
+    def update(
+        self, company_id: int, company: CompanyIn
+    ) -> Union[CompanyOut, Error]:
         try:
             with pool.connection() as conn:
                 with conn.cursor() as db:
@@ -86,10 +87,7 @@ class CompanyRepository:
                         SET name = %s
                         WHERE id = %s
                         """,
-                        [
-                            company.name,
-                            company_id
-                        ]
+                        [company.name, company_id],
                     )
                     return self.company_in_to_out(company_id, company)
         except Exception as e:
@@ -105,15 +103,15 @@ class CompanyRepository:
                         DELETE FROM company
                         WHERE id = %s
                         """,
-                        [company_id]
+                        [company_id],
                     )
         except Exception as e:
             print(e)
             return {"message": "delete failed cuh"}
 
     def company_in_to_out(self, id: int, company: CompanyIn):
-            old_data = company.dict()
-            return CompanyOut(id=id, **old_data)
+        old_data = company.dict()
+        return CompanyOut(id=id, **old_data)
 
     def record_to_company_out(self, record):
         return CompanyOut(

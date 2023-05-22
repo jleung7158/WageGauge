@@ -1,25 +1,18 @@
 import { NavLink } from "react-router-dom";
-
+import HomePageIcon from './img/icon.png';
+import NotIcon from './img/email.png';
+import BgImage from './img/Cityscapes.png'
 
 
 
 
 function Nav() {
-	return (
+
+
+  return (
     <>
-        <div className="relative flex items-center gap-x-6 overflow-hidden bg-grey px-6 py-2.5 sm:px-3.5">
-            {/* <div
-              className="absolute left-[max(-7rem,calc(50%-52rem))] top-1/2 transform-gpu blur-2xl"
-              aria-hidden="true"
-            >
-              <div
-                className="aspect-[577/310] w-[36.0625rem] bg-gradient-to-r from-wageblue to-two opacity-30"
-                style={{
-                  clipPath:
-                    'polygon(74.8% 41.9%, 97.2% 73.2%, 100% 34.9%, 92.5% 0.4%, 87.5% 0%, 75% 28.6%, 58.5% 54.6%, 50.1% 56.8%, 46.9% 44%, 48.3% 17.4%, 24.7% 53.9%, 0% 27.9%, 11.9% 74.2%, 24.9% 54.1%, 68.6% 100%, 74.8% 41.9%)',
-                }}
-              ></div>
-            </div> */}
+        {/* the pop up to sign in */}
+        <div className="relative flex gap-x-6 overflow-hidden bg-fixed px-6 py-2.5 sm:px-3.5">
             <div
               className="absolute left-[max(45rem,calc(50%+8rem))] top-1/2 transform-gpu blur-2xl"
               aria-hidden="true"
@@ -70,58 +63,85 @@ function Nav() {
               </button>
             </div>
           </div>
-    <div className="container-flex flex-row w-screen p-2 mb-8 bg-wageblue">
-    <div
-			className="
-      color-bg"
-		>
-			<div
-				className="
-        inline-flex
-        px-2 rounded
-        color-bg
-        "
-			>
-				<div>
+    {/* the background of the nav */}
+    <div className="container-flex flex-row p-2 bg-white">
+      {/* makes the buttons horizontal */}
+      <div className="flex px-2 rounded space-x-4 mt-4 mb-5 justify-between">
+        {/* the buttons on the left*/}
+        <div className='flex flex-row space-x-4 justify-start'>
+        <div>
+          <NavLink
+            to="companies"
+            className="text-gray-50
+                hover:opacity-25
+                transition-opacity
+                block rounded-full px-5 py-3"
+					>
+          <img src={HomePageIcon} alt="Homepage" className="w-12 h-12" />
+					</NavLink>
+				</div>
+        <div className="mt-5">
+          <NavLink
+            to="companies"
+            className="text-gray-50
+                hover:bg-gray-100
+                hover:text-wageblue block
+                block rounded-full px-5 py-3
+                bg-wageblue
+                text-base font-bold"
+					>
+						Companies
+					</NavLink>
+				</div>
+        <div className="mt-5">
 					<NavLink
 						to="positions"
 						className="text-gray-50
-						hover:bg-lightblue
-						hover:text-white
-						block rounded-md px-3 py-2
-						text-base font-medium"
+						hover:bg-gray-100
+						hover:text-wageblue
+						block rounded-full px-5 py-3
+            bg-wageblue
+						text-base font-bold"
           >
             Positions
           </NavLink>
         </div>
         <div>
-          <NavLink
-            to="companies"
-            className="text-gray-50
-                hover:bg-gray-700
-                hover:text-white block
-                rounded-md px-3 py-2
-                text-base font-medium"
-					>
-						Companies
-					</NavLink>
-				</div>
-				<div>
+
+        </div>
+      </div>
+        {/* nav buttons on the right side* */}
+      {/* </div> */}
 					<NavLink
             to="signup"
             className="
                 text-gray-50
-                hover:bg-gray-700
-                hover:text-white block
-                rounded-md px-3 py-2
-                text-base font-medium"
+                hover:bg-gray-100
+                hover:text-wageblue
+                block rounded-full px-5 py-3 mt-5
+                bg-wageblue
+                text-base font-bold
+                "
                 >
-                SignUp
+                Login
                 </NavLink>
 				</div>
-			</div>
-		</div>
-		</div>
+				{/* <div className= "mt-2">
+					<NavLink
+            to="*"
+            className="
+                text-gray-50
+                hover:bg-gray-100
+                block rounded-lg px-5 py-3
+                bg-white
+                "
+                >
+                <img src={NotIcon} alt="Homepage" className="w-14 h-12" />
+          </NavLink>
+				</div>*/}
+      </div>
+      {/* bottom space */}
+      {/* <div className=' pb-5' ></div> */}
     </>
 	);
 }

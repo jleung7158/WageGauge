@@ -11,3 +11,7 @@ I've added Company to the frontend, creating a path in the React App to show the
 I've also changed the Company table to exclude a position_id, because we're flipping our logic to join Company to the Positions Table.
 
 Visx and d-3 have also been installed.
+
+01/22/23
+
+Over the weekend, I spent a long time getting familiar with TailwindCSS. I was able to make some design decisions on the nav bar and the dashboard, which included consistent color palettes and shapes. I've also created a functioning dashboard table that displays available positions grouped by their company. A user can also direct to the company detail page from that companny table.

@@ -22,34 +22,36 @@ class EmployeeOut(BaseModel):
     account_id: Optional[int]
     company_id: Optional[int]
     position_id: Optional[int]
+    position: Optional[str]
 
 
 class EmployeeRepository:
     def create(self, employee: EmployeeIn) -> EmployeeOut:
-        try:
-            with pool.connection() as conn:
-                with conn.cursor() as db:
-                    result = db.execute(
-                        """
+        # try:
+        with pool.connection() as conn:
+            with conn.cursor() as db:
+                result = db.execute(
+                    """
                     INSERT INTO employees
                         (salary, location, account_id, company_id, position_id)
                     VALUES
                         (%s, %s, %s, %s, %s)
                     RETURNING id;
                     """,
-                        [
-                            employee.salary,
-                            employee.location,
-                            employee.account_id,
-                            employee.company_id,
-                            employee.position_id,
-                        ],
-                    )
-                    id = result.fetchone()[0]
-                    return self.employee_in_to_out(id, employee)
-        except Exception as e:
-            print(e)
-            return {"message": "Could not create employee"}
+                    [
+                        employee.salary,
+                        employee.location,
+                        employee.account_id,
+                        employee.company_id,
+                        employee.position_id,
+                    ],
+                )
+                id = result.fetchone()[0]
+                return self.employee_in_to_out(id, employee)
+
+    # except Exception as e:
+    #     print(e)
+    #     return {"message": "Could not create employee"}
 
     def get_all(self) -> Union[List[EmployeeOut], Error]:
         try:
@@ -58,14 +60,17 @@ class EmployeeRepository:
                     result = db.execute(
                         """
                         SELECT
-                            id,
-                            salary,
-                            location,
-                            account_id,
-                            company_id,
-                            position_id
-                        FROM employees
-                        ORDER BY id;
+                            e.id as employee,
+                            e.salary as salary,
+                            e.location as location,
+                            e.account_id as account_id,
+                            e.company_id as company_id,
+                            e.position_id as position,
+                            p.name as position
+                        FROM employees as e
+                        left join positions as p
+                        on (p.id=e.position_id)
+                        ORDER BY e.id;
                         """
                     )
                     return [
@@ -110,13 +115,19 @@ class EmployeeRepository:
                 with conn.cursor() as db:
                     result = db.execute(
                         """
-                        Select id,
-                            salary,
-                            account_id,
-                            company_id,
-                            position_id
-                        FROM employees
-                        WHERE id = %s;
+                        SELECT
+                            e.id as employee,
+                            e.salary as salary,
+                            e.location as location,
+                            e.account_id as account_id,
+                            e.company_id as company_id,
+                            e.position_id as position,
+                            p.name as position
+                        FROM employees as e
+                        left join positions as p
+                        on (p.id=e.position_id)
+                        WHERE e.id= %s
+                        ORDER BY e.id;
                         """,
                         [employee_id],
                     )
@@ -156,4 +167,5 @@ class EmployeeRepository:
             account_id=record[3],
             company_id=record[4],
             position_id=record[5],
+            position=record[6],
         )

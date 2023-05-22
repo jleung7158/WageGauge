@@ -34,3 +34,14 @@ As for aha! moments, I figured out how to send data via props with a button clic
 
 5/19/23
 Today I worked on setting up the front-end framework for the company detail page, so that I can fill it with data collected later.
+
+We discussed potentially using redux but saved that for after we get the back-end fully functional.
+
+For aha! moments, it was really cool figuring out how to connect data between child and parent components for the front-end, though I think redux will be doing that too.
+
+5/20/23
+Today we worked on joining the positions and employees database. I will be working on implementing redux into the company detail page.
+
+We decided to stick to Andrew's styling lead.
+
+For aha! moments,

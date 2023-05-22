@@ -8,6 +8,7 @@ function CompanyList() {
 	const [positions, setPositions] = useState([]);
     const [search, setSearch] = useState('');
 
+    // get the company data
 	const fetchCompanies = async () => {
 		const url = 'http://localhost:8000/companies';
 		const response = await fetch(url);
@@ -17,6 +18,8 @@ function CompanyList() {
 			setCompanies(data);
         }
         };
+
+        // get the positions data
 	const fetchPositions = async () => {
 		const url = 'http://localhost:8000/positions';
 		const response = await fetch(url);

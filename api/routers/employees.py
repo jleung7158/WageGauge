@@ -15,8 +15,7 @@ depend = Depends()
 def create_employee(
     employee: EmployeeIn, repo: EmployeeRepository = Depends()
 ):
-    repo.create(employee)
-    return employee
+    return repo.create(employee)
 
 
 @router.get("/employees", response_model=List[EmployeeOut])

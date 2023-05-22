@@ -22,7 +22,6 @@ ChartJS.register(
 );
 
 const labels = Data.map((data) => data.year);
-console.log(labels);
 
 function PositionFigure({ position }) {
   const [chartData, setChartData] = useState({
@@ -41,6 +40,7 @@ function PositionFigure({ position }) {
 
   return (
     <div>
+      <div className="text-xl font-bold text-black">{position.company}</div>
       <div className="text-xl font-medium text-black">{position.name}</div>
       <div style={{ width: "700px" }}>
         <BarChart chartData={chartData} />

@@ -20,6 +20,7 @@ class PositionOut(BaseModel):
     name: str
     company_id: Optional[int]
     description: Optional[str]
+    company: Optional[str]
 
 
 class PositionRepository:
@@ -151,4 +152,5 @@ class PositionRepository:
             name=record[1],
             company_id=record[2],
             description=record[3],
+            company=record[4],
         )

@@ -1,30 +1,73 @@
 import { useEffect, useState } from "react";
 import PositionFigure from "./PositionFigure";
+import Dropdown from "./components/Dropdown";
 
-function CompanyDetail() {
+const CompanyDetail = () => {
   const [positions, setPositions] = useState([]);
+  const [companies, setCompanies] = useState([]);
 
-  const fetchData = async () => {
-    const url = "http://localhost:8000/positions/";
-    const response = await fetch(url);
-    if (response.ok) {
-      const data = await response.json();
-      console.log(data);
-      setPositions(data);
+  const fetchPositionData = async () => {
+    const pUrl = "http://localhost:8000/positions/";
+    const pResponse = await fetch(pUrl);
+    if (pResponse.ok) {
+      const pData = await pResponse.json();
+      setPositions(pData);
+    }
+  };
+
+  const fetchCompanyData = async () => {
+    const cUrl = "http://localhost:8000/companies/";
+    const cResponse = await fetch(cUrl);
+    if (cResponse.ok) {
+      const cData = await cResponse.json();
+      setCompanies(cData);
     }
   };
 
   useEffect(() => {
-    fetchData();
+    fetchCompanyData();
+  }, []);
+
+  useEffect(() => {
+    fetchPositionData();
   }, []);
 
   const [isFigureOpen, setIsFigureOpen] = useState(false);
   const [figureData, setFigureData] = useState(null);
 
-  const handleFunctionClick = (position) => {
+  const [companySelect, setCompanySelect] = useState("");
+  const getCompanySelected = (companySelected) => {
+    setCompanySelect(companySelected);
+  };
+
+  const [reCompany, setReCompany] = useState("");
+  const updateReCompany = () => {
+    setReCompany(companySelect);
+  };
+
+  const getFilteredPositions = (companySelect, positions) => {
+    if (!companySelect) {
+      return positions;
+    }
+    return positions.filter((position) => {
+      for (const [key, value] of Object.entries([position])) {
+        if (position.company.includes(companySelect)) {
+          return position.company.includes(companySelect);
+        }
+      }
+    });
+  };
+
+  useEffect(() => {
+    updateReCompany(reCompany);
+    console.log(companySelect);
+  }, [companySelect]);
+
+  const filteredPositions = getFilteredPositions(companySelect, positions);
+
+  const handleFigureClick = (position) => {
     setFigureData(position);
     setIsFigureOpen(true);
-    console.log(position);
   };
 
   const handleCloseFigure = () => {
@@ -33,7 +76,7 @@ function CompanyDetail() {
 
   return (
     <div className="">
-      <div className="container flex flex-row h-full">
+      <div className="container flex flex-row h-full items-center">
         <div
           className="
         flex flex-col
@@ -42,27 +85,30 @@ function CompanyDetail() {
         rounded-xl shadow-lg items-center
         "
         >
+          <Dropdown
+            companies={companies}
+            getCompanySelected={getCompanySelected}
+            fetchPositionData={fetchPositionData}
+            reCompany={reCompany}
+            setReCompany={setReCompany}
+          />
           <h1
             className="
-          p-2 my-4 w-48
+          p-2 my-4 w-72
           text-xl font-bold text-center text-gray-700
           rounded
-          bg-gradient-to-r color-bg
-          transition ease-in delay-50
-        hover:from-cyan-500
-        hover:to-blue-500
-          hover:text-white
+          bg-gradient-to-r bg-slate-500
           "
           >
             Positions
           </h1>
           <div className="mx-0">
-            {positions.map((position) => {
+            {filteredPositions.map((position) => {
               return (
                 <button
                   className="
-                  p-2 w-32 my-4
-                  flex items-center text-center text-gray-700 font-semibold
+                  p-2 w-48 my-4
+                  flex justify-center text-center text-gray-700 font-semibold
                   rounded shadow-lg
                   bg-gradient-to-r bg-cyan-500
                   transition ease-in delay-50
@@ -75,10 +121,10 @@ function CompanyDetail() {
                   "
                   key={position.id}
                   onClick={() => {
-                    handleFunctionClick(position);
+                    handleFigureClick(position);
                   }}
                 >
-                  {position.name}
+                  {position.company} - {position.name}
                 </button>
               );
             })}
@@ -110,6 +156,6 @@ function CompanyDetail() {
       </div>
     </div>
   );
-}
+};
 
 export default CompanyDetail;

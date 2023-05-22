@@ -31,3 +31,6 @@ Today I'm working on solving more joins for our database and more styling. We're
 We discussed future organizational methods to reduce future method conflicts.
 
 As for aha! moments, I figured out how to send data via props with a button click, so that was cool.
+
+5/19/23
+Today I worked on setting up the front-end framework for the company detail page, so that I can fill it with data collected later.

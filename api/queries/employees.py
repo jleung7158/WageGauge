@@ -10,6 +10,7 @@ class Error(BaseModel):
 class Error(BaseModel):
     message: str
 
+
 class EmployeeIn(BaseModel):
     salary: int
     location: str
@@ -69,10 +70,11 @@ class EmployeeRepository:
                             e.account_id as account_id,
                             e.company_id as company_id,
                             e.position_id as position,
-                            p.name as position
+                            p.name as position,
+                            c.name as company
                         FROM employees as e
-                        left join positions as p
-                        on (p.id=e.position_id)
+                        LEFT JOIN positions as p ON (p.id=e.position_id)
+                        LEFT JOIN company as c ON (c.id=e.company_id)
                         ORDER BY e.id;
                         """
                     )
@@ -125,10 +127,11 @@ class EmployeeRepository:
                             e.account_id as account_id,
                             e.company_id as company_id,
                             e.position_id as position,
-                            p.name as position
+                            p.name as position,
+                            c.name as company
                         FROM employees as e
-                        left join positions as p
-                        on (p.id=e.position_id)
+                        LEFT JOIN positions as p ON (p.id=e.position_id)
+                        LEFT JOIN company as c ON (c.id=e.company_id)
                         WHERE e.id= %s
                         ORDER BY e.id;
                         """,

@@ -7,6 +7,9 @@ class Error(BaseModel):
     message: str
 
 
+class Error(BaseModel):
+    message: str
+
 class EmployeeIn(BaseModel):
     salary: int
     location: str

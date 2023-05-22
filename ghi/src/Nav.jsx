@@ -4,8 +4,6 @@ import NotIcon from "./img/email.png";
 import BgImage from "./img/Cityscapes.png";
 
 function Nav() {
-
-
   return (
     <>
       {/* the pop up to sign in */}

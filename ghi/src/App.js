@@ -33,7 +33,7 @@ function App() {
 	// }, []);
 
 	return (
-		<div className="bg-gradient-to-b from-slate-50 to-cyan-500 h-screen">
+		<div className="bg-gradient-to-b overflow-auto from-weedgreen to-wageblue h-screen">
 			<BrowserRouter>
 				<Nav />
 				<div className="container-flex">
@@ -56,6 +56,7 @@ function App() {
 				{/* <Construct info={launchInfo} /> */}
 			</BrowserRouter>
 		</div>
+
 	);
 }
 

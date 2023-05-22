@@ -17,7 +17,7 @@ def get_all(repo: CompanyRepository = depend):
 
 
 @router.put("/companies/{company_id}", response_model=Union[CompanyOut, Error])
-def update_position(
+def update_company(
     company_id: int,
     company: CompanyIn,
     repo: CompanyRepository = depend,
@@ -26,7 +26,7 @@ def update_position(
 
 
 @router.delete("/companies/{company_id}", response_model=bool)
-def delete_position(
+def delete_company(
     company_id: int,
     repo: CompanyRepository = depend,
 ) -> bool:

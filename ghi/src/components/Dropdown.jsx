@@ -1,13 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-const Dropdown = ({
-  companies,
-  getCompanySelected,
-  fetchPositionData,
-  reCompany,
-  setReCompany,
-}) => {
+const Dropdown = ({ companies, setReCompany }) => {
   const [inputValue, setInputValue] = useState("");
   const [selected, setSelected] = useState("");
   const [open, setOpen] = useState(false);
@@ -25,12 +19,9 @@ const Dropdown = ({
       setInputValue("");
     }
     setCompanySelect(company?.name);
-    getCompanySelected(companySelect);
     setReCompany(company?.name);
     setOpen(false);
   };
-
-  const [company, setCompany] = useState("");
 
   useEffect(() => {
     console.log(selected);

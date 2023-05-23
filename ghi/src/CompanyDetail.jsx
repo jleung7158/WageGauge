@@ -24,24 +24,14 @@ const CompanyDetail = () => {
     }
   };
 
-  useEffect(() => {
-    fetchCompanyData();
-  }, []);
-
-  useEffect(() => {
-    fetchPositionData();
-  }, []);
-
   const [isFigureOpen, setIsFigureOpen] = useState(false);
   const [figureData, setFigureData] = useState(null);
 
   const [companySelect, setCompanySelect] = useState("");
-  const getCompanySelected = (companySelected) => {
-    setCompanySelect(companySelected);
-  };
 
   const [reCompany, setReCompany] = useState("");
   const updateReCompany = () => {
+    setCompanySelect("Successful company select");
     setReCompany(companySelect);
   };
 
@@ -51,17 +41,17 @@ const CompanyDetail = () => {
     }
     return positions.filter((position) => {
       for (const [key, value] of Object.entries([position])) {
-        if (position.company.includes(companySelect)) {
-          return position.company.includes(companySelect);
+        if (position.company.includes(reCompany)) {
+          return position.company.includes(reCompany);
         }
       }
     });
   };
 
-  useEffect(() => {
-    updateReCompany(reCompany);
-    console.log(companySelect);
-  }, [companySelect]);
+  // useEffect(() => {
+
+  //   console.log(companySelect);
+  // }, [companySelect]);
 
   const filteredPositions = getFilteredPositions(companySelect, positions);
 
@@ -73,6 +63,12 @@ const CompanyDetail = () => {
   const handleCloseFigure = () => {
     setIsFigureOpen(false);
   };
+
+  useEffect(() => {
+    fetchCompanyData();
+    fetchPositionData();
+    updateReCompany(reCompany);
+  }, []);
 
   return (
     <div className="">
@@ -87,7 +83,6 @@ const CompanyDetail = () => {
         >
           <Dropdown
             companies={companies}
-            getCompanySelected={getCompanySelected}
             fetchPositionData={fetchPositionData}
             reCompany={reCompany}
             setReCompany={setReCompany}

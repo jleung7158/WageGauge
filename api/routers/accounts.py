@@ -54,3 +54,11 @@ async def create_account(
     form = AccountForm(username=info.email, password=info.password)
     token = await authenticator.login(response, request, form, repo)
     return AccountToken(account=account, **token.dict())
+
+@router.post("/api/protected")
+async def create_protected(
+    account_data: dict = Depends(authenticator.get_current_account_data),
+):
+    if status.HTTP_200_OK:
+        return True
+    return False

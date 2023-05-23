@@ -3,3 +3,5 @@
 5/16- Setting up Auth is complete. Devs can now create, login, and logout accounts in the backend. Will add a front end page to login tomorrow and set up protected endpoints for pages that need to be signed in for.
 
 5/17- Created a Signup Page at /signup, fixed nav bar links, changed div class "container" in app.js to container-flex to get rid of the empty space on side of page.
+
+5/22- Set up protected endpoints in the back end to allow for checking if current logged in user is authorized.

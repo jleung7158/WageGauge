@@ -159,16 +159,39 @@ function CompanyList() {
 				{/* main content */}
 				<div className="relative">
 					<div className="container flex flex-row">
-						<div className="flex-col p-6 w-1/4 mx-4 bg-white rounded-xl shadow-lg flex items-center space-x-4">
-							<h1 className="text-xl font-bold font-warownia">COMPANIES</h1>
+						<div
+                            className="
+                            flex-col p-6 w-1/4 mx-4
+                            bg-white rounded-xl shadow-lg
+                            flex items-center space-x-4
+
+                            dark:bg-gray-600
+                            ">
+							<h1
+                            className="
+                            text-xl font-bold font-warownia
+                            dark:text-gray-50
+                            ">COMPANIES</h1>
 						</div>
-						<div className=" p-6 w-3/4 mx-4 bg-gray-200 rounded-xl shadow-lg flex items-center space-x-4">
+						<div
+                            className="
+                            p-6 w-3/4 mx-4
+                            bg-gray-200
+                            rounded-xl shadow-lg
+                            flex items-center space-x-4
+
+                            dark:bg-gray-600
+                            ">
 							<div>
 								{/* the Search Bar */}
 								<form onSubmit={handleSearch}>
 									<label
 										htmlFor="default-search"
-										className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
+										className="
+                                            mb-2 text-sm font-medium
+                                            text-gray-900 sr-only
+                                            dark:text-white
+                                            "
 									>
 										Search
 									</label>
@@ -213,7 +236,8 @@ function CompanyList() {
                                     underline underline-offset-8
                                     font-bold
                                     text-4xl
-                                    text-center"
+                                    text-center
+                                    dark:text-gray-50"
 								>
 									COMPANY LIST
 								</h1>
@@ -230,14 +254,29 @@ function CompanyList() {
                                         text-gray-50
                                         font-bold
                                         text-3xl
-                                        px-10"
+                                        px-10
+
+                                        "
 										>
 											{company.name}
 										</h2>
 
-										<table className="table-fixed w-full bg-gray-100 rounded-md border-separate border-spacing-2 border border-white">
+										<table
+                                            className="
+                                            table-fixed w-full bg-gray-100
+                                            rounded-md border-separate
+                                            border-spacing-2 border
+                                            border-white shadow-lg
+
+                                            dark:bg-gray-600
+                                            dark:border-gray-600
+                                        ">
 											<thead>
-												<tr className="text-xl font-bold font-warownia">
+												<tr
+                                                className="
+                                                text-xl font-bold font-warownia
+
+                                                dark:text-gray-50">
 													<th>Position</th>
 													<th>Description</th>
 												</tr>
@@ -248,9 +287,22 @@ function CompanyList() {
 													(position, index) => (
 														<tr
 															key={position.id}
-															className="w-full ml-5 font-warownia font-bold text-2xl"
+															className="
+                                                            w-full ml-5 font-warownia font-bold text-2xl
+
+                                                            "
 														>
-															<td className="px-10 py-10 bg-gray-50 rounded-md border border-white">
+															<td
+                                                            className="
+                                                            px-10 py-10 bg-gray-50
+                                                            rounded-md
+                                                            border border-white
+                                                            shadow-lg
+
+                                                            dark:bg-gray-500
+                                                            dark:border-gray-500
+                                                            dark:text-gray-50
+                                                            ">
 																<div className="flex flex-col items-center">
 																	<div>{position.name}</div>
 																	<div className="text-s text-gray-500">
@@ -259,7 +311,17 @@ function CompanyList() {
 																</div>
 															</td>
 															{/* <td className="px-10 py-10 bg-gray-50 rounded-md border border-white text-center">{position.name}</td>*/}
-															<td className="px-10 py-10 bg-gray-50 rounded-md border border-white text-center">
+															<td
+                                                            className="
+                                                            px-10 py-10 bg-gray-50
+                                                            rounded-md
+                                                            border border-white
+                                                            text-center shadow-lg
+
+                                                            dark:bg-gray-500
+                                                            dark:border-gray-500
+                                                            dark:text-gray-50
+                                                            ">
 																Salary TBD
 															</td>
 															{/* if the index of the position is the last one in the list, include the learn more button  */}

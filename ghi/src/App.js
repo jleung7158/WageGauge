@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useState } from 'react';
 import Nav from './Nav';
 // import { useEffect, useState } from "react";
 // import Construct from "./Construct.js";
@@ -8,6 +9,7 @@ import CompanyDetail from './CompanyDetail.jsx';
 import CompanyList from './CompanyList';
 import SignUpForm from './Signup';
 import LoginForm from './Login';
+import Switcher from './components/Switcher';
 
 function App() {
 	// const [launchInfo, setLaunchInfo] = useState([]);
@@ -31,11 +33,17 @@ function App() {
 	//   }
 	//   getData();
 	// }, []);
+	// const [darkMode, setDarkMode] = useState(false)
 
 	return (
-		<div className="bg-gradient-to-b overflow-auto from-weedgreen to-wageblue h-screen">
+		<div className=
+		"bg-gradient-to-b overflow-auto from-weedgreen to-wageblue dark:bg-darkmode h-screen">
+			<div
+			// className={`App ${darkMode ? "dark" : ""}`}
+			>
 			<BrowserRouter>
-				<Nav />
+				<Nav>
+				</Nav>
 				<div className="container-flex">
 					<Routes>
 						<Route>
@@ -56,7 +64,7 @@ function App() {
 				{/* <Construct info={launchInfo} /> */}
 			</BrowserRouter>
 		</div>
-
+		</div>
 	);
 }
 

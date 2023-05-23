@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkmode: 'class',
   content: ["./src/**/*.{js,jsx}"],
+  darkMode: 'class',
   theme: {
     extend: {
         colors: {
@@ -10,6 +10,9 @@ module.exports = {
           'lightblue': '#75BDE0',
           'oceanblue': '#78d1d2',
           'weedgreen': '#97dbae',
+          'darkmode': '#374151',
+          'darkgray': '#526D82',
+          'darkblue': '#27374D',
         },
         fontFamily: {
           'warownia': ["Warownia Ultra Extended Oblique", 'sans-serif']

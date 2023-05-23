@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import HomePageIcon from "./img/icon.png";
 import NotIcon from "./img/email.png";
 import BgImage from "./img/Cityscapes.png";
+import Switcher from "./components/Switcher";
 
 function Nav() {
   return (
@@ -59,7 +60,11 @@ function Nav() {
         </div>
       </div>
       {/* the background of the nav */}
-      <div className="container-flex flex-row p-2 bg-white">
+      <div className="
+          container-flex flex-row p-2
+          bg-white
+          dark:bg-darkmode
+          ">
         {/* makes the buttons horizontal */}
         <div className="flex px-2 rounded space-x-4 mt-4 mb-5 justify-between">
           {/* the buttons on the left*/}
@@ -67,10 +72,12 @@ function Nav() {
             <div>
               <NavLink
                 to="companies"
-                className="text-gray-50
+                className="
                 hover:opacity-25
                 transition-opacity
-                block rounded-full px-5 py-3"
+                block rounded-full px-5 py-4
+
+                "
               >
                 <img src={HomePageIcon} alt="Homepage" className="w-12 h-12" />
               </NavLink>
@@ -83,7 +90,12 @@ function Nav() {
                 hover:text-wageblue block
                 block rounded-full px-5 py-3
                 bg-wageblue
-                text-base font-bold"
+                text-base font-bold
+
+                dark:text-wageblue
+                dark:bg-darkblue
+                hover:dark:bg-darkgray
+                "
               >
                 Companies
               </NavLink>
@@ -91,47 +103,50 @@ function Nav() {
             <div className="mt-5">
               <NavLink
                 to="positions"
-                className="text-gray-50
-						hover:bg-gray-100
-						hover:text-wageblue
-						block rounded-full px-5 py-3
-            bg-wageblue
-						text-base font-bold"
+                className="
+                  text-gray-50
+                  hover:bg-gray-100
+                  hover:text-wageblue
+                  block rounded-full px-5 py-3
+                  bg-wageblue
+                  text-base font-bold
+
+                  dark:text-wageblue
+                  dark:bg-darkblue
+                  hover:dark:bg-darkgray
+                  "
               >
                 Positions
               </NavLink>
             </div>
-            <div></div>
           </div>
           {/* nav buttons on the right side* */}
           {/* </div> */}
-          <NavLink
-            to="signup"
-            className="
-                text-gray-50
-                hover:bg-gray-100
-                hover:text-wageblue
-                block rounded-full px-5 py-3 mt-5
-                bg-wageblue
-                text-base font-bold
-                "
-          >
-            Login
-          </NavLink>
+          <div className="flex flex-row space-x-4 justify-start">
+            <div className="mt-6">
+              <Switcher/>
+            </div>
+            <div className="mt-5">
+              <NavLink
+                to="signup"
+                className="
+                    text-gray-50
+                    hover:bg-gray-100
+                    hover:text-wageblue block
+                    block rounded-full px-5 py-3
+                    bg-wageblue
+                    text-base font-bold
+
+                    dark:text-wageblue
+                    dark:bg-darkblue
+                    hover:dark:bg-darkgray"
+              >
+                Login
+              </NavLink>
+            </div>
+
         </div>
-        {/* <div className= "mt-2">
-					<NavLink
-            to="*"
-            className="
-                text-gray-50
-                hover:bg-gray-100
-                block rounded-lg px-5 py-3
-                bg-white
-                "
-                >
-                <img src={NotIcon} alt="Homepage" className="w-14 h-12" />
-          </NavLink>
-				</div>*/}
+        </div>
       </div>
       {/* bottom space */}
       {/* <div className=' pb-5' ></div> */}

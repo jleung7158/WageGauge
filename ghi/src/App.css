@@ -12,3 +12,12 @@
 	font-size: calc(10px + 2vmin);
 	color: white;
 }
+
+.nav-button {
+	                color: gray-50;
+                    hover:bg-gray-100;
+                    hover:text-wageblue;
+                    /* rounded-full px-5 py-3; */
+                    background-color: wageblue;
+                    /* text-base; font-bold; */
+}

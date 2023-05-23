@@ -39,9 +39,11 @@ We discussed potentially using redux but saved that for after we get the back-en
 
 For aha! moments, it was really cool figuring out how to connect data between child and parent components for the front-end, though I think redux will be doing that too.
 
-5/20/23
+5/22/23
 Today we worked on joining the positions and employees database. I will be working on implementing redux into the company detail page.
 
 We decided to stick to Andrew's styling lead.
 
-For aha! moments,
+For aha! moments, I figured out how to transfer data between parent-child and child-parent components in React... but also now know it's way better to do with Redux.
+
+5/23/23

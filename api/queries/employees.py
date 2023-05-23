@@ -27,6 +27,7 @@ class EmployeeOut(BaseModel):
     company_id: Optional[int]
     position_id: Optional[int]
     position: Optional[str]
+    company: Optional[str]
 
 
 class EmployeeRepository:
@@ -174,4 +175,5 @@ class EmployeeRepository:
             company_id=record[4],
             position_id=record[5],
             position=record[6],
+            company=record[7],
         )

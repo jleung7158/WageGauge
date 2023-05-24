@@ -13,9 +13,15 @@ module.exports = {
           'darkmode': '#374151',
           'darkgray': '#526D82',
           'darkblue': '#27374D',
+          'darkpurp': '#5C469C',
+          'lightgray': '#172a46',
+          'darkgreen': '#41a58d',
+          'darktext': '#ced8f8',
+          'moredark': '#0a192f',
         },
         fontFamily: {
-          'warownia': ["Warownia Ultra Extended Oblique", 'sans-serif']
+          'warownia': ["WarowniaUltExtObl", "sans-serif"],
+          'thunder': ['Thunder-ExtraBoldLC', 'sans-serif'],
         },
     },
   },

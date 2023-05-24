@@ -16,7 +16,7 @@ export default function Switcher() {
     return (
         <>
             <DarkModeSwitch
-            style={{ marginBottom: "2rem" }}
+            // style={{ marginBottom: "2rem" }}
             checked={darkMode}
             onChange={toggleDarkMode}
             size={30}

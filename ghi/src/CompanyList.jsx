@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import DashboardIcon from './img/humans.png';
 import WageGaugeIcon from './img/logo.png';
+import chartIcon from './img/chart-histogram.svg'
 import { Link } from 'react-router-dom';
 
 function CompanyList() {
@@ -57,6 +58,10 @@ function CompanyList() {
                     py-10 mb-40
                     bg-gradient-to-r
                     from-wageblue via-weedgreen to-white
+
+                    dark:bg-gradient-to-r
+                    dark:from-moredark
+                    dark:to-darkgreen
                 "
 				>
 					<div
@@ -76,6 +81,8 @@ function CompanyList() {
                             text-gray-50
                             py-10
                             ml-20
+
+                            dark:text-darktext
                             "
 							>
 								EMBRACE YOUR WORTH
@@ -92,6 +99,8 @@ function CompanyList() {
                             py-2
                             ml-20
                             mr-10
+
+                            dark:text-darktext
                             "
 							>
 								WageGauge helps empower your pay with dynamic{' '}
@@ -107,6 +116,8 @@ function CompanyList() {
                             text-gray-50
                             py-2
                             ml-20
+
+                            dark:text-darktext
                             "
 							>
 								data visualization, giving you the edge
@@ -121,6 +132,8 @@ function CompanyList() {
                             font-warownia
                             text-gray-50
                             ml-20
+
+                            dark:text-darktext
                             "
 							>
 								in any negotiation.
@@ -138,6 +151,8 @@ function CompanyList() {
                         py-10
                         ml-40
                         mr-40
+
+                        dark:text-darktext
                         "
 						>
 							Learn more
@@ -159,28 +174,29 @@ function CompanyList() {
 				{/* main content */}
 				<div className="relative">
 					<div className="container flex flex-row">
-						<div
+
+                        <div
                             className="
                             flex-col p-6 w-1/4 mx-4
                             bg-white rounded-xl shadow-lg
                             flex items-center space-x-4
 
-                            dark:bg-gray-600
+                            dark:bg-moredark
                             ">
 							<h1
                             className="
-                            text-xl font-bold font-warownia
-                            dark:text-gray-50
+                            text-xl font-bold font-thunder
+                            dark:text-darktext
                             ">COMPANIES</h1>
 						</div>
 						<div
                             className="
                             p-6 w-3/4 mx-4
-                            bg-gray-200
+                            bg-slate-300
                             rounded-xl shadow-lg
                             flex items-center space-x-4
 
-                            dark:bg-gray-600
+                            dark:bg-moredark
                             ">
 							<div>
 								{/* the Search Bar */}
@@ -216,7 +232,16 @@ function CompanyList() {
 										<input
 											type="search"
 											id="default-search"
-											className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+											className="
+                                            block w-full p-4 pl-10
+                                            text-sm text-gray-900
+                                            border border-gray-300 rounded-lg
+                                            bg-gray-50
+                                            focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700
+                                            dark:border-gray-600
+                                            dark:placeholder-gray-400
+                                            dark:text-white dark:focus:ring-blue-500
+                                            dark:focus:border-blue-500"
 											placeholder="Search Companies..."
 											onChange={(e) => setSearch(e.target.value)}
 											required
@@ -234,6 +259,7 @@ function CompanyList() {
 									className="
                                     font-helvetica
                                     underline underline-offset-8
+                                    font-warownia
                                     font-bold
                                     text-4xl
                                     text-center
@@ -256,6 +282,7 @@ function CompanyList() {
                                         text-3xl
                                         px-10
 
+                                        dark:text-gray-50
                                         "
 										>
 											{company.name}
@@ -268,15 +295,15 @@ function CompanyList() {
                                             border-spacing-2 border
                                             border-white shadow-lg
 
-                                            dark:bg-gray-600
-                                            dark:border-gray-600
+                                            dark:bg-lightgray
+                                            dark:border-lightgray
                                         ">
 											<thead>
 												<tr
                                                 className="
                                                 text-xl font-bold font-warownia
 
-                                                dark:text-gray-50">
+                                                dark:text-darktext">
 													<th>Position</th>
 													<th>Description</th>
 												</tr>
@@ -290,6 +317,7 @@ function CompanyList() {
 															className="
                                                             w-full ml-5 font-warownia font-bold text-2xl
 
+
                                                             "
 														>
 															<td
@@ -299,9 +327,9 @@ function CompanyList() {
                                                             border border-white
                                                             shadow-lg
 
-                                                            dark:bg-gray-500
-                                                            dark:border-gray-500
-                                                            dark:text-gray-50
+                                                            dark:bg-darkgreen
+                                                            dark:border-darkgreen
+                                                            dark:text-darktext
                                                             ">
 																<div className="flex flex-col items-center">
 																	<div>{position.name}</div>
@@ -318,9 +346,9 @@ function CompanyList() {
                                                             border border-white
                                                             text-center shadow-lg
 
-                                                            dark:bg-gray-500
-                                                            dark:border-gray-500
-                                                            dark:text-gray-50
+                                                            dark:bg-darkgreen
+                                                            dark:border-darkgreen
+                                                            dark:text-darktext
                                                             ">
 																Salary TBD
 															</td>

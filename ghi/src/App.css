@@ -13,11 +13,9 @@
 	color: white;
 }
 
-.nav-button {
-	                color: gray-50;
-                    hover:bg-gray-100;
-                    hover:text-wageblue;
-                    /* rounded-full px-5 py-3; */
-                    background-color: wageblue;
-                    /* text-base; font-bold; */
+/* .dark-mode-switch.dark .toggle-icon {
+	fill: #ced8f8,
 }
+.dark-mode-switch.light .toggle-icon {
+	fill: #1999ff,
+} */

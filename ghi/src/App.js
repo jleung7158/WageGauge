@@ -36,14 +36,20 @@ function App() {
 	// const [darkMode, setDarkMode] = useState(false)
 
 	return (
-		<div className=
-		"bg-gradient-to-b overflow-auto from-weedgreen to-wageblue dark:bg-darkmode h-screen">
+		<div className="
+		overflow-auto
+		h-screen
+		bg-gradient-to-b
+		from-weedgreen to-wageblue
+		dark:bg-gradient-to-b
+		dark:from-[#0a192f]
+		dark:to-[#0a192f] ">
 			<div
 			// className={`App ${darkMode ? "dark" : ""}`}
 			>
 			<BrowserRouter>
-				<Nav>
-				</Nav>
+				<Nav/>
+
 				<div className="container-flex">
 					<Routes>
 						<Route>

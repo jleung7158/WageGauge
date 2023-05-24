@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import os
-from routers import accounts, companies, positions, employees
+from routers import accounts, companies, positions, employees, topics
 from authenticator import authenticator
 
 
@@ -10,6 +10,7 @@ app.include_router(accounts.router)
 app.include_router(companies.router)
 app.include_router(positions.router)
 app.include_router(employees.router)
+app.include_router(topics.router)
 app.include_router(authenticator.router)
 
 app.add_middleware(

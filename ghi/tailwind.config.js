@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{js,jsx}"],
+  darkMode: 'class',
   theme: {
     extend: {
         colors: {
@@ -9,11 +10,18 @@ module.exports = {
           'lightblue': '#75BDE0',
           'oceanblue': '#78d1d2',
           'weedgreen': '#97dbae',
-          // 'one': '#ff80b5',
-          // 'two': '#9089fc',
+          'darkmode': '#374151',
+          'darkgray': '#526D82',
+          'darkblue': '#27374D',
+          'darkpurp': '#5C469C',
+          'lightgray': '#172a46',
+          'darkgreen': '#41a58d',
+          'darktext': '#ced8f8',
+          'moredark': '#0a192f',
         },
         fontFamily: {
-          'warownia': ["Warownia Ultra Extended Oblique", 'sans-serif']
+          'warownia': ["WarowniaUltExtObl", "sans-serif"],
+          'thunder': ['Thunder-ExtraBoldLC', 'sans-serif'],
         },
     },
   },

@@ -1,18 +1,16 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setCompany, clearCompany } from "../slices/filterSlice";
 
-const Dropdown = ({
-  companies,
-  getCompanySelected,
-  fetchPositionData,
-  reCompany,
-  setReCompany,
-}) => {
+const Dropdown = ({ companies }) => {
   const [inputValue, setInputValue] = useState("");
   const [selected, setSelected] = useState("");
   const [open, setOpen] = useState(false);
 
-  const [companySelect, setCompanySelect] = useState("");
+  const company = useSelector((state) => state.positionFilter.company);
+  // console.log("this is redux company", company);
+  const dispatch = useDispatch();
 
   const handleValueChange = (e) => {
     setInputValue(e.target.value.toLowerCase());
@@ -21,24 +19,20 @@ const Dropdown = ({
   const handleDropdownClick = (company) => {
     if (company?.name?.toLowerCase() !== selected.toLowerCase()) {
       setSelected(company.name);
-      // console.log(selected);
       setInputValue("");
     }
-    setCompanySelect(company?.name);
-    getCompanySelected(companySelect);
-    setReCompany(company?.name);
+    dispatch(setCompany(company.name));
     setOpen(false);
   };
 
-  const [company, setCompany] = useState("");
-
-  useEffect(() => {
-    console.log(selected);
-  }, [selected]);
+  const handleClearClick = () => {
+    dispatch(clearCompany());
+    setSelected("");
+  };
 
   return (
     <div className="w-72 font-medium items-center">
-      {companySelect}
+      Redux: {company}
       <div
         className="
       w-72 p-2 my-4
@@ -105,6 +99,19 @@ const Dropdown = ({
             );
           })}
         </ul>
+        <button
+          className={`bg-slate-100
+        w-half p-2
+        flex rounded 
+        items-center justify-center
+        ${selected ? "block" : "hidden"}
+        `}
+          onClick={() => {
+            handleClearClick();
+          }}
+        >
+          Clear
+        </button>
       </div>
     </div>
   );

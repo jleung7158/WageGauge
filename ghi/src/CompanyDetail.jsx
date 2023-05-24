@@ -1,59 +1,38 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import PositionFigure from "./PositionFigure";
 import Dropdown from "./components/Dropdown";
+// import { useAuthContext } from "@galvanize-inc/jwtdown-for-react";
+// import Counter from "./features/counter/Counter.jsx";
+import { useGetPositionsQuery } from "./services/positionsApi";
+import { useGetCompaniesQuery } from "./services/companiesApi";
+// import { useGetPokemonByNameQuery } from "./services/pokemon";
+import { useSelector } from "react-redux";
 
 const CompanyDetail = () => {
-  const [positions, setPositions] = useState([]);
-  const [companies, setCompanies] = useState([]);
+  // const { data, error, isLoading } = useGetPokemonByNameQuery("bulbasaur");
+  const company = useSelector((state) => state.positionFilter.company);
 
-  const fetchPositionData = async () => {
-    const pUrl = "http://localhost:8000/positions/";
-    const pResponse = await fetch(pUrl);
-    if (pResponse.ok) {
-      const pData = await pResponse.json();
-      setPositions(pData);
-    }
-  };
-
-  const fetchCompanyData = async () => {
-    const cUrl = "http://localhost:8000/companies/";
-    const cResponse = await fetch(cUrl);
-    if (cResponse.ok) {
-      const cData = await cResponse.json();
-      setCompanies(cData);
-    }
-  };
+  const { data: pData, isLoading: isPLoading } = useGetPositionsQuery();
+  const { data: cData } = useGetCompaniesQuery();
+  // const { token } = useAuthContext();
 
   const [isFigureOpen, setIsFigureOpen] = useState(false);
   const [figureData, setFigureData] = useState(null);
 
-  const [companySelect, setCompanySelect] = useState("");
-
-  const [reCompany, setReCompany] = useState("");
-  const updateReCompany = () => {
-    setCompanySelect("Successful company select");
-    setReCompany(companySelect);
-  };
-
-  const getFilteredPositions = (companySelect, positions) => {
-    if (!companySelect) {
-      return positions;
-    }
-    return positions.filter((position) => {
-      for (const [key, value] of Object.entries([position])) {
-        if (position.company.includes(reCompany)) {
-          return position.company.includes(reCompany);
+  const getFilteredPositions = (company, pData) => {
+    if (!company) {
+      return pData;
+    } else {
+      return pData?.filter((position) => {
+        for (const [key, value] of Object.entries([position])) {
+          if (position.company.includes(company)) {
+            return position.company.includes(company);
+          }
         }
-      }
-    });
+      });
+    }
   };
-
-  // useEffect(() => {
-
-  //   console.log(companySelect);
-  // }, [companySelect]);
-
-  const filteredPositions = getFilteredPositions(companySelect, positions);
+  const filteredPositions = getFilteredPositions(company, pData);
 
   const handleFigureClick = (position) => {
     setFigureData(position);
@@ -64,11 +43,13 @@ const CompanyDetail = () => {
     setIsFigureOpen(false);
   };
 
-  useEffect(() => {
-    fetchCompanyData();
-    fetchPositionData();
-    updateReCompany(reCompany);
-  }, []);
+  if (isPLoading) {
+    return (
+      <progress className="progress is-primary" max="100">
+        Positions loading
+      </progress>
+    );
+  }
 
   return (
     <div className="">
@@ -81,12 +62,7 @@ const CompanyDetail = () => {
         rounded-xl shadow-lg items-center
         "
         >
-          <Dropdown
-            companies={companies}
-            fetchPositionData={fetchPositionData}
-            reCompany={reCompany}
-            setReCompany={setReCompany}
-          />
+          <Dropdown companies={cData} />
           <h1
             className="
           p-2 my-4 w-72
@@ -149,6 +125,18 @@ const CompanyDetail = () => {
           </div>
         </div>
       </div>
+      {/* <div>
+        {error ? (
+          <>Oh no, there was an error</>
+        ) : isLoading ? (
+          <>Loading...</>
+        ) : data ? (
+          <>
+            <h3>{data.species.name}</h3>
+            <img src={data.sprites.front_shiny} alt={data.species.name} />
+          </>
+        ) : null}
+      </div> */}
     </div>
   );
 };

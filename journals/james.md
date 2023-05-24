@@ -47,3 +47,8 @@ We decided to stick to Andrew's styling lead.
 For aha! moments, I figured out how to transfer data between parent-child and child-parent components in React... but also now know it's way better to do with Redux.
 
 5/23/23
+Today was all Redux and RTK Query, I managed to get them done! Mo's birthday was today (happy birthday Mo!) so we tabled handling the auth for some other day. I did get it started on my page though.
+
+We planned out how to start the topics endpoint, as well as how to implement our auth in the back/front-end.
+
+For aha! moments, while I was trying out state control with redux things kind of just clicked, and I realized how the global state was handled. Made code a LOT cleaner IMO.

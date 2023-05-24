@@ -3,13 +3,23 @@ import PositionFigure from "./PositionFigure";
 import Dropdown from "./components/Dropdown";
 // import { useAuthContext } from "@galvanize-inc/jwtdown-for-react";
 // import Counter from "./features/counter/Counter.jsx";
-import { useGetPositionsQuery } from "./services/positionsApi";
-import { useGetCompaniesQuery } from "./services/companiesApi";
-// import { useGetPokemonByNameQuery } from "./services/pokemon";
-import { useSelector } from "react-redux";
+import { useGetPositionsQuery, useGetCompaniesQuery } from "./services/api";
+import { useGetPokemonByNameQuery } from "./services/pokemon";
+import { useSelector, useDispatch } from "react-redux";
 
 const CompanyDetail = () => {
-  // const { data, error, isLoading } = useGetPokemonByNameQuery("bulbasaur");
+  const dispatch = useDispatch();
+  const [inputValue, setInputValue] = useState("");
+  const handlePokeChange = (e) => {
+    setInputValue(e.target.value.toLowerCase());
+    dispatch();
+  };
+
+  const {
+    data: pokeData,
+    error: pokeError,
+    isLoading: isPokeLoading,
+  } = useGetPokemonByNameQuery(inputValue);
   const company = useSelector((state) => state.positionFilter.company);
 
   const { data: pData, isLoading: isPLoading } = useGetPositionsQuery();
@@ -125,15 +135,25 @@ const CompanyDetail = () => {
           </div>
         </div>
       </div>
+      <input
+        type="text"
+        value={inputValue}
+        onChange={(e) => handlePokeChange(e)}
+        placeholder="Enter pokemon name"
+        className="rounded placeholder:text-slate-700 p-2 outline-none"
+      ></input>
       {/* <div>
-        {error ? (
+        {pokeError ? (
           <>Oh no, there was an error</>
-        ) : isLoading ? (
+        ) : isPokeLoading ? (
           <>Loading...</>
-        ) : data ? (
+        ) : pokeData ? (
           <>
-            <h3>{data.species.name}</h3>
-            <img src={data.sprites.front_shiny} alt={data.species.name} />
+            <h3>{pokeData.species.name}</h3>
+            <img
+              src={pokeData.sprites.front_shiny}
+              alt={pokeData.species.name}
+            />
           </>
         ) : null}
       </div> */}

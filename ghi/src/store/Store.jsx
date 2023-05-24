@@ -5,23 +5,18 @@ import { setupListeners } from "@reduxjs/toolkit/dist/query";
 // import counterReducer from "../features/counter/counterSlice";
 
 import { pokemonApi } from "../services/pokemon";
-import { positionsApi } from "../services/positionsApi";
-import { companiesApi } from "../services/companiesApi";
+import { api } from "../services/api";
 import filterSliceReducer from "../slices/filterSlice";
 
 export const store = configureStore({
   reducer: {
     positionFilter: filterSliceReducer,
     // counter: counterReducer,
-    [positionsApi.reducerPath]: positionsApi.reducer,
-    [companiesApi.reducerPath]: companiesApi.reducer,
+    [api.reducerPath]: api.reducer,
     [pokemonApi.reducerPath]: pokemonApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(
-      positionsApi.middleware,
-      companiesApi.middleware
-    ),
+    getDefaultMiddleware().concat(api.middleware, pokemonApi.middleware),
 });
 
 setupListeners(store.dispatch);

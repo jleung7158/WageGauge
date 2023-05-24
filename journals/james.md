@@ -39,9 +39,16 @@ We discussed potentially using redux but saved that for after we get the back-en
 
 For aha! moments, it was really cool figuring out how to connect data between child and parent components for the front-end, though I think redux will be doing that too.
 
-5/20/23
+5/22/23
 Today we worked on joining the positions and employees database. I will be working on implementing redux into the company detail page.
 
 We decided to stick to Andrew's styling lead.
 
-For aha! moments,
+For aha! moments, I figured out how to transfer data between parent-child and child-parent components in React... but also now know it's way better to do with Redux.
+
+5/23/23
+Today was all Redux and RTK Query, I managed to get them done! Mo's birthday was today (happy birthday Mo!) so we tabled handling the auth for some other day. I did get it started on my page though.
+
+We planned out how to start the topics endpoint, as well as how to implement our auth in the back/front-end.
+
+For aha! moments, while I was trying out state control with redux things kind of just clicked, and I realized how the global state was handled. Made code a LOT cleaner IMO.

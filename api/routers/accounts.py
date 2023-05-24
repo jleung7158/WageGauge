@@ -61,4 +61,18 @@ async def create_protected(
 ):
     if status.HTTP_200_OK:
         return True
-    return False
+    elif status.HTTP_401_UNAUTHORIZED:
+        return False
+
+
+@router.get("/token", response_model=AccountToken | None)
+async def get_token(
+    request: Request,
+    account: AccountToken= Depends(authenticator.try_get_current_account_data)
+) -> AccountToken | None:
+    if account and authenticator.cookie_name in request.cookies:
+        return {
+            "access_token": request.cookies[authenticator.cookie_name],
+            "type": "Bearer",
+            "account": account,
+        }

@@ -6,7 +6,7 @@ const AccountEdit = () => {
     const [company, setCompany] = useState([]);
     const [position, setPosition] = useState([]);
     const [salary, setSalary] = useState('');
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const [successAlert, setSuccessAlert] = useState(false);
 
 
@@ -34,7 +34,7 @@ const AccountEdit = () => {
         try {
             const response = await fetch(employeeUrl, fetchConfig);
             if (response.ok) {
-                navigate('/companies');
+                event.target.reset()
             } else {
                 throw new Error ('Network Response Issue')
             }
@@ -88,7 +88,7 @@ const AccountEdit = () => {
                                 onChange={(event) => updateInputState(event.target.value)}
                                 >
                                 <option value=''>Choose Company</option>
-                                {companies.map((company) => (
+                                {company.map((company) => (
                                         <option
                                         key={company.name}>
                                         </option>

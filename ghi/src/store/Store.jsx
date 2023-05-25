@@ -6,11 +6,13 @@ import { setupListeners } from "@reduxjs/toolkit/dist/query";
 
 import { pokemonApi } from "../services/pokemon";
 import { api } from "../services/api";
-import filterSliceReducer from "../slices/filterSlice";
+import companySliceReducer from "../slices/companySlice";
+import pokemonSliceReducer from "../slices/pokemonSlice";
 
 export const store = configureStore({
   reducer: {
-    positionFilter: filterSliceReducer,
+    companyFilter: companySliceReducer,
+    pokemonFilter: pokemonSliceReducer,
     // counter: counterReducer,
     [api.reducerPath]: api.reducer,
     [pokemonApi.reducerPath]: pokemonApi.reducer,

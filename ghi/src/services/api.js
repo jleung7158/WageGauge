@@ -1,14 +1,17 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const api = createApi({
-  reducerPath: "positions",
+  reducerPath: "api",
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:8000" }),
   endpoints: (builder) => ({
     getPositions: builder.query({
-      query: () => `/positions/`,
+      query: () => `/positions`,
     }),
     getCompanies: builder.query({
-      query: () => `/companies/`,
+      query: () => `/companies`,
+    }),
+    getEmployees: builder.query({
+      query: () => `/employees`,
     }),
     // getPosition: builder.query({
     //   query: (id) => `/positions/` + id,
@@ -19,4 +22,8 @@ export const api = createApi({
   }),
 });
 
-export const { useGetPositionsQuery, useGetCompaniesQuery } = api;
+export const {
+  useGetPositionsQuery,
+  useGetCompaniesQuery,
+  useGetEmployeesQuery,
+} = api;

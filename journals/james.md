@@ -52,3 +52,10 @@ Today was all Redux and RTK Query, I managed to get them done! Mo's birthday was
 We planned out how to start the topics endpoint, as well as how to implement our auth in the back/front-end.
 
 For aha! moments, while I was trying out state control with redux things kind of just clicked, and I realized how the global state was handled. Made code a LOT cleaner IMO.
+
+5/24/23
+Today I worked on fine-tuning my page. I also connected more framework so that my figures grab the salary data from the employee models.
+
+As a group, we're finishing up whatever wasn't done with from yesterday. I plan on trying to add MongoDB to our app. We plan on using it to store our topics and comments.
+
+For aha! moments, it was pretty fun messing with RTK Query to grab things from a third party API.

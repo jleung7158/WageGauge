@@ -58,4 +58,4 @@ Today I worked on fine-tuning my page. I also connected more framework so that m
 
 As a group, we're finishing up whatever wasn't done with from yesterday. I plan on trying to add MongoDB to our app. We plan on using it to store our topics and comments.
 
-For aha! moments, it was pretty fun messing with RTK Query to grab things from a third party API.
+For aha! moments, it was pretty fun messing with RTK Query to grab things from a third party API. The moment happened when I finally figured out how to do a lazy query.

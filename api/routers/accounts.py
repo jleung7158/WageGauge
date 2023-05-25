@@ -55,6 +55,11 @@ async def create_account(
     token = await authenticator.login(response, request, form, repo)
     return AccountToken(account=account, **token.dict())
 
+@router.get("/api/accounts", response_model=list[AccountOut])
+def list_accounts(repo: AccountRepository = Depends()):
+    return repo.get_all()
+
+
 @router.post("/api/protected")
 async def create_protected(
     account_data: dict = Depends(authenticator.get_current_account_data),
@@ -68,7 +73,7 @@ async def create_protected(
 @router.get("/token", response_model=AccountToken | None)
 async def get_token(
     request: Request,
-    account: AccountToken= Depends(authenticator.try_get_current_account_data)
+    account: dict= Depends(authenticator.try_get_current_account_data)
 ) -> AccountToken | None:
     if account and authenticator.cookie_name in request.cookies:
         return {
@@ -76,3 +81,5 @@ async def get_token(
             "type": "Bearer",
             "account": account,
         }
+    if not account:
+        raise HTTPException(status.HTTP_400_BAD_REQUEST)

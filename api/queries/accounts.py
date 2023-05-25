@@ -25,6 +25,28 @@ class AccountOutWithPassword(AccountOut):
 
 
 class AccountRepository:
+    def get_all(self)->list[AccountOut]:
+        with pool.connection() as conn:
+            with conn.cursor() as db:
+                db.execute(
+                """
+                SELECT * FROM account
+                ORDER BY id;
+                """
+                )
+                result = []
+                for i in db:
+                    accounts = AccountOut(
+                        id= i[0],
+                        first_name= i[1],
+                        last_name= i[2],
+                        email= i[3],
+                    )
+                    result.append(accounts)
+                return result
+
+
+
     def create(
         self, info: AccountIn, hashed_password: str
     ) -> AccountOutWithPassword:

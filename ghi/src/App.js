@@ -6,6 +6,8 @@ import CompanyDetail from './CompanyDetail.jsx';
 import CompanyList from './CompanyList';
 import SignUpForm from './Signup';
 import LoginForm from './Login';
+import AccountEdit from './UpdateAccountForm.jsx';
+import AccountToCompany from './AccountToCompany.jsx';
 import Switcher from './components/Switcher';
 
 
@@ -23,7 +25,6 @@ function App() {
 
 			<BrowserRouter>
 				<Nav/>
-
 				<div className="container-flex">
 					<Routes>
 						<Route>
@@ -37,6 +38,12 @@ function App() {
 						</Route>
 						<Route path="Login">
 							<Route path="" element={<LoginForm />} />
+						</Route>
+						<Route path="AccountToCompany">
+							<Route path="" element={<AccountToCompany />} />
+						</Route>
+						<Route path="UpdateAccountForm">
+							<Route path="" element={<UpdateAccountForm />} />
 						</Route>
 					</Routes>
 				</div>

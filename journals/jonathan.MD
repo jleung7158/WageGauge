@@ -14,3 +14,4 @@ Debugged end points and data. Had an indent error that cost us 6 hours. Marty is
 Joined our first table to the employee table. Position and employee are now joined tables. James walked me through the process and today I am working solo to join the company table to employee as well.
 
 05/23/23
+Worked on the front end. The goal today was to develop a way to edit account information. The three starting out will be position company and salary. More will be added has we build new features. Also it was Mo's birthday. 

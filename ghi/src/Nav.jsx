@@ -113,6 +113,44 @@ function Nav() {
             {/* <div className="mt-6">
               <img src={userIcon} alt="user" className="w-12 h-10 filter-white" />
             </div> */}
+                        <div className="mt-5">
+              <NavLink
+                to="Update Account"
+                className="
+                    text-gray-50
+                    hover:bg-gray-100
+                    hover:text-wageblue block
+                    block rounded-full px-5 py-3
+                    bg-wageblue
+                    text-base font-bold
+
+                    dark:text-wageblue
+                    dark:bg-darkblue
+                    hover:dark:bg-darkgray"
+              >
+                Update Account
+
+              </NavLink>
+            </div>
+                      <div className="mt-5">
+              <NavLink
+                to="AccountToCompany"
+                className="
+                    text-gray-50
+                    hover:bg-gray-100
+                    hover:text-wageblue block
+                    block rounded-full px-5 py-3
+                    bg-wageblue
+                    text-base font-bold
+
+                    dark:text-wageblue
+                    dark:bg-darkblue
+                    hover:dark:bg-darkgray"
+              >
+                Add Position to company
+
+              </NavLink>
+            </div>
 
         </div>
         </div>

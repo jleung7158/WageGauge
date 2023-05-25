@@ -4,17 +4,9 @@ import Switcher from "./components/Switcher";
 import Banner from "./components/Banner";
 import userIcon from './img/user.svg'
 
+
 function Nav() {
 
-  // const [banner, setBanner] = useState(true);
-
-  // const hideBanner = () => {
-  //   setBanner(false);
-  // };
-
-  // if (!banner) {
-  //   return null;
-  // }
 
   return (
     <>
@@ -60,7 +52,7 @@ function Nav() {
                 dark:hover:text-gray-300
                 "
               >
-                Dahsboard
+                Dashboard
               </NavLink>
             </div>
             <div className="mt-5">

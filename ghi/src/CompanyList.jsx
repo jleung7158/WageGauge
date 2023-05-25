@@ -1,12 +1,18 @@
 import { useEffect, useState } from 'react';
-import DashboardIcon from './img/humans.png';
+import { Link } from 'react-router-dom';
+
 import WageGaugeIcon from './img/logo.png';
 import chartIcon from './img/chart-histogram.svg'
-import { Link } from 'react-router-dom';
+
+import SalaryRow from './components/SalaryRow';
+import WorthBanner from './components/WorthBanner';
+import LearnMoreButton from './components/LearnMoreButton';
+import Footer from './components/Footer';
 
 function CompanyList() {
 	const [companies, setCompanies] = useState([]);
 	const [positions, setPositions] = useState([]);
+    const [employees, setEmployees] = useState([]);
 	const [search, setSearch] = useState('');
 
 	// get the company data
@@ -14,9 +20,8 @@ function CompanyList() {
 		const url = 'http://localhost:8000/companies';
 		const response = await fetch(url);
 		if (response.ok) {
-			const data = await response.json();
-			console.log(data);
-			setCompanies(data);
+			const CData = await response.json();
+			setCompanies(CData);
 		}
 	};
 
@@ -25,11 +30,22 @@ function CompanyList() {
 		const url = 'http://localhost:8000/positions';
 		const response = await fetch(url);
 		if (response.ok) {
-			const data = await response.json();
-			console.log(data);
-			setPositions(data);
+			const PData = await response.json();
+			setPositions(PData);
 		}
 	};
+
+    //get the employee data
+    const fetchEmployees = async () => {
+        const url = 'http://localhost:8000/employees'
+        const response = await fetch(url);
+        if (response.ok) {
+            const EData = await response.json();
+            setEmployees(EData)
+        }
+    }
+
+
 
 	useEffect(() => {
 		fetchCompanies();
@@ -49,145 +65,50 @@ function CompanyList() {
 
 	return (
 		<>
-			<div className="h-screen">
+            <div className="relative">
 				{/* Embrace your worth banner */}
-				<div
-					className="
-                    flex
-                    flex-row
-                    py-10 mb-40
-                    bg-gradient-to-r
-                    from-wageblue via-weedgreen to-white
-
-                    dark:bg-gradient-to-r
-                    dark:from-moredark
-                    dark:to-darkgreen
-                "
-				>
-					<div
-						className="
-                        flex
-                        flex-col
-
-                        "
-					>
-						<div>
-							<p
-								className="
-                            flex
-                            text-5xl
-                            font-bold
-                            font-warownia
-                            text-gray-50
-                            py-10
-                            ml-20
-
-                            dark:text-darktext
-                            "
-							>
-								EMBRACE YOUR WORTH
-							</p>
-						</div>
-						<div>
-							<p
-								className="
-                            flex
-                            text-2xl
-                            font-bold
-                            font-warownia
-                            text-gray-50
-                            py-2
-                            ml-20
-                            mr-10
-
-                            dark:text-darktext
-                            "
-							>
-								WageGauge helps empower your pay with dynamic{' '}
-							</p>
-						</div>
-						<div>
-							<p
-								className="
-                            flex
-                            text-2xl
-                            font-bold
-                            font-warownia
-                            text-gray-50
-                            py-2
-                            ml-20
-
-                            dark:text-darktext
-                            "
-							>
-								data visualization, giving you the edge
-							</p>
-						</div>
-						<div>
-							<p
-								className="
-                            flex
-                            text-2xl
-                            font-bold
-                            font-warownia
-                            text-gray-50
-                            ml-20
-
-                            dark:text-darktext
-                            "
-							>
-								in any negotiation.
-							</p>
-						</div>
-					</div>
-					<div>
-						<p
-							className="
-                        flex
-                        text-2xl
-                        font-bold
-                        font-warownia
-                        text-gray-50
-                        py-10
-                        ml-40
-                        mr-40
-
-                        dark:text-darktext
-                        "
-						>
-							Learn more
-						</p>
-					</div>
-					<div className="">
-						<img
-							src={DashboardIcon}
-							alt="Homepage"
-							className="
-                flex
-                px-20 py-8
-                w-25 h-25
-
-                "
-						/>
-					</div>
-				</div>
+                <WorthBanner/>
 				{/* main content */}
-				<div className="relative">
+				<div className="py-5">
 					<div className="container flex flex-row">
 
                         <div
                             className="
-                            flex-col p-6 w-1/4 mx-4
-                            bg-white rounded-xl shadow-lg
-                            flex items-center space-x-4
+                                flex-col p-6 w-1/4 mx-4 px-5
+                                bg-white rounded-xl shadow-lg
+                                flex items-center space-x-4
 
-                            dark:bg-moredark
+                                dark:bg-darkblue
                             ">
 							<h1
-                            className="
-                            text-xl font-bold font-thunder
-                            dark:text-darktext
+                                className="
+                                text-4xl font-bold font-thunder
+
+                                dark:text-darktext
                             ">COMPANIES</h1>
+                            {companies.map((company) => (
+                                <table key={company.id} className="w-full text-center">
+                                    <tbody className="ml-5 font-bold text-3xl">
+                                    <tr
+                                    className="
+                                    w-full mb-2 py-5
+                                    text-md font-medium
+                                    text-gray-600
+                                    dark:text-white
+                                    ">
+                                        <td
+                                        className="
+                                        width:100 mb-5 py-5 bg-slate-300
+                                        rounded-md
+                                        flex items-center
+                                        dark:bg-darkgreen">
+                                        {company.name}
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                            ))}
 						</div>
 						<div
                             className="
@@ -257,10 +178,9 @@ function CompanyList() {
 								{/* the main table */}
 								<h1
 									className="
-                                    font-helvetica
-                                    underline underline-offset-8
                                     font-warownia
                                     font-bold
+                                    py-6
                                     text-4xl
                                     text-center
                                     dark:text-gray-50"
@@ -316,8 +236,6 @@ function CompanyList() {
 															key={position.id}
 															className="
                                                             w-full ml-5 font-warownia font-bold text-2xl
-
-
                                                             "
 														>
 															<td
@@ -350,30 +268,15 @@ function CompanyList() {
                                                             dark:border-darkgreen
                                                             dark:text-darktext
                                                             ">
-																Salary TBD
+
+                                                                Salary TBD
 															</td>
 															{/* if the index of the position is the last one in the list, include the learn more button  */}
 															{index ===
 																getPositionsByCompanyId(company.id).length -
 																	1 && (
 																<td className="px-20 py-5">
-																	<Link onClick={`/companies/${company.id}`}>
-																		<button
-																			className="
-                                                        p-2 w-32 my-4
-                                                        flex items-center text-center text-gray-50 font-semibold text-2xl
-                                                        rounded shadow-lg
-                                                        bg-wageblue
-                                                        transition ease-in delay-50
-                                                        hover:translate-x-4
-                                                        hover:scale-110
-                                                        hover:bg-gray-50
-                                                        hover:text-wageblue
-                                                        "
-																		>
-																			Learn More
-																		</button>
-																	</Link>
+                                                                    <LearnMoreButton/>
 																</td>
 															)}
 														</tr>
@@ -388,6 +291,7 @@ function CompanyList() {
 					</div>
 				</div>
 			</div>
+            <Footer/>
 		</>
 	);
 }

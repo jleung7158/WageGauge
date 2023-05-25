@@ -1,13 +1,12 @@
 import React from "react"
 import DashboardIcon from './humans.png';
 
+
 export default function WorthBanner() {
 
     return(
                 <div
-					className="
-                    flex
-                    flex-row
+					className=" grid grid-cols-1 gap-1 mt-12 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3
                     py-10 mb-40
                     bg-gradient-to-r
                     from-wageblue via-weedgreen to-white
@@ -19,9 +18,6 @@ export default function WorthBanner() {
 				>
 					<div
 						className="
-                        flex
-                        flex-col
-
                         "
 					>
 						<div>
@@ -56,7 +52,7 @@ export default function WorthBanner() {
                             dark:text-darktext
                             "
 							>
-								WageGauge helps empower your pay with dynamic{' '}
+								WageGauge helps empower your pay with dynamic
 							</p>
 						</div>
 						<div>
@@ -69,6 +65,7 @@ export default function WorthBanner() {
                             text-gray-50
                             py-2
                             ml-20
+                            mr-10
 
                             dark:text-darktext
                             "
@@ -85,6 +82,7 @@ export default function WorthBanner() {
                             font-warownia
                             text-gray-50
                             ml-20
+                            mr-10
 
                             dark:text-darktext
                             "

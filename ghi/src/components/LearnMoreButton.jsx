@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function LearnMoreButton() {
+export default function LearnMoreButton(company) {
 
     return (
         <>
@@ -19,6 +19,7 @@ export default function LearnMoreButton() {
                     hover:bg-gray-50
                     hover:text-wageblue
                     "
+                onClick={company.id}
                     >
                         Learn More
                     </button>

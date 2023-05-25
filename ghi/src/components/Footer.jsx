@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logoIcon from './logo.png'
 
 function Footer() {
@@ -47,12 +47,14 @@ function Footer() {
                     <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">Company</h3>
 
                     <div className="flex flex-col items-start mt-4 space-y-4">
-                        <a href="#" class="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">About us</a>
-                        <a href="#" class="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">Careers</a>
+                        <Link to="about">
+                        <button className="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">About us</button>
+                        </Link>
+                        <a href="#" className="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">Careers</a>
                         {/* <a href="#" class="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">Press</a> */}
-                        <a href="#" class="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">News</a>
+                        <a href="#" className="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">News</a>
                         {/* <a href="#" class="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">Media kit</a> */}
-                        <a href="#" class="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">Contact</a>
+                        <a href="#" className="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">Contact</a>
                     </div>
                 </div>
 
@@ -60,10 +62,10 @@ function Footer() {
                     <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">Resources</h3>
 
                     <div className="flex flex-col items-start mt-4 space-y-4">
-                        <a href="#" class="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">Blog</a>
-                        <a href="#" class="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">Newsletter</a>
-                        <a href="#" class="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">Events</a>
-                        <a href="#" class="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">Help center</a>
+                        <a href="#" className="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">Blog</a>
+                        <a href="#" className="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">Newsletter</a>
+                        <a href="#" className="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">Events</a>
+                        <a href="#" className="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">Help center</a>
                         {/* <a href="#" class="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">Tutorials</a>
                         <a href="#" class="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">Supports</a> */}
                     </div>
@@ -73,12 +75,12 @@ function Footer() {
                     <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">Use cases</h3>
 
                     <div className="flex flex-col items-start mt-4 space-y-4">
-                        <a href="#" class="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">Startups</a>
-                        <a href="#" class="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">Enterprise</a>
-                        <a href="#" class="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">Government</a>
-                        <a href="#" class="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">Saas</a>
-                        <a href="#" class="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">Marketplaces</a>
-                        <a href="#" class="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">Ecommerce</a>
+                        <a href="#" className="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">Startups</a>
+                        <a href="#" className="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">Enterprise</a>
+                        <a href="#" className="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">Government</a>
+                        <a href="#" className="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">Saas</a>
+                        <a href="#" className="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">Marketplaces</a>
+                        <a href="#" className="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">Ecommerce</a>
                     </div>
                 </div> */}
 
@@ -86,12 +88,12 @@ function Footer() {
                     <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">Social</h3>
 
                     <div className="flex flex-col items-start mt-4 space-y-4">
-                        <a href="#" class="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">Twitter</a>
-                        <a href="#" class="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">LinkedIn</a>
-                        <a href="#" class="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">Github</a>
-                        <a href="#" class="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">Facebook</a>
-                        {/* <a href="#" class="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">AngelList</a>
-                        <a href="#" class="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">Dribble</a> */}
+                        <a href="#" className="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">Twitter</a>
+                        <a href="#" className="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">LinkedIn</a>
+                        <a href="#" className="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">Github</a>
+                        <a href="#" className="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">Facebook</a>
+                        {/* <a href="#" className="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">AngelList</a>
+                        <a href="#" className="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">Dribble</a> */}
                     </div>
                 </div>
 
@@ -99,12 +101,12 @@ function Footer() {
                     <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">Legal</h3>
 
                     <div className="flex flex-col items-start mt-4 space-y-4">
-                        <a href="#" class="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">Terms</a>
-                        <a href="#" class="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">Privacy</a>
-                        <a href="#" class="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">Cookies</a>
-                        <a href="#" class="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">Licenses</a>
-                        {/* <a href="#" class="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">Settings</a> */}
-                        {/* <a href="#" class="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">Contact</a> */}
+                        <a href="#" className="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">Terms</a>
+                        <a href="#" className="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">Privacy</a>
+                        <a href="#" className="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">Cookies</a>
+                        <a href="#" className="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">Licenses</a>
+                        {/* <a href="#" className="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">Settings</a> */}
+                        {/* <a href="#" className="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">Contact</a> */}
                     </div>
                 </div>
             </div>

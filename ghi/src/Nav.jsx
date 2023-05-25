@@ -80,8 +80,31 @@ function Nav() {
           {/* nav buttons on the right side* */}
           {/* </div> */}
           <div className="flex flex-row space-x-4 justify-start">
-            <div className="mt-6">
+            <div className="mt-6
+                    rounded-full px-3
+                    dark:shadow-lg
+                    dark:hover:shadow-slate-500/20">
               <Switcher/>
+            </div>
+            <div className="mt-5">
+              <NavLink
+                to="about"
+                className="
+                    text-gray-50
+                    hover:bg-gray-100
+                    hover:text-wageblue block
+                    block rounded-full px-5 py-3
+                    bg-wageblue
+                    text-base font-bold
+
+                    dark:text-wageblue
+                    dark:bg-moredark
+                    dark:shadow-inner
+                    dark:hover:shadow-slate-500/20
+                    "
+              >
+                About Us
+              </NavLink>
             </div>
             <div className="mt-5">
               <NavLink
@@ -95,16 +118,14 @@ function Nav() {
                     text-base font-bold
 
                     dark:text-wageblue
-                    dark:bg-darkblue
-                    hover:dark:bg-darkgray"
+                    dark:bg-moredark
+                    dark:shadow-inner
+                    dark:hover:shadow-slate-500/20
+                    "
               >
                 Login
-
               </NavLink>
             </div>
-            {/* <div className="mt-6">
-              <img src={userIcon} alt="user" className="w-12 h-10 filter-white" />
-            </div> */}
 
         </div>
         </div>

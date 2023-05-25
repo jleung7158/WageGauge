@@ -178,10 +178,10 @@ function CompanyList() {
 							<div>
                                 {/* the table buttons */}
                             <div className="grid grid-cols-1 gap-6 mt-12 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
-                                    <button className="rounded-full bg-lightgray py-3 px-5 text-xl font-bold text-gray-50 hover:bg-darkblue">Overview</button>
-                                    <button className="rounded-full py-3 px-5 text-xl font-bold text-gray-50 hover:bg-darkgray">Company List</button>
-                                    <button className="rounded-full py-3 px-5 text-xl font-bold text-gray-50 hover:bg-darkgray">Salary Trends</button>
-                                    <button className="rounded-full py-3 px-5 text-xl font-bold text-gray-50 hover:bg-darkgray">More News</button>
+                                    <button className="rounded-full py-3 px-5 text-xl font-bold text-gray-50 hover:text-darktext focus:bg-darkgray focus:hover:text-gray-300">Overview</button>
+                                    <button className="rounded-full py-3 px-5 text-xl font-bold text-gray-50 hover:text-darktext focus:bg-darkgray focus:hover:text-gray-300">Company List</button>
+                                    <button className="rounded-full py-3 px-5 text-xl font-bold text-gray-50 hover:text-darktext focus:bg-darkgray focus:hover:text-gray-300">Salary Trends</button>
+                                    <button className="rounded-full py-3 px-5 text-xl font-bold text-gray-50 hover:text-darktext focus:bg-darkgray focus:hover:text-gray-300">More News</button>
                             </div>
 								{/* the main table */}
 								<h1
@@ -191,7 +191,9 @@ function CompanyList() {
                                     py-6
                                     text-4xl
                                     text-center
-                                    dark:text-gray-50"
+                                    dark:text-gray-50
+                                    border-bottom
+                                    divide-moredark"
 								>
 									COMPANY LIST
 								</h1>

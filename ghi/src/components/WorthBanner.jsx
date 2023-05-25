@@ -6,7 +6,7 @@ export default function WorthBanner() {
 
     return(
                 <div
-					className=" grid grid-cols-1 gap-1 mt-12 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3
+					className=" grid grid-cols-1 gap-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3
                     py-10 mb-40
                     bg-gradient-to-r
                     from-wageblue via-weedgreen to-white
@@ -106,7 +106,7 @@ export default function WorthBanner() {
                         dark:text-darktext
                         "
 						>
-							Learn more
+
 						</p>
 					</div>
 					<div className="">

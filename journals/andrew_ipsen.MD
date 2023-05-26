@@ -30,3 +30,7 @@ The joins have not been written yet, which are essential to the topics page, as 
 Today, I'm finalizing the dark mode color palette. I would like to hammer out the containers/sections layout of the dashboard as well. keeping the layout nice and pretty has been a struggling point for me. By the end of the day, we should also have front end auth too.
 
 I separated the "Know Your Worth" banner to it's own file to clean up the component organization.
+
+05/25/23
+
+I'm really starting to nail down the front end look, the dashboard specifically. I probably could've done more but i had an environment issue that took a few hours to fix with help from Rosheen.

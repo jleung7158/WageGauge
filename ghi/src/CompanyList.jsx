@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import WageGaugeIcon from './img/logo.png';
 import bookmarkIcon from './img/bookmark.svg'
 
-import SalaryRow from './components/SalaryRow';
 import WorthBanner from './components/WorthBanner';
 import LearnMoreButton from './components/LearnMoreButton';
 import Footer from './components/Footer';
@@ -127,20 +125,21 @@ function CompanyList() {
                     </form>
             </div>
                 <div className="py-5">
-					<div className="container flex flex-row flex-grow-0">
+					<div className="container flex flex-row flex-grow-0 px-5 overflow-visible">
                     {/* the right container */}
-                        <div className="flex-col p-6 w-1/4 mx-4 px-5 bg-slate-300 rounded-xl shadow-lg flex items-center flex-grow-0 items-center divide-y-auto divide-slate-50 dark:bg-darkblue">
-							<div className="grid grid-cols-1 gap-1 mt-4 mb-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 rounded-full dark:bg-darkgray">
+                        <div className="flex-col pt-6 px-0 mx-0 w-1/4 bg-slate-300 rounded-xl shadow-lg flex flex-grow-0 items-center px-0 dark:bg-darkblue">
+							<div className="grid grid-cols-1 gap-1 mt-4 mb-6sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 rounded-full dark:bg-darkgray">
                                     <button className="rounded-full py-3 px-5 text-xl font-bold text-gray-50 hover:text-darkblue focus:bg-darkblue focus:hover:text-gray-200">News</button>
                                     <button className="rounded-full py-3 px-5 text-xl font-bold text-gray-50 hover:text-darkblue focus:bg-darkblue focus:hover:text-gray-200">Events</button>
                                     <button className="rounded-full py-3 px-5 text-xl font-bold text-gray-50 hover:text-darkblue focus:bg-darkblue focus:hover:text-gray-200">More</button>
                                 </div>
                             {companies.map((company) => (
                                 <table key={company.id} className="w-full">
-                                    <tbody className="font-bold text-3xl">
+                                    <tbody className="font-bold text-3xl border-b-2 border-lightgrey dark:border-moredark">
                                     <tr className="
                                     w-1/4 mx-4 px-5
                                     text-md font-medium
+
                                     text-gray-600
                                     dark:text-white
                                     h-40
@@ -149,7 +148,6 @@ function CompanyList() {
                                         className="
                                         flex flex-col
                                         px-5 pt-2 pb-10 bg-slate-200
-                                        rounded-md
                                         flex
                                         dark:bg-darkblue
                                         ">
@@ -163,7 +161,7 @@ function CompanyList() {
                                     </tbody>
                                 </table>
                             ))}
-						</div>
+                        </div>
                         {/* the main container */}
 						<div
                             className="
@@ -171,13 +169,13 @@ function CompanyList() {
                             bg-slate-300
                             rounded-xl shadow-lg
                             flex items-center space-x-4
-                            overflow-x-auto
+                            px-0
 
                             dark:bg-darkblue
                             ">
 							<div>
                                 {/* the table buttons */}
-                            <div className="grid grid-cols-1 gap-6 mt-12 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
+                            <div className="grid grid-cols-1 gap-6 mt-6 mb-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
                                     <button className="rounded-full py-3 px-5 text-xl font-bold text-gray-50 hover:text-darktext focus:bg-darkgray focus:hover:text-gray-300">Overview</button>
                                     <button className="rounded-full py-3 px-5 text-xl font-bold text-gray-50 hover:text-darktext focus:bg-darkgray focus:hover:text-gray-300">Company List</button>
                                     <button className="rounded-full py-3 px-5 text-xl font-bold text-gray-50 hover:text-darktext focus:bg-darkgray focus:hover:text-gray-300">Salary Trends</button>
@@ -192,8 +190,9 @@ function CompanyList() {
                                     text-4xl
                                     text-center
                                     dark:text-gray-50
-                                    border-bottom
-                                    divide-moredark"
+                                    border-b-2
+                                    border-lightgrey
+                                    dark:border-moredark"
 								>
 									COMPANY LIST
 								</h1>
@@ -211,7 +210,7 @@ function CompanyList() {
                                         font-bold
                                         text-3xl
                                         px-10
-                                        divide-y
+
 
                                         dark:text-gray-50
                                         dark:bg-darkblue
@@ -224,12 +223,11 @@ function CompanyList() {
 										<table
                                             className="
                                             table-fixed w-full bg-gray-100
-                                            rounded-md border-separate
-                                            border-spacing-2 border
-                                            border-white shadow-lg
+                                            rounded-md
+                                            border-b-2
 
-                                            dark:bg-lightgray
-                                            dark:border-lightgray
+                                            dark:bg-darkblue
+                                            dark:border-moredark
                                         ">
 											<thead>
 												<tr
@@ -255,9 +253,9 @@ function CompanyList() {
                                                             className="
                                                             px-10 py-10 bg-gray-50
                                                             rounded-md
-                                                            shadow-lg
 
-                                                            dark:bg-darkgray
+
+                                                            dark:bg-darkblue
                                                             dark:text-darktext
                                                             ">
 																<div className="flex flex-col items-center">
@@ -272,10 +270,10 @@ function CompanyList() {
                                                             className="
                                                             px-10 py-10 bg-gray-50
                                                             rounded-md
-                                                            text-center shadow-lg
+                                                            text-center
 
 
-                                                            dark:bg-darkgray
+                                                            dark:bg-darkblue
                                                             dark:text-darktext
                                                             ">
 

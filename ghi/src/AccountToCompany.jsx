@@ -42,27 +42,27 @@ const AccountToCompany = (fetchEmployee) => {
         const response = await fetch(companyUrl)
         if (response.ok) {
             const data = await response.json();
-            setCompany(data.company);
+            setCompany(data);
         } else {
             console.log('Error fetching company', response.statusText);
         }
     }
-    const fetchPosition = async() => {
+    const fetchPosition = async () => {
         const positionUrl = 'http://localhost:8000/positions';
         const response = await fetch(positionUrl)
         if (response.ok) {
             const data = await response.json();
-            setPosition(data.position);
+            setPosition(data);
         } else {
             console.log('Error fetching position', response.statusText);
         }
     }
-    const fetchSalary = async() => {
+    const fetchSalary = async () => {
         const employeeUrl = 'http://localhost:8000/employees';
         const response = await fetch(employeeUrl)
         if (response.ok) {
             const data = await response.json();
-            setSalary(data.position);
+            setSalary(data);
         } else {
             console.log('Error fetching employee', response.statusText);
         }
@@ -72,6 +72,10 @@ const AccountToCompany = (fetchEmployee) => {
         fetchPosition();
         fetchSalary();
     }, []);
+    
+    const PositionByCompanyId = (company) => {
+        return position.filter((position) => position.company.name === company);
+    }
 
 
     return (
@@ -81,7 +85,7 @@ const AccountToCompany = (fetchEmployee) => {
 				background: 'linear-gradient(to bottom, #87CEEB, #42098E)',
 			}}
 		>
-            {successAlert && (
+            {/* {successAlert && (
                 <div
                     className="alert alert-success"
                     role="alert"
@@ -100,14 +104,14 @@ const AccountToCompany = (fetchEmployee) => {
                 >
                 Employee added to Company
                 </div>
-            )}
+            )} */}
             <div className="max-w-md w-full space-y-8 p-10 bg-white rounded-x1 shadow-md overflow-hidden">
                 <h1 style={{ textAlign: 'center' }}>Add Job</h1>
                 <form
                 className="mt-8 space-y-6"
                 onSubmit={handleSubmit}
                 id="Account To Company">
-                    <div classname="rounded-md shadow-sm -space-y-px">
+                    <div className="rounded-md shadow-sm -space-y-px">
                         <div>
                             <select
                                 id="Company Name"

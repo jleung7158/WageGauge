@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const AccountEdit = () => {
+const AccountEdit = ({}) => {
     const [company, setCompany] = useState([]);
     const [position, setPosition] = useState([]);
     const [salary, setSalary] = useState('');
@@ -22,7 +22,7 @@ const AccountEdit = () => {
             position,
             salary
         };
-        const employeeUrl = "http://localhost:8000/employees/{employee_id}"
+        const employeeUrl = "http://localhost:8000/employees/"
         const fetchConfig = {
             method: 'PUT',
             body: JSON.stringify(data),
@@ -50,33 +50,14 @@ const AccountEdit = () => {
 				background: 'linear-gradient(to bottom, #87CEEB, #42098E)',
 			}}
 		>
-			{successAlert && (
-				<div
-					className="alert alert-success"
-					role="alert"
-					style={{
-						position: 'fixed',
-						top: '1rem',
-						right: '1rem',
-						zIndex: 1000,
-						color: 'white',
-						backgroundColor: 'green',
-						borderColor: 'darkgreen',
-						border: '1px solid',
-						borderRadius: '5px',
-						padding: '0.75rem 1.25rem',
-					}}
-				>
-					Information Updated!
-				</div>
-			)}
             <div className="max-w-md w-full space-y-8 p-10 bg-white rounded-x1 shadow-md overflow-hidden">
                 <h1 style={{ textAlign: 'center' }}>Update Account</h1>
                 <form
                 className="mt-8 space-y-6"
                 onSubmit={handleSubmit}
-                id="Account Update">
-                    <div classname="rounded-md shadow-sm -space-y-px">
+                id="Account Update"
+                >
+                    <div className="rounded-md shadow-sm -space-y-px">
                         <div>
                             <select
                                 id="Company Name"

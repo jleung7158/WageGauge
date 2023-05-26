@@ -21,11 +21,7 @@ module.exports = {
         },
         fontFamily: {
           'warownia': ["WarowniaUltExtObl", "sans-serif"],
-<<<<<<< HEAD
           'thun': ['Thunder-ExtraBoldLC', 'sans-serif'],
-=======
-          'thunder': ['Thunder-ExtraBoldLC', 'sans-serif'],
->>>>>>> main
         },
     },
   },

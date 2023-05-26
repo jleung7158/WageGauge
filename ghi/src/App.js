@@ -8,6 +8,7 @@ import SignUpForm from './Signup';
 import LoginForm from './Login';
 import Switcher from './components/Switcher';
 import Logout from './logout';
+import About from './About';
 
 function App() {
 	return (

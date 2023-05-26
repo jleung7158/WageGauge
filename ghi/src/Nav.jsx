@@ -3,6 +3,12 @@ import HomePageIcon from "./img/icon.png";
 import Switcher from "./components/Switcher";
 import Banner from "./components/Banner";
 import userIcon from './img/user.svg'
+<<<<<<< HEAD
+
+
+function Nav() {
+
+=======
 
 function Nav() {
 
@@ -15,6 +21,7 @@ function Nav() {
   // if (!banner) {
   //   return null;
   // }
+>>>>>>> main
 
   return (
     <>
@@ -60,7 +67,11 @@ function Nav() {
                 dark:hover:text-gray-300
                 "
               >
+<<<<<<< HEAD
+                Dashboard
+=======
                 Dahsboard
+>>>>>>> main
               </NavLink>
             </div>
             <div className="mt-5">
@@ -88,11 +99,41 @@ function Nav() {
           {/* nav buttons on the right side* */}
           {/* </div> */}
           <div className="flex flex-row space-x-4 justify-start">
+<<<<<<< HEAD
+            <div className="mt-6
+                    rounded-full px-3
+                    dark:shadow-lg
+                    dark:hover:shadow-slate-500/20">
+=======
             <div className="mt-6">
+>>>>>>> main
               <Switcher/>
             </div>
             <div className="mt-5">
               <NavLink
+<<<<<<< HEAD
+                to="about"
+                className="
+                    text-gray-50
+                    hover:bg-gray-100
+                    hover:text-wageblue block
+                    block rounded-full px-5 py-3
+                    bg-wageblue
+                    text-base font-bold
+
+                    dark:text-wageblue
+                    dark:bg-moredark
+                    dark:shadow-inner
+                    dark:hover:shadow-slate-500/20
+                    "
+              >
+                About Us
+              </NavLink>
+            </div>
+            <div className="mt-5">
+              <NavLink
+=======
+>>>>>>> main
                 to="signup"
                 className="
                     text-gray-50
@@ -103,6 +144,16 @@ function Nav() {
                     text-base font-bold
 
                     dark:text-wageblue
+<<<<<<< HEAD
+                    dark:bg-moredark
+                    dark:shadow-inner
+                    dark:hover:shadow-slate-500/20
+                    "
+              >
+                Login
+              </NavLink>
+            </div>
+=======
                     dark:bg-darkblue
                     hover:dark:bg-darkgray"
               >
@@ -113,6 +164,7 @@ function Nav() {
             {/* <div className="mt-6">
               <img src={userIcon} alt="user" className="w-12 h-10 filter-white" />
             </div> */}
+>>>>>>> main
 
         </div>
         </div>

@@ -43,6 +43,9 @@ function App() {
 								<Route path="Logout">
 									<Route path="" element={<Logout />} />
 								</Route>
+								<Route path="About">
+									<Route path="" element={<About />} />
+								</Route>
 							</Routes>
 						</div>
 					</AuthProvider>

@@ -1,27 +1,23 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import useToken from '@galvanize-inc/jwtdown-for-react';
 
 function Logout() {
 	const navigate = useNavigate();
 	const [successAlert, setSuccessAlert] = useState(false);
+	const { logout } = useToken();
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
-
-		const url = 'http://localhost:8000/token';
-		const config = {
-			method: 'delete',
-		};
-		const request = await fetch(url, config);
-		if (request.ok) {
+		logout();
+		if (Logout) {
 			setSuccessAlert(true);
-			const data = await request.json();
 			setTimeout(() => {
 				setSuccessAlert(false);
 			}, 3000);
 			setTimeout(() => {
 				navigate('/companies');
-			}, 1000);
+			}, 3000);
 		}
 	};
 

@@ -153,7 +153,22 @@ const CompanyDetail = () => {
             </button>
           </div>
         </div>
-        <div className="flex">
+        <div className="flex flex-col">
+          <div className="mx-4">
+            {pokeError ? (
+              <>Oh no, there was an error</>
+            ) : isPokeLoading ? (
+              <>Loading...</>
+            ) : pokeData ? (
+              <>
+                <p>{pokeData.species.name}</p>
+                <img
+                  src={pokeData.sprites.front_shiny}
+                  alt={pokeData.species.name}
+                />
+              </>
+            ) : null}
+          </div>
           <form className="flex-row" onSubmit={(e) => handleSubmit(e)}>
             <label>
               <p
@@ -202,21 +217,6 @@ const CompanyDetail = () => {
               </button>
             </div>
           </form>
-          <div className="mx-4">
-            {pokeError ? (
-              <>Oh no, there was an error</>
-            ) : isPokeLoading ? (
-              <>Loading...</>
-            ) : pokeData ? (
-              <>
-                <p>{pokeData.species.name}</p>
-                <img
-                  src={pokeData.sprites.front_shiny}
-                  alt={pokeData.species.name}
-                />
-              </>
-            ) : null}
-          </div>
         </div>
       </div>
     </div>

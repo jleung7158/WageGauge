@@ -1,45 +1,35 @@
 import React from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import useToken from '@galvanize-inc/jwtdown-for-react';
 
-function LoginForm() {
-	const [email, setEmail] = useState('');
+const LoginForm = () => {
+	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
 	const navigate = useNavigate();
 	const [successAlert, setSuccessAlert] = useState(false);
+	const { login } = useToken();
 
-	const handleSubmit = async (event) => {
-		event.preventDefault();
-		const login = {
-			email: email,
-			password: password,
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		login(username, password);
+		console.log(login);
+		e.target.reset();
+		setSuccessAlert(true);
+		const alertTimeout = setTimeout(() => {
+			setSuccessAlert(false);
+		}, 3000);
+		const navigateTime = setTimeout(() => {
+			navigate('/companies');
+		}, 1000);
+		return () => {
+			clearTimeout(alertTimeout);
+			clearTimeout(navigateTime);
 		};
-
-		const url = 'http://localhost:8000/token';
-		const config = {
-			method: 'post',
-			body: JSON.stringify(login),
-			headers: { 'Content-Type': 'application/json' },
-		};
-		fetch(url, config)
-			.then((response) => response.json())
-			.then(() => {
-				setSuccessAlert(true);
-				const alertTimeout = setTimeout(() => {
-					setSuccessAlert(false);
-				}, 3000);
-				const navigateTime = setTimeout(() => {
-					navigate('/companies');
-				}, 1000);
-				return () => {
-					clearTimeout(alertTimeout);
-					clearTimeout(navigateTime);
-				};
-			});
 	};
 
 	const handleEmail = (event) => {
-		setEmail(event.target.value);
+		setUsername(event.target.value);
 	};
 
 	const handlePassword = (event) => {
@@ -89,7 +79,7 @@ function LoginForm() {
 								required
 								className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
 								placeholder="Email address"
-								value={email}
+								value={username}
 								onChange={handleEmail}
 							/>
 						</div>
@@ -119,5 +109,5 @@ function LoginForm() {
 			</div>
 		</div>
 	);
-}
+};
 export default LoginForm;

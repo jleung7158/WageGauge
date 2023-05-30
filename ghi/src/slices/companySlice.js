@@ -4,8 +4,8 @@ const initialState = {
   company: "",
 };
 
-export const filterSlice = createSlice({
-  name: "positionFilter",
+export const companySlice = createSlice({
+  name: "company",
   initialState,
   reducers: {
     setCompany: (state, action) => {
@@ -17,6 +17,6 @@ export const filterSlice = createSlice({
   },
 });
 
-export const { setCompany, clearCompany } = filterSlice.actions;
+export const { setCompany, clearCompany } = companySlice.actions;
 
-export default filterSlice.reducer;
+export default companySlice.reducer;

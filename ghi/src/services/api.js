@@ -10,6 +10,9 @@ export const api = createApi({
     getCompanies: builder.query({
       query: () => `/companies/`,
     }),
+    getEmployees: builder.query({
+      query: () => `/employees/`,
+    }),
     getTopics: builder.query({
       query: () => `/topics/`,
     }),
@@ -22,5 +25,9 @@ export const api = createApi({
   }),
 });
 
-export const { useGetPositionsQuery, useGetCompaniesQuery, useGetTopicsQuery } =
-  api;
+export const {
+  useGetPositionsQuery,
+  useGetCompaniesQuery,
+  useGetEmployeesQuery,
+  useGetTopicsQuery,
+} = api;

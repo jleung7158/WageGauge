@@ -1,5 +1,5 @@
 import React from "react";
-import Dropdown from "./components/Dropdown";
+import Dropdown from "./components/CompanyDropdown";
 import { useGetCompaniesQuery, useGetTopicsQuery } from "./services/api";
 
 function ForumPage() {

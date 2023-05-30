@@ -1,14 +1,14 @@
 import React from "react";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setCompany, clearCompany } from "../slices/filterSlice";
+import { setCompany, clearCompany } from "../slices/companySlice";
 
-const Dropdown = ({ options }) => {
+const CompanyDropdown = ({ options }) => {
   const [inputValue, setInputValue] = useState("");
   const [selected, setSelected] = useState("");
   const [open, setOpen] = useState(false);
 
-  const option = useSelector((state) => state.positionFilter.option);
+  const option = useSelector((state) => state.companyFilter.option);
   // console.log("this is redux option", option);
   const dispatch = useDispatch();
 
@@ -64,6 +64,7 @@ const Dropdown = ({ options }) => {
           <div className="px-2 sticky top-0 bg-white">
             <input
               type="text"
+              id="companies"
               value={inputValue}
               onChange={(e) => handleValueChange(e)}
               placeholder="Search here"
@@ -116,4 +117,4 @@ const Dropdown = ({ options }) => {
   );
 };
 
-export default Dropdown;
+export default CompanyDropdown;

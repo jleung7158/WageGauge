@@ -1,31 +1,32 @@
 import { useState } from "react";
 import PositionFigure from "./PositionFigure";
-import Dropdown from "./components/Dropdown";
-// import { useAuthContext } from "@galvanize-inc/jwtdown-for-react";
-// import Counter from "./features/counter/Counter.jsx";
+import CompanyDropdown from "./components/CompanyDropdown";
+
 import { useGetPositionsQuery, useGetCompaniesQuery } from "./services/api";
-import { useGetPokemonByNameQuery } from "./services/pokemon";
+import { useLazyGetPokemonByNameQuery } from "./services/pokemon";
+import { setPokemon, clearPokemon } from "./slices/pokemonSlice";
 import { useSelector, useDispatch } from "react-redux";
 
 const CompanyDetail = () => {
   const dispatch = useDispatch();
-  const [inputValue, setInputValue] = useState("");
+
+  const company = useSelector((state) => state.companyFilter.company);
+  const pokemonName = useSelector((state) => state.pokemonFilter.pokemonName);
 
   const handlePokeChange = (e) => {
-    setInputValue(e.target.value.toLowerCase());
-    dispatch();
+    dispatch(setPokemon(e.target.value.toLowerCase()));
   };
-
-  const {
-    data: pokeData,
-    error: pokeError,
-    isLoading: isPokeLoading,
-  } = useGetPokemonByNameQuery(inputValue);
-  const company = useSelector((state) => state.positionFilter.company);
+  const [
+    trigger,
+    { data: pokeData, error: pokeError, isLoading: isPokeLoading },
+  ] = useLazyGetPokemonByNameQuery({});
 
   const { data: pData, isLoading: isPLoading } = useGetPositionsQuery();
   const { data: cData } = useGetCompaniesQuery();
-  // const { token } = useAuthContext();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
 
   const [isFigureOpen, setIsFigureOpen] = useState(false);
   const [figureData, setFigureData] = useState(null);
@@ -43,6 +44,7 @@ const CompanyDetail = () => {
       });
     }
   };
+
   const filteredPositions = getFilteredPositions(company, pData);
 
   const handleFigureClick = (position) => {
@@ -73,7 +75,7 @@ const CompanyDetail = () => {
         rounded-xl shadow-lg items-center
         "
         >
-          <Dropdown options={cData} />
+          <CompanyDropdown options={cData} />
           <h1
             className="
           p-2 my-4 w-72
@@ -136,28 +138,72 @@ const CompanyDetail = () => {
           </div>
         </div>
       </div>
-      <input
-        type="text"
-        value={inputValue}
-        onChange={(e) => handlePokeChange(e)}
-        placeholder="Enter pokemon name"
-        className="rounded placeholder:text-slate-700 p-2 outline-none"
-      ></input>
-      {/* <div>
-        {pokeError ? (
-          <>Oh no, there was an error</>
-        ) : isPokeLoading ? (
-          <>Loading...</>
-        ) : pokeData ? (
-          <>
-            <h3>{pokeData.species.name}</h3>
-            <img
-              src={pokeData.sprites.front_shiny}
-              alt={pokeData.species.name}
+      <div className="flex flex-col">
+        <div className="mx-4">
+          {pokeError ? (
+            <>Oh no, there was an error</>
+          ) : isPokeLoading ? (
+            <>Loading...</>
+          ) : pokeData ? (
+            <>
+              <p>{pokeData.species.name}</p>
+              <img
+                src={pokeData.sprites.front_shiny}
+                alt={pokeData.species.name}
+              />
+            </>
+          ) : null}
+        </div>
+        <form className="flex-row" onSubmit={(e) => handleSubmit(e)}>
+          <label>
+            <p
+              className="
+              bg-gradient-to-r
+              from-wageblue via-weedgreen to-white
+              rounded shadow-lg
+              dark:bg-gradient-to-r
+              dark:from-moredark
+              dark:to-wageblue
+              dark:text-darktext"
+            >
+              Pokemon name:
+            </p>
+            <input
+              type="text"
+              id="pokemon"
+              value={pokemonName}
+              onChange={(e) => {
+                handlePokeChange(e);
+              }}
+              placeholder="Enter pokemon name"
+              className="rounded placeholder:text-slate-700 p-2 outline-none"
             />
-          </>
-        ) : null}
-      </div> */}
+          </label>
+          <div>
+            <button
+              disabled={pokemonName === ""}
+              className="
+                bg-wageblue hover:bg-blue-700 text-white flex-row
+                font-bold py-2 px-4 rounded-full"
+              onClick={() => trigger(pokemonName)}
+              type="submit"
+              value="submit"
+            >
+              Submit
+            </button>
+            <button
+              className="
+                bg-wageblue hover:bg-blue-700 text-white 
+                font-bold py-2 px-4 rounded-full"
+              onClick={() => dispatch(clearPokemon())}
+              type="submit"
+              value="submit"
+            >
+              Clear
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

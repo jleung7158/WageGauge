@@ -12,7 +12,6 @@ class CommentIn(BaseModel):
     text: Optional[str]
     account_id: Optional[int]
     topic_id: Optional[int]
-    topic: Optional[str]
 
 
 class CommentOut(BaseModel):
@@ -20,6 +19,7 @@ class CommentOut(BaseModel):
     text: Optional[str]
     account_id: Optional[int]
     topic_id: Optional[int]
+    topic: Optional[str]
 
 
 class CommentRepository:

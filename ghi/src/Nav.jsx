@@ -3,11 +3,15 @@ import HomePageIcon from './img/icon.png';
 import Switcher from './components/Switcher';
 import Banner from './components/Banner';
 import LoginForm from './Login';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import useToken from '@galvanize-inc/jwtdown-for-react';
 
 function Nav() {
+  const { token } = useToken();
 	const [showLoginForm, setShowLoginForm] = useState(false);
-	const handleLoginClick = () => {
+  const [showBanner, setShowBanner] = useState(true);
+
+  const handleLoginClick = () => {
 		setShowLoginForm(true);
 	};
 
@@ -15,10 +19,21 @@ function Nav() {
 		setShowLoginForm(false);
 	};
 
+  const checkForToken = () => {
+    if (token) {
+      setShowBanner(false);
+    }
+  }
+
+  useEffect(() => {
+    checkForToken();
+  }, [token]);
+
 	return (
 		<>
 			{/* the pop up to sign in */}
-			<Banner />
+      {showBanner &&
+      <Banner ban={checkForToken}/>}
 			{/* the background of the nav */}
 			<div
 				className="
@@ -129,8 +144,9 @@ function Nav() {
                     text-base font-bold
 
                     dark:text-wageblue
-                    dark:bg-darkblue
-                    hover:dark:bg-darkgray"
+                    dark:bg-moredark
+                    dark:shadow-inner
+                    dark:hover:shadow-slate-500/20"
 								onClick={handleLoginClick}
 							>
 								Login

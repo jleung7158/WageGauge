@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
-export default function Banner() {
+export default function Banner(checkForToken) {
     const [banner, setBanner] = useState(true);
 
     const hideBanner = () => {

@@ -2,7 +2,7 @@ import React from "react"
 import DashboardIcon from './humans.png';
 
 
-export default function WorthBanner() {
+export default function WorthBanner(checkForToken) {
 
     return(
                 <div

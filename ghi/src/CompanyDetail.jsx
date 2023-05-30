@@ -97,10 +97,8 @@ const CompanyDetail = () => {
                   bg-gradient-to-r bg-cyan-500
                   transition ease-in delay-50
                   hover:translate-x-4
-                  hover:scale-110
-                  hover:text-xl
-                hover:from-cyan-500
-                hover:to-blue-500
+                  hover:from-cyan-500
+                  hover:to-blue-500
                   hover:text-white
                   "
                   key={position.id}
@@ -125,7 +123,7 @@ const CompanyDetail = () => {
           <div>
             <div className="text-xl font-medium text-black"></div>
             <p className="text-slate-500">Position data here</p>
-            <div className="w-screen">
+            <div className="w-full">
               {isFigureOpen ? <PositionFigure position={figureData} /> : ""}
             </div>
             <button

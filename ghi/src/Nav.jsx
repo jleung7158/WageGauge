@@ -7,33 +7,64 @@ import { useState, useEffect } from 'react';
 import useToken from '@galvanize-inc/jwtdown-for-react';
 
 function Nav() {
-  const { token } = useToken();
+	const { token } = useToken();
 	const [showLoginForm, setShowLoginForm] = useState(false);
-  const [showBanner, setShowBanner] = useState(true);
+	const [showBanner, setShowBanner] = useState(true);
+	const { logout } = useToken();
 
-  const handleLoginClick = () => {
+	const handleLoginClick = () => {
 		setShowLoginForm(true);
+	};
+
+	const handleLogout = () => {
+		logout();
+	};
+
+	const LogoutButton = () => {
+		if (token) {
+			return (
+				<div className="mt-5">
+					<NavLink
+						to="#"
+						className="
+                    text-gray-50
+                    hover:bg-gray-100
+                    hover:text-wageblue block
+                    block rounded-full px-5 py-3
+                    bg-wageblue
+                    text-base font-bold
+
+                    dark:text-wageblue
+                    dark:bg-moredark
+                    dark:shadow-inner
+                    dark:hover:shadow-slate-500/20"
+						onClick={handleLogout}
+					>
+						Logout
+					</NavLink>
+				</div>
+			);
+		}
 	};
 
 	const handleCloseLoginForm = () => {
 		setShowLoginForm(false);
 	};
 
-  const checkForToken = () => {
-    if (token) {
-      setShowBanner(false);
-    }
-  }
+	const checkForToken = () => {
+		if (token) {
+			setShowBanner(false);
+		}
+	};
 
-  useEffect(() => {
-    checkForToken();
-  }, [token]);
+	useEffect(() => {
+		checkForToken();
+	}, [token]);
 
 	return (
 		<>
 			{/* the pop up to sign in */}
-      {showBanner &&
-      <Banner ban={checkForToken}/>}
+			{showBanner && <Banner ban={checkForToken} />}
 			{/* the background of the nav */}
 			<div
 				className="
@@ -151,6 +182,9 @@ function Nav() {
 							>
 								Login
 							</NavLink>
+						</div>
+						<div className="mt-5">
+							<div>{LogoutButton()}</div>
 						</div>
 					</div>
 

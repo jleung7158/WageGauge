@@ -10,6 +10,7 @@ import LoginForm from './Login';
 import AccountToCompany from './AccountToCompany.jsx';
 import Switcher from './components/Switcher';
 import Logout from './logout';
+import About from './About';
 
 function App() {
 	return (
@@ -44,12 +45,9 @@ function App() {
 								<Route path="Logout">
 									<Route path="" element={<Logout />} />
 								</Route>
-								<Route path="AccountToCompany">
-									<Route path="" element={<AccountToCompany />} />
+								<Route path="About">
+									<Route path="" element={<About />} />
 								</Route>
-								{/* <Route path="UpdateAccountForm">
-									<Route path="" element={<UpdateAccountForm />} />
-								</Route> */}
 							</Routes>
 						</div>
 					</AuthProvider>

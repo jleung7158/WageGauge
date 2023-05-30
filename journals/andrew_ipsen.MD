@@ -21,3 +21,12 @@ Over the weekend, I spent a long time getting familiar with TailwindCSS. I was a
 05/23/23
 
 Today, I'm working on introducing a darkmode toggling functionality. I'm following resources from TailwindCSS, and if implemented successfully, can be applied to the whole application.
+
+I also tackled the Topics backend. I created the table migrations and made all the endpoints.
+The joins have not been written yet, which are essential to the topics page, as we will need to connect users and comments to posts.
+
+05/24/23
+
+Today, I'm finalizing the dark mode color palette. I would like to hammer out the containers/sections layout of the dashboard as well. keeping the layout nice and pretty has been a struggling point for me. By the end of the day, we should also have front end auth too.
+
+I separated the "Know Your Worth" banner to it's own file to clean up the component organization.

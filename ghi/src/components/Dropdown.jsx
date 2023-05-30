@@ -3,25 +3,25 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setCompany, clearCompany } from "../slices/filterSlice";
 
-const Dropdown = ({ companies }) => {
+const Dropdown = ({ options }) => {
   const [inputValue, setInputValue] = useState("");
   const [selected, setSelected] = useState("");
   const [open, setOpen] = useState(false);
 
-  const company = useSelector((state) => state.positionFilter.company);
-  // console.log("this is redux company", company);
+  const option = useSelector((state) => state.positionFilter.option);
+  // console.log("this is redux option", option);
   const dispatch = useDispatch();
 
   const handleValueChange = (e) => {
     setInputValue(e.target.value.toLowerCase());
   };
 
-  const handleDropdownClick = (company) => {
-    if (company?.name?.toLowerCase() !== selected.toLowerCase()) {
-      setSelected(company.name);
+  const handleDropdownClick = (option) => {
+    if (option?.name?.toLowerCase() !== selected.toLowerCase()) {
+      setSelected(option.name);
       setInputValue("");
     }
-    dispatch(setCompany(company.name));
+    dispatch(setCompany(option.name));
     setOpen(false);
   };
 
@@ -32,7 +32,6 @@ const Dropdown = ({ companies }) => {
 
   return (
     <div className="w-72 font-medium items-center">
-      Redux: {company}
       <div
         className="
       w-72 p-2 my-4
@@ -53,7 +52,7 @@ const Dropdown = ({ companies }) => {
       ${!selected && "text-slate-700"}
       `}
       >
-        {selected ? selected : "Select a company"}
+        {selected ? selected : "Select an option"}
       </div>
       <div>
         <ul
@@ -67,34 +66,34 @@ const Dropdown = ({ companies }) => {
               type="text"
               value={inputValue}
               onChange={(e) => handleValueChange(e)}
-              placeholder="Enter company name"
+              placeholder="Search here"
               className="placeholder:text-slate-700 p-2 outline-none"
             />
           </div>
-          {companies?.map((company) => {
+          {options?.map((option) => {
             return (
               <option
-                key={company.id}
-                value={company.id}
+                key={option.id}
+                value={option.id}
                 className={`
               p-2 text-sm 
               hover:bg-sky-600
               hover:text-white
               ${
-                company?.name?.toLowerCase() === selected?.toLowerCase() &&
+                option?.name?.toLowerCase() === selected?.toLowerCase() &&
                 "bg-sky-600 text-white"
               }
               ${
-                company?.name?.toLowerCase().startsWith(inputValue)
+                option?.name?.toLowerCase().startsWith(inputValue)
                   ? "block"
                   : "hidden"
               }
               `}
                 onClick={() => {
-                  handleDropdownClick(company);
+                  handleDropdownClick(option);
                 }}
               >
-                {company.name}
+                {option.name}
               </option>
             );
           })}

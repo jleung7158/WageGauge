@@ -10,6 +10,7 @@ import { useSelector, useDispatch } from "react-redux";
 const CompanyDetail = () => {
   const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState("");
+
   const handlePokeChange = (e) => {
     setInputValue(e.target.value.toLowerCase());
     dispatch();
@@ -72,7 +73,7 @@ const CompanyDetail = () => {
         rounded-xl shadow-lg items-center
         "
         >
-          <Dropdown companies={cData} />
+          <Dropdown options={cData} />
           <h1
             className="
           p-2 my-4 w-72

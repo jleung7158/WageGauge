@@ -12,6 +12,7 @@ class CommentIn(BaseModel):
     text: Optional[str]
     account_id: Optional[int]
     topic_id: Optional[int]
+    topic: Optional[str]
 
 
 class CommentOut(BaseModel):
@@ -55,9 +56,10 @@ class CommentRepository:
                         SELECT c.id AS comment_id,
                         c.text AS comments,
                         c.account_id AS account,
-                        c.topic_id AS topic,
+                        c.topic_id AS topic_id,
+                        t.text AS topic
                         FROM comments AS c
-                        LEFT JOIN topic t
+                        LEFT JOIN topics t
                         ON (t.id = c.topic_id)
                         ORDER BY t.id;
                         """
@@ -70,23 +72,23 @@ class CommentRepository:
             return {"message": "Could not get all comments"}
 
     def update(
-        self, comment_id: int, comment: PositionIn
-    ) -> Union[PositionOut, Error]:
+        self, comment_id: int, comment: CommentIn
+    ) -> Union[CommentOut, Error]:
         try:
             with pool.connection() as conn:
                 with conn.cursor() as db:
                     db.execute(
                         """
                         UPDATE comments
-                        SET name = %s
-                            , company_id = %s
-                            , description = %s
+                        SET text = %s
+                            , account_id = %s
+                            , topic_id = %s
                         WHERE id = %s;
                         """,
                         [
-                            comment.name,
-                            comment.company_id,
-                            comment.description,
+                            comment.text,
+                            comment.account_id,
+                            comment.topic_id,
                             comment_id,
                         ],
                     )
@@ -95,6 +97,58 @@ class CommentRepository:
             print(e)
             return {"message": "Could not update comment"}
 
+    def get_one(self, comment_id: int) -> Optional[CommentOut]:
+        try:
+            with pool.connection() as conn:
+                with conn.cursor() as db:
+                    result = db.execute(
+                        """
+                        SELECT c.id AS comment_id,
+                        c.text AS comments,
+                        c.account_id AS account,
+                        c.topic_id AS topic_id,
+                        t.text AS topic
+                        FROM comments AS c
+                        LEFT JOIN topics t
+                        ON (t.id = c.topic_id)
+                        WHERE c.id = %s
+                        ORDER BY t.id;
+                        """,
+                        [comment_id],
+                    )
+                    record = result.fetchone()
+                    if record is None:
+                        return None
+                    return self.record_to_comment_out(record)
+        except Exception as e:
+            print(e)
+            return {"message": "Could not get that comment"}
+
+    def delete(self, comment_id: int) -> bool:
+        try:
+            with pool.connection() as conn:
+                with conn.cursor() as db:
+                    db.execute(
+                        """
+                        DELETE FROM comments
+                        WHERE ID = %s;
+                        """,
+                        [comment_id],
+                    )
+                    return True
+        except Exception as e:
+            print(e)
+            return {"message": "Could not delete comment"}
+
     def comment_in_to_out(self, id: int, comment: CommentIn):
         old_data = comment.dict()
         return CommentOut(id=id, **old_data)
+
+    def record_to_comment_out(self, record):
+        return CommentOut(
+            id=record[0],
+            text=record[1],
+            account_id=record[2],
+            topic_id=record[3],
+            topic=record[4],
+        )

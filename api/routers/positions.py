@@ -19,7 +19,7 @@ def create_position(
 
 
 @router.get("/positions", response_model=List[PositionOut])
-def get_all(
+def get_all_positions(
     repo: PositionRepository = Depends(),
 ):
     return repo.get_all()

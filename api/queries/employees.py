@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 from queries.pool import pool
 from typing import List, Optional, Union
+from fastapi import HTTPException
 
 
 class Error(BaseModel):
@@ -32,9 +33,34 @@ class EmployeeOut(BaseModel):
 
 class EmployeeRepository:
     def create(self, employee: EmployeeIn) -> EmployeeOut:
-        # try:
         with pool.connection() as conn:
             with conn.cursor() as db:
+                result = db.execute(
+                    """
+                        SELECT
+                        p.id
+                        FROM positions AS p
+                        LEFT JOIN company c
+                        ON (c.id = p.company_id)
+                        where c.id= %s
+                    """,
+                    [employee.company_id],
+                )
+                pids = [row[0] for row in result]
+                if not employee.position_id in pids:
+                    raise HTTPException(status_code=400)
+                result = db.execute(
+                    """
+                        SELECT
+                        id from account
+                        where id= %s
+                    """,
+                    [employee.account_id],
+                )
+                # rows = [row for row in result]
+                # rows = result.fetchall()
+                if len(result.fetchall()) == 0:
+                    raise HTTPException(status_code=400)
                 result = db.execute(
                     """
                     INSERT INTO employees

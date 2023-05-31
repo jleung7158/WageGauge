@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import useToken from '@galvanize-inc/jwtdown-for-react';
 
 function SignUpForm() {
 	const [firstName, setFirstName] = useState('');
@@ -9,6 +10,7 @@ function SignUpForm() {
 	const [password, setPassword] = useState('');
 	const navigate = useNavigate();
 	const [successAlert, setSuccessAlert] = useState(false);
+	const { login } = useToken();
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
@@ -33,7 +35,8 @@ function SignUpForm() {
 					setSuccessAlert(false);
 				}, 3000);
 				const navigateTime = setTimeout(() => {
-					navigate('/login');
+					login(email, password);
+					navigate('/companies');
 				}, 1000);
 				return () => {
 					clearTimeout(alertTimeout);
@@ -82,7 +85,7 @@ function SignUpForm() {
 						padding: '0.75rem 1.25rem',
 					}}
 				>
-					Account created, please log in!
+					Account created! Logging in...
 				</div>
 			)}
 			<div className="max-w-md w-full space-y-8 p-10 bg-white rounded-xl shadow-md overflow-hidden">

@@ -1,17 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function LearnMoreButton(company) {
+export default function LearnMoreButton(companyId) {
+  // const filteredata = (company) => {
 
-    // const filteredata = (company) => {
+  // }
 
-    // }
-
-    return (
-        <>
-            <Link to="/positions" state={ company }>
-                    <button
-                className="
+  return (
+    <>
+      <Link to="/positions" state={companyId}>
+        <button
+          className="
                     p-2 w-32 my-4
                     flex items-center text-center
                     text-gray-50 font-semibold text-2xl
@@ -23,10 +22,10 @@ export default function LearnMoreButton(company) {
                     hover:bg-gray-50
                     hover:text-wageblue
                     "
-                    >
-                        Learn More
-                    </button>
-            </Link>
+        >
+          Learn More
+        </button>
+      </Link>
     </>
-    )
+  );
 }

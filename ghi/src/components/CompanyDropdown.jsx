@@ -1,9 +1,12 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setCompany, clearCompany } from "../slices/companySlice";
 
 const CompanyDropdown = ({ options }) => {
+  const location = useLocation();
+  // const { companyId } = location.state;
+
   const [inputValue, setInputValue] = useState("");
   const [selected, setSelected] = useState("");
   const [open, setOpen] = useState(false);
@@ -34,10 +37,10 @@ const CompanyDropdown = ({ options }) => {
     <div className="w-72 font-medium items-center">
       <div
         className="
-      w-72 p-2 my-4
+      w-full p-2 my-4
       flex rounded 
-      text-xl font-bold text-gray-700
       items-center justify-center
+      text-xl font-bold text-gray-700
       bg-gradient-to-r slate-500
       "
       >

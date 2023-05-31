@@ -52,3 +52,24 @@ Today was all Redux and RTK Query, I managed to get them done! Mo's birthday was
 We planned out how to start the topics endpoint, as well as how to implement our auth in the back/front-end.
 
 For aha! moments, while I was trying out state control with redux things kind of just clicked, and I realized how the global state was handled. Made code a LOT cleaner IMO.
+
+5/24/23
+Today we finished up setting up front-end auth, still need to test and connect with back-end auth.
+
+5/25/23
+We ran into issues with Andrew's docker + code, so had to revert changes. Most of the day was on that.
+
+5/26/23
+Today was pretty chill, I basically did stylistic changes and cleaned up some code of mine. Long weekend ahead + wedding = a little less work done.
+
+5/29/23
+Today I set up the comment's database and queries+routers. I also wrote out the framework for the forum page.
+
+Not much aha! moments, basically just the same type of work previously done.
+
+5/30/23
+Today I set up the framework for the topic page. It's capable of displaying the specific topic clicked on from the forum page, as well as that topic's comments.
+
+Replies (DB and endpoints) will be handled by Mo, so I will be waiting on that.
+
+My big aha! moment was learning and properly using the useParams hook, that was cool.

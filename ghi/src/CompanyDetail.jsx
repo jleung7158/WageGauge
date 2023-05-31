@@ -1,32 +1,21 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import PositionFigure from "./PositionFigure";
 import CompanyDropdown from "./components/CompanyDropdown";
 
 import { useGetPositionsQuery, useGetCompaniesQuery } from "./services/api";
-import { useLazyGetPokemonByNameQuery } from "./services/pokemon";
-import { setPokemon, clearPokemon } from "./slices/pokemonSlice";
 import { useSelector, useDispatch } from "react-redux";
+import PokemonGrabber from "./features/pokemon/Pokemon";
+import { setCompany } from "./slices/companySlice";
 
 const CompanyDetail = () => {
+  const location = useLocation();
+  const { companyId } = location.state;
   const dispatch = useDispatch();
 
   const company = useSelector((state) => state.companyFilter.company);
-  const pokemonName = useSelector((state) => state.pokemonFilter.pokemonName);
-
-  const handlePokeChange = (e) => {
-    dispatch(setPokemon(e.target.value.toLowerCase()));
-  };
-  const [
-    trigger,
-    { data: pokeData, error: pokeError, isLoading: isPokeLoading },
-  ] = useLazyGetPokemonByNameQuery({});
-
   const { data: pData, isLoading: isPLoading } = useGetPositionsQuery();
   const { data: cData } = useGetCompaniesQuery();
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
 
   const [isFigureOpen, setIsFigureOpen] = useState(false);
   const [figureData, setFigureData] = useState(null);
@@ -45,8 +34,14 @@ const CompanyDetail = () => {
     }
   };
 
-  const filteredPositions = getFilteredPositions(company, pData);
+  useEffect(() => {
+    dispatch(setCompany({ companyId }));
+    console.log("companyId", companyId);
+    getFilteredPositions(companyId, pData);
+  }, []);
 
+  const filteredPositions = getFilteredPositions(company, pData);
+  console.log("filtered positions", filteredPositions);
   const handleFigureClick = (position) => {
     setFigureData(position);
     setIsFigureOpen(true);
@@ -66,27 +61,33 @@ const CompanyDetail = () => {
 
   return (
     <div className="">
+      {companyId}
       <div className="container flex flex-row h-full items-center">
         <div
           className="
         flex flex-col
-        p-4 mx-4 w-96 
-        color-bg 
+        m-8 px-2 py-4
+        bg-slate-200
         rounded-xl shadow-lg items-center
         "
         >
           <CompanyDropdown options={cData} />
           <h1
             className="
-          p-2 my-4 w-72
-          text-xl font-bold text-center text-gray-700
-          rounded
+          p-2 my-4 w-full
+          text-xl font-bold text-gray-700
+          rounded text-center
           bg-gradient-to-r bg-slate-500
           "
           >
             Positions
           </h1>
-          <div className="mx-0">
+          <div
+            className="
+          mx-4 px-8
+          border-y-2 border-slate-300 overflow-y-auto h-80
+          "
+          >
             {filteredPositions.map((position) => {
               return (
                 <button
@@ -94,14 +95,11 @@ const CompanyDetail = () => {
                   p-2 w-48 my-4
                   flex justify-center text-center text-gray-700 font-semibold
                   rounded shadow-lg
-                  bg-gradient-to-r bg-cyan-500
+                  bg-slate-100
                   transition ease-in delay-50
                   hover:translate-x-4
-                  hover:scale-110
-                  hover:text-xl
-                hover:from-cyan-500
-                hover:to-blue-500
-                  hover:text-white
+                  hover:from-cyan-500
+                  hover:to-blue-500
                   "
                   key={position.id}
                   onClick={() => {
@@ -118,14 +116,15 @@ const CompanyDetail = () => {
           className="
         flex
         p-6 mx-4
-        w-screen
+        w-max
         rounded-xl shadow-lg
-        bg-slate-300 items-center space-x-4"
+        bg-slate-200 items-center space-x-4
+        "
         >
           <div>
             <div className="text-xl font-medium text-black"></div>
             <p className="text-slate-500">Position data here</p>
-            <div className="w-screen">
+            <div className="">
               {isFigureOpen ? <PositionFigure position={figureData} /> : ""}
             </div>
             <button
@@ -138,72 +137,7 @@ const CompanyDetail = () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-col">
-        <div className="mx-4">
-          {pokeError ? (
-            <>Oh no, there was an error</>
-          ) : isPokeLoading ? (
-            <>Loading...</>
-          ) : pokeData ? (
-            <>
-              <p>{pokeData.species.name}</p>
-              <img
-                src={pokeData.sprites.front_shiny}
-                alt={pokeData.species.name}
-              />
-            </>
-          ) : null}
-        </div>
-        <form className="flex-row" onSubmit={(e) => handleSubmit(e)}>
-          <label>
-            <p
-              className="
-              bg-gradient-to-r
-              from-wageblue via-weedgreen to-white
-              rounded shadow-lg
-              dark:bg-gradient-to-r
-              dark:from-moredark
-              dark:to-wageblue
-              dark:text-darktext"
-            >
-              Pokemon name:
-            </p>
-            <input
-              type="text"
-              id="pokemon"
-              value={pokemonName}
-              onChange={(e) => {
-                handlePokeChange(e);
-              }}
-              placeholder="Enter pokemon name"
-              className="rounded placeholder:text-slate-700 p-2 outline-none"
-            />
-          </label>
-          <div>
-            <button
-              disabled={pokemonName === ""}
-              className="
-                bg-wageblue hover:bg-blue-700 text-white flex-row
-                font-bold py-2 px-4 rounded-full"
-              onClick={() => trigger(pokemonName)}
-              type="submit"
-              value="submit"
-            >
-              Submit
-            </button>
-            <button
-              className="
-                bg-wageblue hover:bg-blue-700 text-white 
-                font-bold py-2 px-4 rounded-full"
-              onClick={() => dispatch(clearPokemon())}
-              type="submit"
-              value="submit"
-            >
-              Clear
-            </button>
-          </div>
-        </form>
-      </div>
+      <PokemonGrabber />
     </div>
   );
 };

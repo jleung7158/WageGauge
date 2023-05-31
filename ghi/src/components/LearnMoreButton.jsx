@@ -3,9 +3,13 @@ import { Link } from "react-router-dom";
 
 export default function LearnMoreButton(company) {
 
+    // const filteredata = (company) => {
+
+    // }
+
     return (
         <>
-            <Link to="/positions">
+            <Link to="/positions" state={ company }>
                     <button
                 className="
                     p-2 w-32 my-4
@@ -19,12 +23,10 @@ export default function LearnMoreButton(company) {
                     hover:bg-gray-50
                     hover:text-wageblue
                     "
-                onClick={company.id}
                     >
                         Learn More
                     </button>
             </Link>
     </>
     )
-
 }

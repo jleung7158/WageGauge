@@ -295,7 +295,7 @@ function CompanyList() {
 																getPositionsByCompanyId(company.id).length -
 																	1 && (
 																<td className="px-20 py-5">
-                                                                    <LearnMoreButton/>
+                                                                    <LearnMoreButton company={company.id}/>
 																</td>
 															)}
 														</tr>

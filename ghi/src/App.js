@@ -9,6 +9,7 @@ import LoginForm from './Login';
 import Switcher from './components/Switcher';
 import About from './About';
 import ForumPage from './ForumPage';
+import Test from './test';
 
 function App() {
 	return (
@@ -43,6 +44,9 @@ function App() {
 								</Route>
 								<Route path="ForumPage">
 									<Route path="" element={<ForumPage />} />
+								</Route>
+								<Route path="test">
+									<Route path="" element={<Test />} />
 								</Route>
 							</Routes>
 						</div>

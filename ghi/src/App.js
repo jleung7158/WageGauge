@@ -38,9 +38,6 @@ function App() {
 								<Route path="Signup">
 									<Route path="" element={<SignUpForm />} />
 								</Route>
-								<Route path="Login">
-									<Route path="" element={<LoginForm />} />
-								</Route>
 								<Route path="About">
 									<Route path="" element={<About />} />
 								</Route>

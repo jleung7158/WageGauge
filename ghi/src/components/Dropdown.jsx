@@ -1,29 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setCompany, clearCompany } from "../slices/companySlice";
-import { useGetCompanyQuery } from "../services/api";
 
-const CompanyDropdown = ({ options }) => {
-  const location = useLocation();
-  const { companyId } = location.state;
-  const companyData = useGetCompanyQuery(companyId);
-  const companyName = companyData?.data?.name;
-
+const Dropdown = ({ options }) => {
   const [inputValue, setInputValue] = useState("");
   const [selected, setSelected] = useState("");
   const [open, setOpen] = useState(false);
 
   const option = useSelector((state) => state.companyFilter.option);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (!selected) {
-      setSelected(companyName);
-      dispatch(setCompany(companyName));
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [companyName]);
 
   const handleValueChange = (e) => {
     setInputValue(e.target.value.toLowerCase());
@@ -50,8 +35,7 @@ const CompanyDropdown = ({ options }) => {
     w-72 font-medium 
     items-center justify-center
     content-center
-    text-center
-    "
+    text-center"
     >
       <div
         className="
@@ -74,11 +58,11 @@ const CompanyDropdown = ({ options }) => {
       >
         {selected ? selected : "Select an option"}
       </div>
-      <div className="flex flex-col justify-center items-center">
+      <div>
         <ul
           className={`
-        my-2 bg-slate-100 rounded
-        overflow-y-auto shadow-lg
+        mt-2 bg-slate-100 rounded
+        overflow-y-auto
         ${open ? "max-h-52" : "max-h-0"}`}
         >
           <div className="px-2 sticky top-0 bg-white">
@@ -121,7 +105,9 @@ const CompanyDropdown = ({ options }) => {
         </ul>
         <button
           className={`bg-slate-100
-        w-1/4 p-2 rounded shadow-lg
+        w-half p-2
+        flex rounded 
+        items-center justify-center
         ${selected ? "block" : "hidden"}
         `}
           onClick={() => {
@@ -135,4 +121,4 @@ const CompanyDropdown = ({ options }) => {
   );
 };
 
-export default CompanyDropdown;
+export default Dropdown;

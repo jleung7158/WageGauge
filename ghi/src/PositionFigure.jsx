@@ -38,14 +38,14 @@ function PositionFigure({ position }) {
     }
   };
   const filteredEData = getFilteredEData(position.id, eData);
-  const labels = filteredEData.map((data) => data.id);
-
+  const labels = filteredEData?.map((data) => data.years_exp);
   const chartData = {
     labels: labels,
     datasets: [
       {
         label: "Employee salaries",
         data: filteredEData.map((data) => data.salary),
+
         backgroundColor: "#1999ff",
         borderColor: ["rgb(0, 0, 0, 1"],
         borderWidth: 1,
@@ -59,10 +59,23 @@ function PositionFigure({ position }) {
 
   return (
     <div>
-      <div className="text-xl font-bold text-black dark:text-darktext">
+      <div
+        className="
+      m-2 p-2 w-1/3
+      bg-gradient-to-r bg-slate-500 rounded
+      text-2xl font-bold 
+      text-black dark:text-darktext
+      "
+      >
         {position.company}
       </div>
-      <div className="text-xl font-medium text-black dark:text-darktext">
+      <div
+        className="
+      px-2 mx-2
+      text-xl font-bold 
+      text-black dark:text-darktext
+      "
+      >
         {position.name}
       </div>
       <div style={{ width: "700px" }}>

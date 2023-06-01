@@ -78,3 +78,6 @@ My big aha! moment was learning and properly using the useParams hook, that was 
 Today I finished setting up the Topic page, it just needs to be fleshed out with data and features now. I also managed to make my company detail page default to a company from the dashboard.
 
 My big aha! moment was connecting the redux with the react states in my company dropdown, to allow for the default on load.
+
+6/1/23
+Today I helped Jonathan with adding features to Employees so that we can add it to the figures. I also stylized my company detail, forum, and topic page.

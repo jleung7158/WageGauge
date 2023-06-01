@@ -3,7 +3,7 @@ import { Bar } from "react-chartjs-2";
 
 function BarChart({ chartData }) {
   return (
-    <div className="chart-container">
+    <div className="chart-container bg-slate-100 rounded my-2">
       <Bar
         data={chartData}
         options={{
@@ -12,7 +12,7 @@ function BarChart({ chartData }) {
               stacked: true,
               title: {
                 display: true,
-                text: "PositionID",
+                text: "Years of Experience",
                 font: {
                   size: 15,
                 },

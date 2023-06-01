@@ -3,7 +3,7 @@ import PositionFigure from "./PositionFigure";
 import CompanyDropdown from "./components/CompanyDropdown";
 
 import { useGetPositionsQuery, useGetCompaniesQuery } from "./services/api";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import PokemonGrabber from "./features/pokemon/Pokemon";
 
 const CompanyDetail = () => {
@@ -49,21 +49,26 @@ const CompanyDetail = () => {
 
   return (
     <div className="">
-      <div className="container flex flex-row h-full items-center">
+      <div
+        className="
+      container flex flex-row 
+      h-full items-center
+      "
+      >
         <div
           className="
         flex flex-col
-        m-8 px-2 py-4
+        m-8 px-4 py-4 w-64
         bg-slate-200
-        rounded-xl shadow-lg items-center
+        rounded-xl shadow-xl items-center
         "
         >
           <CompanyDropdown options={cData} />
           <h1
             className="
-          p-2 my-4 w-full
+          p-2 my-4 w-max
           text-xl font-bold text-gray-700
-          rounded text-center
+          rounded text-center shadow-lg
           bg-gradient-to-r bg-slate-500
           "
           >
@@ -104,7 +109,7 @@ const CompanyDetail = () => {
         flex
         p-6 mx-4
         w-max
-        rounded-xl shadow-lg
+        rounded-xl shadow-xl
         bg-slate-200 items-center space-x-4
         "
         >
@@ -115,6 +120,7 @@ const CompanyDetail = () => {
               {isFigureOpen ? <PositionFigure position={figureData} /> : ""}
             </div>
             <button
+              className="mx-8 p-2 bg-slate-300 rounded-lg font-semibold"
               onClick={() => {
                 handleCloseFigure();
               }}

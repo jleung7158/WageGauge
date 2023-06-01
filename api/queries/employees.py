@@ -14,6 +14,7 @@ class Error(BaseModel):
 
 class EmployeeIn(BaseModel):
     salary: int
+    years_exp: str
     location: str
     account_id: Optional[int]
     company_id: Optional[int]
@@ -23,6 +24,7 @@ class EmployeeIn(BaseModel):
 class EmployeeOut(BaseModel):
     id: int
     salary: int
+    years_exp: str
     location: str
     account_id: Optional[int]
     company_id: Optional[int]
@@ -64,13 +66,14 @@ class EmployeeRepository:
                 result = db.execute(
                     """
                     INSERT INTO employees
-                        (salary, location, account_id, company_id, position_id)
+                        (salary, years_exp, location, account_id, company_id, position_id)
                     VALUES
-                        (%s, %s, %s, %s, %s)
+                        (%s, %s, %s, %s, %s, %s)
                     RETURNING id;
                     """,
                     [
                         employee.salary,
+                        employee.years_exp,
                         employee.location,
                         employee.account_id,
                         employee.company_id,
@@ -93,6 +96,7 @@ class EmployeeRepository:
                         SELECT
                             e.id as employee,
                             e.salary as salary,
+                            e.years_exp as experience,
                             e.location as location,
                             e.account_id as account_id,
                             e.company_id as company_id,
@@ -123,6 +127,7 @@ class EmployeeRepository:
                         """
                         UPDATE employees
                         SET salary = %s,
+                            years_exp = %s,
                             location = %s,
                             account_id = %s,
                             company_id = %s,
@@ -130,6 +135,7 @@ class EmployeeRepository:
                         """,
                         [
                             employee.salary,
+                            employee.years_exp,
                             employee.location,
                             employee.account_id,
                             employee.company_id,
@@ -150,6 +156,7 @@ class EmployeeRepository:
                         SELECT
                             e.id as employee,
                             e.salary as salary,
+                            e.years_exp as experience,
                             e.location as location,
                             e.account_id as account_id,
                             e.company_id as company_id,
@@ -196,10 +203,11 @@ class EmployeeRepository:
         return EmployeeOut(
             id=record[0],
             salary=record[1],
-            location=record[2],
-            account_id=record[3],
-            company_id=record[4],
-            position_id=record[5],
-            position=record[6],
-            company=record[7],
+            years_exp=record[2],
+            location=record[3],
+            account_id=record[4],
+            company_id=record[5],
+            position_id=record[6],
+            position=record[7],
+            company=record[8],
         )

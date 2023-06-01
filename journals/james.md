@@ -73,3 +73,8 @@ Today I set up the framework for the topic page. It's capable of displaying the 
 Replies (DB and endpoints) will be handled by Mo, so I will be waiting on that.
 
 My big aha! moment was learning and properly using the useParams hook, that was cool.
+
+5/31/23
+Today I finished setting up the Topic page, it just needs to be fleshed out with data and features now. I also managed to make my company detail page default to a company from the dashboard.
+
+My big aha! moment was connecting the redux with the react states in my company dropdown, to allow for the default on load.

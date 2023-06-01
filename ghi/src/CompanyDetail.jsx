@@ -1,18 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import React, { useState } from "react";
 import PositionFigure from "./PositionFigure";
 import CompanyDropdown from "./components/CompanyDropdown";
 
 import { useGetPositionsQuery, useGetCompaniesQuery } from "./services/api";
 import { useSelector, useDispatch } from "react-redux";
 import PokemonGrabber from "./features/pokemon/Pokemon";
-import { setCompany } from "./slices/companySlice";
 
 const CompanyDetail = () => {
-  const location = useLocation();
-  const { companyId } = location.state;
-  const dispatch = useDispatch();
-
   const company = useSelector((state) => state.companyFilter.company);
   const { data: pData, isLoading: isPLoading } = useGetPositionsQuery();
   const { data: cData } = useGetCompaniesQuery();
@@ -34,14 +28,8 @@ const CompanyDetail = () => {
     }
   };
 
-  useEffect(() => {
-    dispatch(setCompany({ companyId }));
-    console.log("companyId", companyId);
-    getFilteredPositions(companyId, pData);
-  }, []);
-
   const filteredPositions = getFilteredPositions(company, pData);
-  console.log("filtered positions", filteredPositions);
+
   const handleFigureClick = (position) => {
     setFigureData(position);
     setIsFigureOpen(true);
@@ -61,7 +49,6 @@ const CompanyDetail = () => {
 
   return (
     <div className="">
-      {companyId}
       <div className="container flex flex-row h-full items-center">
         <div
           className="

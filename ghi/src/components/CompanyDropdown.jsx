@@ -1,19 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setCompany, clearCompany } from "../slices/companySlice";
+import { useGetCompanyQuery } from "../services/api";
 
 const CompanyDropdown = ({ options }) => {
   const location = useLocation();
-  // const { companyId } = location.state;
+  const { companyId } = location.state;
+  const companyData = useGetCompanyQuery(companyId);
+  const companyName = companyData?.data?.name;
 
   const [inputValue, setInputValue] = useState("");
   const [selected, setSelected] = useState("");
   const [open, setOpen] = useState(false);
 
   const option = useSelector((state) => state.companyFilter.option);
-  // console.log("this is redux option", option);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!selected) {
+      setSelected(companyName);
+      dispatch(setCompany(companyName));
+    }
+  }, [companyName]);
 
   const handleValueChange = (e) => {
     setInputValue(e.target.value.toLowerCase());

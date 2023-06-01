@@ -23,6 +23,9 @@ module.exports = {
           'warownia': ["WarowniaUltExtObl", "sans-serif"],
           'thun': ['Thunder-ExtraBoldLC', 'sans-serif'],
         },
+        borderRadius: {
+          'large': '25px',
+        }
     },
   },
   plugins: [],

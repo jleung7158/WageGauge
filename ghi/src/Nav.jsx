@@ -1,16 +1,31 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import HomePageIcon from './img/icon.png';
 import Switcher from './components/Switcher';
 import Banner from './components/Banner';
 import LoginForm from './Login';
 import { useState, useEffect } from 'react';
 import useToken from '@galvanize-inc/jwtdown-for-react';
+import UserDropDown from './components/UserDropDown';
 
 function Nav() {
-	const { token } = useToken();
+	const { token, logout } = useToken();
 	const [showLoginForm, setShowLoginForm] = useState(false);
 	const [showBanner, setShowBanner] = useState(true);
-	const { logout } = useToken();
+  const [showLogin, setShowLogin] = useState(true);
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  //dropdownmenu
+  const navigate = useNavigate();
+
+  const handleSelectionChange = (e) => {
+      const selection = e.target.value;
+
+      if (selection === 'logout') {
+        handleLogout();
+      } else {
+      navigate(selection);
+      }
+  };
 
 	const handleLoginClick = () => {
 		setShowLoginForm(true);
@@ -18,12 +33,14 @@ function Nav() {
 
 	const handleLogout = () => {
 		logout();
+    setShowDropdown(false);
+    setShowLogin(true);
 	};
 
 	const LogoutButton = () => {
 		if (token) {
 			return (
-				<div className="mt-5">
+				<div>
 					<NavLink
 						to="#"
 						className="
@@ -54,6 +71,8 @@ function Nav() {
 	const checkForToken = () => {
 		if (token) {
 			setShowBanner(false);
+      setShowLogin(false);
+      setShowDropdown(true);
 		}
 	};
 
@@ -107,12 +126,12 @@ function Nav() {
                 dark:hover:text-gray-300
                 "
 							>
-								Dashboard
+								DASHBOARD
 							</NavLink>
 						</div>
 						<div className="mt-5">
 							<NavLink
-								to="positions"
+								to="ForumPage"
 								className="
                   text-gray-50
                   hover:bg-gray-100
@@ -128,7 +147,7 @@ function Nav() {
                   dark:hover:text-gray-300
                   "
 							>
-								Positions
+								FORUM
 							</NavLink>
 						</div>
 					</div>
@@ -160,10 +179,11 @@ function Nav() {
                     dark:hover:shadow-slate-500/20
                     "
 							>
-								About Us
+								ABOUT US
 							</NavLink>
 						</div>
-						<div className="mt-5">
+						{showLogin &&
+            <div className="mt-5">
 							<NavLink
 								to="#"
 								className="
@@ -180,14 +200,39 @@ function Nav() {
                     dark:hover:shadow-slate-500/20"
 								onClick={handleLoginClick}
 							>
-								Login
+								LOGIN
 							</NavLink>
 						</div>
-						<div className="mt-5">
-							<div>{LogoutButton()}</div>
-						</div>
-					</div>
+            }
+            <div className=''>
+            {showDropdown && (
+            // <UserDropDown logout={handleLogout}/>
+                <div className='mt-5'>
+                        <select className='
+                        text-gray-50
+                        items-center
+                        hover:bg-gray-100
+                        hover:text-wageblue block
+                        block rounded-full px-5 py-3
+                        bg-wageblue
+                        text-base font-bold
 
+                        dark:text-wageblue
+                        dark:bg-moredark
+                        dark:shadow-inner
+                        dark:hover:shadow-slate-500/20'
+                        value={''} onChange={handleSelectionChange}>
+                            <option value="" disabled>PROFILE</option>
+                            <option className="font-bold" value="signup">ACCOUNT</option>
+                            <option className="font-bold" value="logout">LOGOUT</option>
+                        </select>
+                </div>
+            )}
+            </div>
+						{/* <div className="mt-5">
+							<div>{LogoutButton()}</div>
+						</div> */}
+					</div>
 					{showLoginForm && (
 						<div className="fixed inset-0 flex items-center justify-center z-50">
 							<div className="fixed inset-0 bg-black opacity-50"></div>
@@ -196,6 +241,7 @@ function Nav() {
 							</div>
 						</div>
 					)}
+
 				</div>
 			</div>
 			{/* bottom space */}

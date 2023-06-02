@@ -37,19 +37,23 @@ const PokemonGrabber = () => {
       </div>
       <form className="flex-row" onSubmit={(e) => handleSubmit(e)}>
         <label>
-          <p
-            className="
-              w-48
+          {pokeData ? (
+            ""
+          ) : (
+            <p
+              className="
+              w-max p-2 my-2
+              text-lg font-semibold
               bg-gradient-to-r
-              from-wageblue via-weedgreen to-white
               rounded shadow-lg
               dark:bg-gradient-to-r
               dark:from-moredark
               dark:to-wageblue
               dark:text-darktext"
-          >
-            Pokemon name:
-          </p>
+            >
+              Choose a guardian Pokemon!
+            </p>
+          )}
           <input
             type="text"
             id="pokemon"
@@ -57,8 +61,8 @@ const PokemonGrabber = () => {
             onChange={(e) => {
               handlePokeChange(e);
             }}
-            placeholder="Enter pokemon name"
-            className=" w-48 rounded placeholder:text-slate-700 p-2 outline-none"
+            placeholder="Call the pokemon's name"
+            className=" w-max rounded placeholder:text-slate-700 p-2 outline-none"
           />
         </label>
         <div>
@@ -71,7 +75,7 @@ const PokemonGrabber = () => {
             type="submit"
             value="submit"
           >
-            Submit
+            I choose you!
           </button>
           <button
             className="

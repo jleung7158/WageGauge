@@ -3,10 +3,23 @@ import { Bar } from "react-chartjs-2";
 
 function BarChart({ chartData }) {
   return (
-    <div className="chart-container bg-slate-100 rounded my-2">
+    <div
+      className="
+    chart-container 
+    h-[560px] w-full
+    m-2 p-2 overflow-visible
+    bg-slate-100
+    -translate-y-5
+    justify-stretch 
+    rounded my-2"
+    >
       <Bar
+        type="bar"
         data={chartData}
         options={{
+          animation: {
+            duration: 3000,
+          },
           scales: {
             x: {
               stacked: true,
@@ -43,6 +56,7 @@ function BarChart({ chartData }) {
               ticks: {
                 color: ["rgb(0, 0, 0, 1"],
               },
+              min: 50000,
             },
           },
           plugins: {
@@ -61,6 +75,7 @@ function BarChart({ chartData }) {
               },
             },
           },
+          maintainAspectRatio: false,
         }}
       />
     </div>

@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setCompany, clearCompany } from "../slices/companySlice";
 import { useGetCompanyQuery } from "../services/api";
+import building from "../img/building.svg";
 
 const CompanyDropdown = ({ options }) => {
   const location = useLocation();
@@ -58,10 +59,12 @@ const CompanyDropdown = ({ options }) => {
       w-max p-2 my-4
       flex rounded shadow-lg
       text-xl font-bold text-gray-700
-      bg-gradient-to-r slate-500
+      bg-gradient-to-r items-center
+      dark:text-darktext
       "
       >
         Companies
+        <img src={building} className="w-[25px] opacity-50 mx-2" />
       </div>
       <div
         onClick={() => setOpen(!open)}

@@ -132,6 +132,7 @@ class EmployeeRepository:
                             account_id = %s,
                             company_id = %s,
                             position_id = %s
+                        WHERE id = %s;
                         """,
                         [
                             employee.salary,
@@ -140,6 +141,7 @@ class EmployeeRepository:
                             employee.account_id,
                             employee.company_id,
                             employee.position_id,
+                            employee_id,
                         ],
                     )
                     return self.employee_in_to_out(employee_id, employee)

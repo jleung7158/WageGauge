@@ -81,3 +81,7 @@ My big aha! moment was connecting the redux with the react states in my company 
 
 6/1/23
 Today I helped Jonathan with adding features to Employees so that we can add it to the figures. I also stylized my company detail, forum, and topic page.
+
+I am adding the math and data to the figures tonight, as well as more styling.
+
+A bunch of little aha! moments refactoring the math code to be cleaner using dictionarys and arrays as opposed to repetitive let statements.

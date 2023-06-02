@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Dropdown from "./components/Dropdown";
 import { useGetCompaniesQuery, useGetTopicsQuery } from "./services/api";
+import commentdot from "./img/commentdot.svg";
 
 function ForumPage() {
   const { data: cData } = useGetCompaniesQuery();
@@ -44,7 +45,7 @@ function ForumPage() {
           className="
         flex flex-col
         m-4 p-4 h-max w-64 shadow-xl
-        bg-slate-200 rounded-xl
+        bg-slate-200 rounded
         justify-center items-center
         "
         >
@@ -54,19 +55,22 @@ function ForumPage() {
           className="
         flex flex-col flex-none h-max
         m-8 p-4 w-[720px] shadow-xl
-        bg-slate-200 rounded-xl
+        bg-slate-200 rounded
         "
         >
           <div className="flex flex-row items-center">
             <div
               className="
-            mx-4 my-2 p-2
+            mx-4 my-2 p-2 
+            flex items-center
             w-max shadow-lg
             text-2xl font-bold
-            bg-gradient-to-r bg-slate-500 rounded-xl
+            bg-gradient-to-r bg-slate-500 rounded
+            dark:text-darktext
             "
             >
               Topics List
+              <img src={commentdot} className="w-[30px] opacity-50 m-2" />
             </div>
             <input
               type="text"
@@ -77,7 +81,7 @@ function ForumPage() {
               className="
               placeholder:text-slate-700 
               p-2 h-max justify-center
-              outline-none rounded-xl
+              outline-none rounded
               "
             />
           </div>
@@ -100,6 +104,14 @@ function ForumPage() {
             );
           })}
         </div>
+        <div
+          className="
+        flex flex-col
+        m-4 p-4 h-max w-64 shadow-xl
+        bg-slate-200 rounded
+        justify-center items-center
+        "
+        ></div>
       </div>
     </div>
   );

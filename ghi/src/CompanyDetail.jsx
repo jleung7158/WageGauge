@@ -5,6 +5,9 @@ import CompanyDropdown from "./components/CompanyDropdown";
 import { useGetPositionsQuery, useGetCompaniesQuery } from "./services/api";
 import { useSelector } from "react-redux";
 import PokemonGrabber from "./features/pokemon/Pokemon";
+import circleRight from "./img/circleright.svg";
+import user from "./img/userCircle.svg";
+import chart from "./img/chart.svg";
 
 const CompanyDetail = () => {
   const company = useSelector((state) => state.companyFilter.company);
@@ -60,19 +63,21 @@ const CompanyDetail = () => {
         flex flex-col
         m-8 px-4 py-4 w-64
         bg-slate-200
-        rounded-xl shadow-xl items-center
+        rounded shadow-xl items-center
         "
         >
           <CompanyDropdown options={cData} />
           <h1
             className="
-          p-2 my-4 w-max
+          p-2 my-4 w-max flex
           text-xl font-bold text-gray-700
           rounded text-center shadow-lg
-          bg-gradient-to-r bg-slate-500
+          bg-gradient-to-r items-center
+          dark:text-darktext
           "
           >
             Positions
+            <img src={user} className="w-[30px] opacity-50 mx-2" />
           </h1>
           <div
             className="
@@ -85,7 +90,9 @@ const CompanyDetail = () => {
                 <button
                   className="
                   p-2 w-48 my-4
-                  flex justify-center text-center text-gray-700 font-semibold
+                  flex 
+                  justify-center text-center items-center
+                  text-gray-700 font-semibold
                   rounded shadow-lg
                   bg-slate-100
                   transition ease-in delay-50
@@ -99,6 +106,7 @@ const CompanyDetail = () => {
                   }}
                 >
                   {position.company} - {position.name}
+                  <img src={circleRight} className="w-[30px] opacity-50" />
                 </button>
               );
             })}
@@ -108,25 +116,44 @@ const CompanyDetail = () => {
           className="
         flex
         p-6 mx-4
-        w-max
-        rounded-xl shadow-xl
+        w-[960px] h-3/5
+        rounded shadow-xl
         bg-slate-200 items-center space-x-4
         "
         >
-          <div>
-            <div className="text-xl font-medium text-black"></div>
-            <p className="text-slate-500">Position data here</p>
-            <div className="">
+          <div className="flex flex-col">
+            {isFigureOpen ? (
+              ""
+            ) : (
+              <>
+                <img
+                  src={chart}
+                  className="w-[25px] opacity-50 mx-2 rotate-90 -scale-100"
+                />
+                <p className="text-2xl m-4 p-4 bg-slate-100 font-semibold rounded">
+                  Click a position to populate this figure!
+                </p>
+              </>
+            )}
+
+            <div className="h-full">
               {isFigureOpen ? <PositionFigure position={figureData} /> : ""}
             </div>
-            <button
-              className="mx-8 p-2 bg-slate-300 rounded-lg font-semibold"
-              onClick={() => {
-                handleCloseFigure();
-              }}
-            >
-              {isFigureOpen ? "Clear" : ""}
-            </button>
+            {isFigureOpen ? (
+              <button
+                className="p-2 bg-slate-300 
+              rounded font-semibold
+              w-max
+              "
+                onClick={() => {
+                  handleCloseFigure();
+                }}
+              >
+                Close
+              </button>
+            ) : (
+              ""
+            )}
           </div>
         </div>
       </div>

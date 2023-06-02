@@ -99,6 +99,28 @@ class AccountRepository:
             print(e)
             raise ValueError("Could not get account") from e
 
+    def update_account(self, id:int, hashed_password: str, account:AccountIn)->AccountOut:
+        with pool.connection() as conn:
+            with conn.cursor() as db:
+                db.execute(
+                    """
+                    UPDATE account
+                    SET first_name = %s,
+                        last_name = %s,
+                        email = %s,
+                        password = %s
+                    WHERE id = %s
+                    """,
+                    [account.first_name, account.last_name, account.email, hashed_password, id],
+                )
+        return AccountOut(
+            id=id,
+            first_name = account.first_name,
+            last_name = account.last_name,
+            email = account.email,
+        )
+
+
     def record_to_account(self, record) -> AccountOutWithPassword:
         account_dict = {
             "id": record[0],

@@ -37,7 +37,7 @@ function SignUpForm() {
 				const navigateTime = setTimeout(() => {
 					login(email, password);
 					navigate('/companies');
-				}, 1000);
+				}, 2000);
 				return () => {
 					clearTimeout(alertTimeout);
 					clearTimeout(navigateTime);

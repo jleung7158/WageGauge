@@ -11,21 +11,21 @@ function Nav() {
 	const { token, logout } = useToken();
 	const [showLoginForm, setShowLoginForm] = useState(false);
 	const [showBanner, setShowBanner] = useState(true);
-  const [showLogin, setShowLogin] = useState(true);
-  const [showDropdown, setShowDropdown] = useState(false);
+	const [showLogin, setShowLogin] = useState(true);
+	const [showDropdown, setShowDropdown] = useState(false);
 
-  //dropdownmenu
-  const navigate = useNavigate();
+	//dropdownmenu
+	const navigate = useNavigate();
 
-  const handleSelectionChange = (e) => {
-      const selection = e.target.value;
+	const handleSelectionChange = (e) => {
+		const selection = e.target.value;
 
-      if (selection === 'logout') {
-        handleLogout();
-      } else {
-      navigate(selection);
-      }
-  };
+		if (selection === 'logout') {
+			handleLogout();
+		} else {
+			navigate(selection);
+		}
+	};
 
 	const handleLoginClick = () => {
 		setShowLoginForm(true);
@@ -33,8 +33,8 @@ function Nav() {
 
 	const handleLogout = () => {
 		logout();
-    setShowDropdown(false);
-    setShowLogin(true);
+		setShowDropdown(false);
+		setShowLogin(true);
 	};
 
 	const LogoutButton = () => {
@@ -71,8 +71,8 @@ function Nav() {
 	const checkForToken = () => {
 		if (token) {
 			setShowBanner(false);
-      setShowLogin(false);
-      setShowDropdown(true);
+			setShowLogin(false);
+			setShowDropdown(true);
 		}
 	};
 
@@ -182,11 +182,11 @@ function Nav() {
 								ABOUT US
 							</NavLink>
 						</div>
-						{showLogin &&
-            <div className="mt-5">
-							<NavLink
-								to="#"
-								className="
+						{showLogin && (
+							<div className="mt-5">
+								<NavLink
+									to="#"
+									className="
                     text-gray-50
                     hover:bg-gray-100
                     hover:text-wageblue block
@@ -198,17 +198,18 @@ function Nav() {
                     dark:bg-moredark
                     dark:shadow-inner
                     dark:hover:shadow-slate-500/20"
-								onClick={handleLoginClick}
-							>
-								LOGIN
-							</NavLink>
-						</div>
-            }
-            <div className=''>
-            {showDropdown && (
-            // <UserDropDown logout={handleLogout}/>
-                <div className='mt-5'>
-                        <select className='
+									onClick={handleLoginClick}
+								>
+									LOGIN
+								</NavLink>
+							</div>
+						)}
+						<div className="">
+							{showDropdown && (
+								// <UserDropDown logout={handleLogout}/>
+								<div className="mt-5">
+									<select
+										className="
                         text-gray-50
                         items-center
                         hover:bg-gray-100
@@ -220,15 +221,23 @@ function Nav() {
                         dark:text-wageblue
                         dark:bg-moredark
                         dark:shadow-inner
-                        dark:hover:shadow-slate-500/20'
-                        value={''} onChange={handleSelectionChange}>
-                            <option value="" disabled>PROFILE</option>
-                            <option className="font-bold" value="signup">ACCOUNT</option>
-                            <option className="font-bold" value="logout">LOGOUT</option>
-                        </select>
-                </div>
-            )}
-            </div>
+                        dark:hover:shadow-slate-500/20"
+										value={''}
+										onChange={handleSelectionChange}
+									>
+										<option value="" disabled>
+											PROFILE
+										</option>
+										<option className="font-bold" value="updateAccount">
+											UPDATE ACCOUNT
+										</option>
+										<option className="font-bold" value="logout">
+											LOGOUT
+										</option>
+									</select>
+								</div>
+							)}
+						</div>
 						{/* <div className="mt-5">
 							<div>{LogoutButton()}</div>
 						</div> */}
@@ -241,7 +250,6 @@ function Nav() {
 							</div>
 						</div>
 					)}
-
 				</div>
 			</div>
 			{/* bottom space */}

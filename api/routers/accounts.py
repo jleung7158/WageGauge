@@ -1,3 +1,5 @@
+from typing import Union
+
 from fastapi import (
     Depends,
     HTTPException,
@@ -60,14 +62,14 @@ def list_accounts(repo: AccountRepository = Depends()):
     return repo.get_all()
 
 
-@router.post("/api/protected")
-async def create_protected(
-    account_data: dict = Depends(authenticator.get_current_account_data),
-):
-    if status.HTTP_200_OK:
-        return True
-    elif status.HTTP_401_UNAUTHORIZED:
-        return False
+# @router.post("/api/protected")
+# async def create_protected(
+#     account_data: dict = Depends(authenticator.get_current_account_data),
+# ):
+#     if status.HTTP_200_OK:
+#         return True
+#     elif status.HTTP_401_UNAUTHORIZED:
+#         return False
 
 
 @router.get("/token", response_model=AccountToken | None)
@@ -83,3 +85,10 @@ async def get_token(
         }
     if not account:
         raise HTTPException(status.HTTP_400_BAD_REQUEST)
+
+@router.put("/api/accounts/{account_id}", response_model=AccountOut)
+def update_account(
+    account_id: int, account: AccountIn, repo: AccountRepository = Depends()
+) -> AccountOut:
+    hashed_password = authenticator.hash_password(account.password)
+    return repo.update_account(account_id, hashed_password, account)

@@ -14,7 +14,6 @@ const LoginForm = ({ onClose }) => {
 		e.preventDefault();
 		login(username, password);
 		onClose();
-		console.log(login);
 		e.target.reset();
 		setSuccessAlert(true);
 		const alertTimeout = setTimeout(() => {

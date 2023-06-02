@@ -7,7 +7,7 @@ export default function About() {
     <>
       <div className="grid mb-8 shadow-sm md:mb-12 md:grid-cols-2">
         {/* Mo */}
-        <figure className="flex flex-col items-center justify-center p-8 text-center bg-white rounded-t-lg md:rounded-t-none md:rounded-tl-lg dark:bg-moredark">
+        <figure className="flex flex-col items-center justify-center p-8 text-center bg-white dark:bg-moredark">
           <div className="bg-white rounded-large shadow-lg dark:bg-darkblue">
             <div className="flex justify-center">
               <img
@@ -41,7 +41,7 @@ export default function About() {
           </div>
         </figure>
         {/* James */}
-        <figure className="flex flex-col items-center justify-center p-8 text-center bg-white rounded-t-lg md:rounded-t-none md:rounded-tl-lg dark:bg-moredark">
+        <figure className="flex flex-col items-center justify-center p-8 text-center bg-white dark:bg-moredark">
           <div className="max-w- bg-white rounded-large shadow-lg dark:bg-darkblue">
             <div className="flex justify-center">
               <img
@@ -75,7 +75,7 @@ export default function About() {
           </div>
         </figure>
         {/* Jonathan */}
-        <figure className="flex flex-col items-center justify-center p-8 text-center bg-white rounded-t-lg md:rounded-t-none md:rounded-tl-lg dark:bg-moredark">
+        <figure className="flex flex-col items-center justify-center p-8 text-center bg-white dark:bg-moredark">
           <div className="max-w- bg-white rounded-large shadow-lg dark:bg-darkblue">
             <div className="flex justify-center">
               <img
@@ -109,7 +109,7 @@ export default function About() {
           </div>
         </figure>
         {/* Andrew */}
-        <figure className="flex flex-col items-center justify-center p-8 text-center bg-white rounded-t-lg md:rounded-t-none md:rounded-tl-lg dark:bg-moredark">
+        <figure className="flex flex-col items-center justify-center p-8 text-center bg-white dark:bg-moredark">
           <div className="max-w- bg-white rounded-large shadow-lg dark:bg-darkblue">
             <div className="flex justify-center">
               <img

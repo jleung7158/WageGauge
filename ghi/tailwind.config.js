@@ -22,6 +22,7 @@ module.exports = {
         fontFamily: {
           'warownia': ["WarowniaUltExtObl", "sans-serif"],
           'thun': ['Thunder-ExtraBoldLC', 'sans-serif'],
+          'garet': ['Fontspring-DEMO-garet-heavy', 'sans-serif'],
         },
         borderRadius: {
           'large': '25px',

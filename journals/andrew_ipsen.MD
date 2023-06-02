@@ -38,3 +38,9 @@ Today I tackled the profile dropdown menu. Upon logging in, the "Login" button d
 
 Today I took on the challenge to connect the dashboard to the positions page more directly. There is a "Learn More" button connected to each company table in the Dashboard, and the plan was to direct the user to the positions page (which is a single page that contains all the data for every company) and open to the filtered data of the respective company.
 A achieved this by sending {company} via state on the Link button, which can be accessed with useLocation on the other side.
+
+06/01/23
+
+Today, I completed the database structures for the likes. I decided that each object that likes will exist on should have their own likes table: Topics Likes table, Comments Likes table, and Replies Likes table. Each table only consists of its id, account_id, and id of the object. The endpoints include a post, a get all and delete.
+
+I also designed out a simple about us page. It exists with four cards consisting of a profile picture, title and links to their respective gitlabs and linkedins.

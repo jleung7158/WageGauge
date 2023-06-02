@@ -6,12 +6,14 @@ import bookmarkIcon from "./img/bookmark.svg";
 import WorthBanner from "./components/WorthBanner";
 import LearnMoreButton from "./components/LearnMoreButton";
 import Footer from "./components/Footer";
+import Reviews from "./components/Reviews";
 import useToken from "@galvanize-inc/jwtdown-for-react";
 
 function CompanyList() {
     const [companies, setCompanies] = useState([]);
     const [positions, setPositions] = useState([]);
     const [employees, setEmployees] = useState([]);
+    const [topics, setTopics] = useState([]);
     const [search, setSearch] = useState("");
     const { token } = useToken();
     const [showBanner, setShowBanner] = useState(true);
@@ -45,6 +47,14 @@ function CompanyList() {
         setEmployees(EData);
         }
     };
+    const fetchTopics = async () => {
+        const url = "http://localhost:8000/topics";
+        const response = await fetch(url);
+        if (response.ok) {
+        const TData = await response.json();
+        setTopics(TData);
+        }
+    };
 
     //check for token
     const checkForToken = () => {
@@ -56,6 +66,7 @@ function CompanyList() {
     useEffect(() => {
         fetchCompanies();
         fetchPositions();
+        fetchTopics();
         checkForToken();
     }, [token]);
 
@@ -69,6 +80,10 @@ function CompanyList() {
         const filter = companies.filter((companies) => companies.name === search);
         setCompanies(filter);
     };
+    const handleReset = () => {
+        setSearch("");
+        fetchCompanies();
+    }
 
     return (
         <>
@@ -76,8 +91,11 @@ function CompanyList() {
             {/* Embrace your worth banner */}
             {showBanner && <WorthBanner ban={checkForToken} />}
             {/* main content */}
-            <div className="grid grid-rows-2 gap-6 mt-12 sm:grid-rows-2 md:grid-rows-3 lg:grid-rows-4 xl:grid-rows-2">
-            <form onSubmit={handleSearch} className="px-5">
+            <div className="grid grid-rows-2 gap-6 sm:grid-rows-2 md:grid-rows-3 lg:grid-rows-4 xl:grid-rows-3"
+            // style={{ backgroundImage: `url(${buildingsky})` }}
+            >
+            <div></div>
+            <form onSubmit={handleSearch} className="mx-10 px-5 grid-row-2/3">
                 <label
                 htmlFor="default-search"
                 className="
@@ -123,30 +141,68 @@ function CompanyList() {
                     onChange={(e) => setSearch(e.target.value)}
                     required
                 />
+                <div className="
+                            relative flex items-center
+                            ">
                 <button
                     type="submit"
-                    className="text-white absolute right-5 bottom-4 bg-wageblue hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-4 py-2 dark:bg-wageblue dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    className="
+                                text-white absolute right-5
+                                bottom-4 bg-wageblue hover:bg-blue-800
+                                focus:ring-4 focus:outline-none focus:ring-blue-300
+                                font-medium rounded-full text-sm px-4 py-2 pr-[55px]
+                                dark:bg-wageblue dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 >
                     Search
                 </button>
+
+                        <button
+                            type="button"
+                                dir='ltr' className="
+                                text-white absolute right-5
+                                bottom-4 bg-wageblue hover:bg-blue-800
+                                focus:ring-4 focus:outline-none focus:ring-blue-300
+                                font-medium rounded-full text-sm px-4 py-2
+                                dark:bg-wageblue dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            onClick={handleReset}
+                        >
+                            Reset
+                        </button>
+                </div>
                 </div>
             </form>
             </div>
-            <div className="py-5">
-            <div className="container flex flex-row flex-grow-0 px-5 overflow-visible">
+            <div className="py-5 w-50">
+            <div className="flex flex-row flex-grow-0 px-5">
                 {/* the right container */}
-                <div className="flex-col pt-6 px-0 mx-0 w-1/4 bg-slate-300 rounded-large shadow-lg flex flex-grow-0 items-center px-0 dark:bg-darkblue">
-                <div className="grid grid-cols-1 gap-1 mt-4 mb-6sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 rounded-full dark:bg-moredark">
-                    <button className="rounded-full py-3 px-5 text-xl font-bold text-gray-50 hover:text-darktext focus:bg-darkblue focus:hover:text-gray-200">
+                <div className="w-1/4">
+                <div className="
+                                    flex flex-col flex-grow pt-6 px-0 mx-0 bg-slate-300
+                                    rounded-large shadow-lg items-center px-0 dark:bg-darkblue">
+                <div className="
+                                    grid grid-cols-1 gap-1 mt-4 mb-6sm:grid-cols-2
+                                    md:grid-cols-3 lg:grid-cols-3
+                                    xl:grid-cols-3 rounded-full dark:bg-moredark">
+                    <button className="
+                                    rounded-full py-3 px-5 text-xl font-bold
+                                    text-gray-50 hover:text-slate-500 dark:hover:text-darktext
+                                    focus:bg-darkblue dark:focus:hover:text-gray-200">
                     News
                     </button>
-                    <button className="rounded-full py-3 px-5 text-xl font-bold text-gray-50 hover:text-darktext focus:bg-darkblue focus:hover:text-gray-200">
+                    <button className="
+                                    rounded-full py-3 px-5 text-xl font-bold
+                                    text-gray-50 hover:text-slate-500 dark:hover:text-darktext
+                                    focus:bg-darkblue dark:focus:hover:text-gray-200">
                     Events
                     </button>
-                    <button className="rounded-full py-3 px-5 text-xl font-bold text-gray-50 hover:text-darktext focus:bg-darkblue focus:hover:text-gray-200">
+                    <button className="
+                                    rounded-full py-3 px-5 text-xl font-bold
+                                    text-gray-50 hover:text-slate-500 dark:hover:text-darktext
+                                    focus:bg-darkblue dark:focus:hover:text-gray-200">
                     More
                     </button>
                 </div>
+                <div className="w-full max-h-[600px] overflow-y-auto">
                 {companies.map((company) => (
                     <table key={company.id} className="w-full">
                     <tbody className="font-bold text-3xl border-b-2 border-lightgrey dark:border-moredark">
@@ -181,39 +237,92 @@ function CompanyList() {
                     </table>
                 ))}
                 </div>
+                </div>
+                {/* topics section */}
+
+                <div className="flex flex-col flex-grow overflow-y-auto pt-6 px-0 mx-0 mt-5 bg-slate-300 rounded-large shadow-lg items-center px-0 dark:bg-darkblue">
+                <div className="
+                                    grid grid-cols-3 gap-1 mt-4 mb-6
+                                    rounded-full dark:bg-moredark dark:text-darktext font-bold justify-center">
+                    <div></div>
+                        <Link to='/ForumPage'>
+                            <button className="
+                                            rounded-full py-3 px-5 text-xl font-bold
+                                            text-gray-50 hover:text-darktext
+                                            focus:hover:text-gray-200">
+                            TOPICS
+                            </button>
+                        </Link>
+                    <div></div>
+                </div>
+
+                {topics.map((topic) => (
+                    <table key={topic.id} className="w-full">
+                    <tbody className="font-bold text-3xl border-b-2 border-lightgrey dark:border-moredark">
+                        <tr
+                        className="
+                                        mx-4 px-5 mt-10
+                                        text-md font-medium
+
+                                        text-gray-600
+                                        dark:text-white
+                                        h-20
+                                        "
+                        >
+                        <td
+                            className="
+                                            flex flex-col
+                                            px-5 pt-10 pb-10 bg-slate-200
+                                            flex
+                                            dark:bg-darkblue
+                                            "
+                        >
+
+                            <p className="justify-center text-sm text-center text-gray-500 dark:text-darktext opacity-80">
+                            {topic.text}
+                            </p>
+                        </td>
+                        </tr>
+                    </tbody>
+                    </table>
+                ))}
+                </div>
+                </div>
                 {/* the main container */}
                 <div
-                className="
-                                p-6 w-3/4 mx-4
+                className="max-w-[1200px]
+                                p-6 w-3/4 mx-[50px]
                                 bg-slate-300
                                 rounded-large shadow-lg
-                                flex items-center space-x-4
+                                flex items-center space-x-5
                                 px-0
 
                                 dark:bg-darkblue
                                 "
                 >
-                <div>
+                <div className="">
                     {/* the table buttons */}
-                    <div className="grid grid-cols-1 gap-6 mt-6 mb-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
-                    <button className="rounded-full py-3 px-5 text-xl font-bold text-gray-50 hover:text-darktext focus:bg-darkgray focus:hover:text-gray-300">
+                    <div className="grid grid-cols-1 gap-6 mt-6 mb-6  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
+                    <button className="rounded-full py-3 px-5 text-xl font-bold text-gray-50 hover:text-slate-500 dark:hover:text-darktext dark:focus:bg-darkgray dark:focus:hover:text-gray-300">
                         Overview
                     </button>
-                    <button className="rounded-full py-3 px-5 text-xl font-bold text-gray-50 hover:text-darktext focus:bg-darkgray focus:hover:text-gray-300">
+                    <button className="rounded-full py-3 px-5 text-xl font-bold text-gray-50 hover:text-slate-500 dark:hover:text-darktext dark:focus:bg-darkgray dark:focus:hover:text-gray-300">
                         Company List
                     </button>
-                    <button className="rounded-full py-3 px-5 text-xl font-bold text-gray-50 hover:text-darktext focus:bg-darkgray focus:hover:text-gray-300">
+                    <button className="rounded-full py-3 px-5 text-xl font-bold text-gray-50 hover:text-slate-500 dark:hover:text-darktext dark:focus:bg-darkgray dark:focus:hover:text-gray-300">
                         Salary Trends
                     </button>
-                    <button className="rounded-full py-3 px-5 text-xl font-bold text-gray-50 hover:text-darktext focus:bg-darkgray focus:hover:text-gray-300">
+                    <button className="rounded-full py-3 px-5 text-xl font-bold text-gray-50 hover:text-slate-500 dark:hover:text-darktext dark:focus:bg-darkgray dark:focus:hover:text-gray-300">
                         More News
                     </button>
                     </div>
+
                     {/* the main table */}
                     <h1
                     className="
                                 font-warownia
                                 font-bold
+                                text-slate-600
                                 py-6
                                 text-4xl
                                 text-center
@@ -224,35 +333,27 @@ function CompanyList() {
                     >
                     COMPANY LIST
                     </h1>
+                    <div className="max-h-[1700px] overflow-y-auto">
                     {/* mapping by company first */}
+
                     {companies.map((company) => (
-                    <div key={company.id}>
-                        <h2
-                        className="
-                                    mt-5
-                                    inline-block
-                                    bg-wageblue
-                                    rounded-t-lg
-                                    font-warownia
-                                    text-gray-50
-                                    font-bold
-                                    text-3xl
-                                    px-10
+                    <div key={company.id} className="flex flex-col">
+                            <div className="flex items-center justify-between px-20
 
-
-                                    dark:text-gray-50
-                                    dark:bg-darkblue
-
-                                    "
-                        >
-                        {company.name}
-                        </h2>
-
+                            ">
+                            <h2 className="my-5 rounded-t-lg text-gray-50 font-bold text-5xl px-10 dark:text-gray-50 ">
+                                {company.name}
+                            </h2>
+                                <div>
+                                    <LearnMoreButton companyId={company.id} />
+                                </div>
+                            </div>
                         <table
                         className="
                                     table-fixed w-full bg-gray-100
                                     rounded-md
                                     border-b-2
+                                    bg-slate-300
 
                                     dark:bg-darkblue
                                     dark:border-moredark
@@ -261,9 +362,10 @@ function CompanyList() {
                         <thead>
                             <tr
                             className="
-                                    text-xl font-bold font-warownia
+                                    text-3xl font-bold font-warownia border-b-2 border-gray-50
 
-                                    dark:text-darktext"
+                                    dark:text-darktext
+                                    dark:border-moredark"
                             >
                             <th>Position</th>
                             <th>Description</th>
@@ -271,18 +373,19 @@ function CompanyList() {
                         </thead>
                         <tbody>
                             {/* mapping positions by their company id */}
-                            {getPositionsByCompanyId(company.id).map(
+                            {getPositionsByCompanyId(company.id).slice(0,3).map(
                             (position, index) => (
                                 <tr
                                 key={position.id}
-                                className="
-                                            w-full ml-5 font-warownia font-bold text-2xl
+                                className=" hover:dark:opacity-50
+                                            ml-5 font-warownia font-bold text-xl
                                             "
                                 >
                                 <td
                                     className="
-                                            px-10 py-10 bg-gray-50
+                                            p-10 bg-gray-50
                                             rounded-md
+                                            bg-slate-300
 
 
                                             dark:bg-darkblue
@@ -302,6 +405,7 @@ function CompanyList() {
                                         px-10 py-10 bg-gray-50
                                         rounded-md
                                         text-center
+                                        bg-slate-300
 
 
                                         dark:bg-darkblue
@@ -310,14 +414,6 @@ function CompanyList() {
                                 >
                                     Salary TBD
                                 </td>
-                                {/* if the index of the position is the last one in the list, include the learn more button  */}
-                                {index ===
-                                    getPositionsByCompanyId(company.id).length -
-                                    1 && (
-                                    <td className="px-20 py-5">
-                                    <LearnMoreButton companyId={company.id} />
-                                    </td>
-                                )}
                                 </tr>
                             )
                             )}
@@ -327,8 +423,12 @@ function CompanyList() {
                     ))}
                 </div>
                 </div>
+                </div>
             </div>
             </div>
+        </div>
+        <div className="flex items-center justify-center w-full bg-darkblue min-h-[500px]">
+            <Reviews />
         </div>
         <Footer />
         </>

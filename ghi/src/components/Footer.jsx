@@ -1,12 +1,15 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import logoIcon from './logo.png'
+import buildingsky from './buildingsky.jpg'
 
 function Footer() {
 
     return (
         <div>
-        <footer className="flex bg-white dark:bg-gray-900">
+        <footer className="flex bg-white dark:bg-gray-900"
+        // style={{ backgroundImage: `url(${buildingsky})` }}
+        >
         <div className="container px-6 py-12 mx-auto">
             <div className="text-center">
                 <h2 className="text-2xl font-semibold text-gray-800 dark:text-white">We'll be your aid to get you paid!</h2>

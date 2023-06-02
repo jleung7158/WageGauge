@@ -238,9 +238,6 @@ function Nav() {
 								</div>
 							)}
 						</div>
-						{/* <div className="mt-5">
-							<div>{LogoutButton()}</div>
-						</div> */}
 					</div>
 					{showLoginForm && (
 						<div className="fixed inset-0 flex items-center justify-center z-50">
@@ -252,8 +249,6 @@ function Nav() {
 					)}
 				</div>
 			</div>
-			{/* bottom space */}
-			{/* <div className=' pb-5' ></div> */}
 		</>
 	);
 }

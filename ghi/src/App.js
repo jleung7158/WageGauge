@@ -20,7 +20,7 @@ function App() {
 			overflow-auto
 			h-screen
 			bg-gradient-to-b
-			from-weedgreen to-wageblue
+			from-[#164f87] to-[#5bb3c7]
 			dark:bg-gradient-to-b
 			dark:from-[#0a192f]
 			dark:to-[#0a192f] "

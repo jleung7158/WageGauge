@@ -8,14 +8,18 @@ class Error(BaseModel):
 
 
 class TopicIn(BaseModel):
-    text: str
+    title: str
+    body: str
     account_id: int
+    company_id: int
 
 
 class TopicOut(BaseModel):
     id: int
-    text: str
-    account_id: str
+    title: str
+    body: str
+    account_id: int
+    company_id: int
 
 
 class TopicRepository:
@@ -26,14 +30,16 @@ class TopicRepository:
                     result = db.execute(
                         """
                         INSERT INTO topics
-                            (text, account_id)
+                            (title, body, account_id, company_id)
                         VALUES
-                        (%s, %s)
+                        (%s, %s, %s, %s)
                         RETURNING id;
                         """,
                         [
-                            topic.text,
+                            topic.title,
+                            topic.body,
                             topic.account_id,
+                            topic.company_id,
                         ],
                     )
                     id = result.fetchone()[0]
@@ -89,12 +95,15 @@ class TopicRepository:
                     db.execute(
                         """
                         UPDATE topics
-                        SET text = %s,
-                        account_id = %s
+                        SET title = %s,
+                        body = %s,
+                        account_id = %s,
+                        company_id = %s
                         WHERE id = %s;
                         """,
                         [
-                            topic.text,
+                            topic.title,
+                            topic.body,
                             topic.account_id,
                             topic_id,
                         ],
@@ -127,6 +136,8 @@ class TopicRepository:
     def record_to_topic_out(self, record):
         return TopicOut(
             id=record[0],
-            text=record[1],
-            account_id=record[2],
+            title=record[1],
+            body=record[2],
+            account_id=record[3],
+            company_id=record[4],
         )

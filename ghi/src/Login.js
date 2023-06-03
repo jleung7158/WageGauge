@@ -1,12 +1,10 @@
 import React from 'react';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import useToken from '@galvanize-inc/jwtdown-for-react';
 
 const LoginForm = ({ onClose }) => {
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
-	const navigate = useNavigate();
 	const [successAlert, setSuccessAlert] = useState(false);
 	const { login } = useToken();
 
@@ -19,12 +17,8 @@ const LoginForm = ({ onClose }) => {
 		const alertTimeout = setTimeout(() => {
 			setSuccessAlert(false);
 		}, 3000);
-		const navigateTime = setTimeout(() => {
-			navigate('/companies');
-		}, 1000);
 		return () => {
 			clearTimeout(alertTimeout);
-			clearTimeout(navigateTime);
 		};
 	};
 

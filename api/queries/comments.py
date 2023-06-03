@@ -57,7 +57,7 @@ class CommentRepository:
                         c.text AS comments,
                         c.account_id AS account,
                         c.topic_id AS topic_id,
-                        t.text AS topic
+                        t.title AS topic
                         FROM comments AS c
                         LEFT JOIN topics t
                         ON (t.id = c.topic_id)
@@ -107,7 +107,7 @@ class CommentRepository:
                         c.text AS comments,
                         c.account_id AS account,
                         c.topic_id AS topic_id,
-                        t.text AS topic
+                        t.title AS topic
                         FROM comments AS c
                         LEFT JOIN topics t
                         ON (t.id = c.topic_id)

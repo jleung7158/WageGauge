@@ -99,7 +99,8 @@ function ForumPage() {
               hover:bg-slate-200
               "
               >
-                {topic.text}
+                <div className="font-bold text-lg">{topic.title}</div>
+                <div className="ml-4">{topic.body}</div>
               </button>
             );
           })}

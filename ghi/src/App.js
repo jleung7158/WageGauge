@@ -12,6 +12,7 @@ import ForumPage from './ForumPage';
 import Topic from './Topic';
 import Test from './test';
 import UpdateAccountInfo from './UpdateAccount';
+import AccountToCompany from './AccountToCompany.js';
 
 function App() {
 	return (
@@ -52,6 +53,9 @@ function App() {
 								</Route>
 								<Route path="updateAccount">
 									<Route path="" element={<UpdateAccountInfo />} />
+								</Route>
+								<Route path="AccountToCompany">
+									<Route path="" element={<AccountToCompany />} />
 								</Route>
 							</Routes>
 						</div>

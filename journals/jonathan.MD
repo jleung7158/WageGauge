@@ -11,6 +11,18 @@ Today I will finish the end points for employee and start to work on joining all
 Debugged end points and data. Had an indent error that cost us 6 hours. Marty is still the goat.
 
 05/22/23
+I am not a fan of docker.
 Joined our first table to the employee table. Position and employee are now joined tables. James walked me through the process and today I am working solo to join the company table to employee as well.
 
 05/23/23
+I am not a fan of docker.
+
+06/01/23
+I am not a fan of docker.
+Finally finshed up AccountToCompany form last night. Nested list are difficult to manage. I will add a new var to the employee table
+
+06/02/23
+I am not a fan of docker.
+I made some more changes to AccountToCompany. There were sublty bugs that I spent the entire day fixing. James and Mo helped solve the problem
+
+06/03/23

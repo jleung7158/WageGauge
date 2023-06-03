@@ -24,13 +24,13 @@ def get_all(repo: EmployeeRepository = Depends()):
 
 
 @router.put(
-    "/employees/{employee_id}", response_model=Union[EmployeeOut, Error]
+    "/employees/{employee_id}", response_model=Union[EmployeeOut, bool]
 )
 def update_employee(
     employee_id: int,
     employee: EmployeeIn,
     repo: EmployeeRepository = Depends(),
-) -> Union[EmployeeOut, Error]:
+) -> Union[EmployeeOut, bool]:
     return repo.update(employee_id, employee)
 
 

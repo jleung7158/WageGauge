@@ -6,6 +6,7 @@ import LoginForm from './Login';
 import { useState, useEffect } from 'react';
 import useToken from '@galvanize-inc/jwtdown-for-react';
 import UserDropDown from './components/UserDropDown';
+import AccountToCompany from './AccountToCompany.js';
 
 function Nav() {
 	const { token, logout } = useToken();
@@ -239,6 +240,44 @@ function Nav() {
 							)}
 						</div>
 					</div>
+                        <div className="mt-5">
+              <NavLink
+                to="Update Account"
+                className="
+                    text-gray-50
+                    hover:bg-gray-100
+                    hover:text-wageblue block
+                    block rounded-full px-5 py-3
+                    bg-wageblue
+                    text-base font-bold
+
+                    dark:text-wageblue
+                    dark:bg-darkblue
+                    hover:dark:bg-darkgray"
+              >
+                Update Account
+
+              </NavLink>
+            </div>
+                      <div className="mt-5">
+              <NavLink
+                to="AccountToCompany"
+                className="
+                    text-gray-50
+                    hover:bg-gray-100
+                    hover:text-wageblue block
+                    block rounded-full px-5 py-3
+                    bg-wageblue
+                    text-base font-bold
+
+                    dark:text-wageblue
+                    dark:bg-darkblue
+                    hover:dark:bg-darkgray"
+              >
+                Add Position to company
+
+              </NavLink>
+            </div>
 					{showLoginForm && (
 						<div className="fixed inset-0 flex items-center justify-center z-50">
 							<div className="fixed inset-0 bg-black opacity-50"></div>

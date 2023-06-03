@@ -70,7 +70,7 @@ const CompanyDetail = () => {
           <h1
             className="
           p-2 my-4 w-max flex
-          text-xl font-bold text-gray-700
+          text-xl font-bold text-black
           rounded text-center shadow-lg
           bg-gradient-to-r items-center
           dark:text-darktext

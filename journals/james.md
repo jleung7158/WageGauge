@@ -85,3 +85,10 @@ Today I helped Jonathan with adding features to Employees so that we can add it 
 I am adding the math and data to the figures tonight, as well as more styling.
 
 A bunch of little aha! moments refactoring the math code to be cleaner using dictionarys and arrays as opposed to repetitive let statements.
+
+6/2/23
+Today I finished setting up a form to post a new topic in the forum page. I had to adjust the migration files and queries but that was simple enough. I also added a search function to the forum page.
+
+I plan on adding a company filter function to filter topics by company as well. Then add more styling, and maybe add a user name.
+
+As for aha! moments, it was nice to finally program the automated refetch via redux for my forum page.

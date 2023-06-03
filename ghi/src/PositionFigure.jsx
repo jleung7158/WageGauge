@@ -201,7 +201,7 @@ function PositionFigure({ position }) {
         m-2 p-2 w-max h-max
         bg-gradient-to-r bg-slate-500 rounded
         text-2xl font-bold 
-        text-gray-700 dark:text-darktext
+        text-black dark:text-darktext
         "
         >
           {position.company}

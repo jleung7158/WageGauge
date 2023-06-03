@@ -3,12 +3,18 @@ import { useNavigate } from "react-router-dom";
 import Dropdown from "./components/Dropdown";
 import { useGetCompaniesQuery, useGetTopicsQuery } from "./services/api";
 import commentdot from "./img/commentdot.svg";
+import TopicForm from "./components/TopicForm";
+import { useSelector, useDispatch } from "react-redux";
+import { toggleIsOpen } from "./slices/topicFormSlice";
 
 function ForumPage() {
   const { data: cData } = useGetCompaniesQuery();
   const { data: tData } = useGetTopicsQuery();
+  const dispatch = useDispatch();
+  const toggled = useSelector((state) => state.topicFormToggler.isOpen);
 
   const [text, setText] = useState("");
+
   const handleTextChange = (event) => {
     const value = event.target.value.toLowerCase();
     setText(value);
@@ -28,8 +34,12 @@ function ForumPage() {
   };
   const filteredTopics = getFilteredTopics(text, tData);
 
+  const handleNewClick = () => {
+    dispatch(toggleIsOpen());
+  };
+
   const navigate = useNavigate();
-  const handleClick = (id) => {
+  const handleTopicClick = (id) => {
     navigate(`/ForumPage/${id}`);
   };
 
@@ -80,16 +90,30 @@ function ForumPage() {
               placeholder="Search here"
               className="
               placeholder:text-slate-700 
-              p-2 h-max justify-center
+              p-2 m-2 h-max justify-center
               outline-none rounded
               "
             />
+            <button
+              className="m-2 p-2 font-semibold bg-wageblue rounded"
+              onClick={() => handleNewClick()}
+            >
+              {toggled ? "Nevermind!" : "New Topic"}
+            </button>
           </div>
+          <div>
+            {toggled ? (
+              <div>
+                <TopicForm />
+              </div>
+            ) : null}
+          </div>
+
           {filteredTopics?.map((topic) => {
             return (
               <button
                 type="button"
-                onClick={() => handleClick(topic.id)}
+                onClick={() => handleTopicClick(topic.id)}
                 key={topic.id}
                 className="
               ml-16 my-2 p-2

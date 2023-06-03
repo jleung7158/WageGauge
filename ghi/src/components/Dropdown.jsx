@@ -43,7 +43,7 @@ const Dropdown = ({ options }) => {
       w-max p-2 my-4
       flex items-center
       rounded shadow-lg
-      text-xl font-bold text-gray-700
+      text-xl font-bold text-black
       bg-gradient-to-r slate-500
       dark:text-darktext
       "

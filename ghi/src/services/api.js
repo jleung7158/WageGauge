@@ -3,6 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const api = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:8000" }),
+  tagTypes: ["TopicsList"],
   endpoints: (builder) => ({
     getPositions: builder.query({
       query: () => `/positions/`,
@@ -24,9 +25,18 @@ export const api = createApi({
     }),
     getTopics: builder.query({
       query: () => `/topics/`,
+      providesTags: ["TopicsList"],
     }),
     getTopic: builder.query({
       query: (topic_id) => `/topics/${topic_id}`,
+    }),
+    createTopic: builder.mutation({
+      query: (data) => ({
+        url: `/topics/`,
+        body: data,
+        method: "post",
+      }),
+      invalidatesTags: ["TopicsList"],
     }),
     getComments: builder.query({
       query: () => `/comments/`,
@@ -46,6 +56,7 @@ export const {
   useGetEmployeeQuery,
   useGetTopicsQuery,
   useGetTopicQuery,
+  useCreateTopicMutation,
   useGetCommentsQuery,
   useGetCommentQuery,
 } = api;

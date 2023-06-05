@@ -21,3 +21,5 @@
 6/1- Finshed up the backed queries for updating account info. Turns out my error was attributed to an extra comma in my SQL query. I created a front end page for the user to update their account. The page first pulls data of the current account info and populates the form. The user can then edit the fields. After editing the fields, the user can type in their current or their new password. They must then confirm that password in order to submit.
 
 6/2- I was having a different error where a user wasnt able to sign in after updating their account. It turns out, when updating the account, I have to re-hash the password being updated. This is fixed now. I made a new feature today, It was the ability for users to post a comment to a topic. The most challenging portion was getting the page to refresh the comment list upon submission so the new comment is there.
+
+6/5- Created a unit test today, not sure if its correct but I asked the team to take a look. We are going to try deployment today.

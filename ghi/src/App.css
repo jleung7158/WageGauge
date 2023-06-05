@@ -13,9 +13,12 @@
 	color: white;
 }
 
-/* .dark-mode-switch.dark .toggle-icon {
-	fill: #ced8f8,
+.dash-buttons {
+	border-radius: 9999px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	padding-left: 5px;
+	padding-right: 5px;
+	font-size: 1.25rem;
+	font-weight: 700;
 }
-.dark-mode-switch.light .toggle-icon {
-	fill: #1999ff,
-} */

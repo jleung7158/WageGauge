@@ -9,11 +9,13 @@ class Error(BaseModel):
 
 class CompanyIn(BaseModel):
     name: str
+    img: str
 
 
 class CompanyOut(BaseModel):
     id: int
     name: str
+    img: str
 
 
 class CompanyRepository:
@@ -24,12 +26,12 @@ class CompanyRepository:
                     result = db.execute(
                         """
                         INSERT INTO company
-                            (name)
+                            (name, img)
                         VALUES
-                            (%s)
+                            (%s, %s)
                         RETURNING id;
                         """,
-                        [company.name],
+                        [company.name, company.img],
                     )
                     id = result.fetchone()[0]
                     return self.company_in_to_out(id, company)
@@ -84,10 +86,10 @@ class CompanyRepository:
                     db.execute(
                         """
                         UPDATE company
-                        SET name = %s
+                        SET name = %s, img = %s
                         WHERE id = %s
                         """,
-                        [company.name, company_id],
+                        [company.name, company.img, company_id],
                     )
                     return self.company_in_to_out(company_id, company)
         except Exception as e:
@@ -105,6 +107,7 @@ class CompanyRepository:
                         """,
                         [company_id],
                     )
+                    return True
         except Exception as e:
             print(e)
             return {"message": "delete failed cuh"}
@@ -114,7 +117,4 @@ class CompanyRepository:
         return CompanyOut(id=id, **old_data)
 
     def record_to_company_out(self, record):
-        return CompanyOut(
-            id=record[0],
-            name=record[1],
-        )
+        return CompanyOut(id=record[0], name=record[1], img=record[2])

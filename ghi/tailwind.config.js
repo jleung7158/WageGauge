@@ -26,7 +26,25 @@ module.exports = {
         },
         borderRadius: {
           'large': '25px',
-        }
+        },
+        scale: {
+          '101': '1.01',
+        },
+        keyframes: {
+          slideUp: {
+            '0%': {
+              opacity: '0',
+              transform: 'translateY(20px)',
+            },
+            '100%': {
+              opacity: '1',
+              transform: 'translateY(0)',
+            },
+          },
+        },
+        animation: {
+          'slide-up': 'slideUp 1s',
+        },
     },
   },
   plugins: [],

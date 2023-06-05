@@ -8,6 +8,7 @@ import LearnMoreButton from "./components/LearnMoreButton";
 import Footer from "./components/Footer";
 import Reviews from "./components/Reviews";
 import useToken from "@galvanize-inc/jwtdown-for-react";
+import { companyImages } from './img/companyimgs.js';
 
 function CompanyList() {
     const [companies, setCompanies] = useState([]);
@@ -47,6 +48,7 @@ function CompanyList() {
         setEmployees(EData);
         }
     };
+    // get the topics data
     const fetchTopics = async () => {
         const url = "http://localhost:8000/topics";
         const response = await fetch(url);
@@ -70,16 +72,18 @@ function CompanyList() {
         checkForToken();
     }, [token]);
 
+    // filter positions by company.id
     const getPositionsByCompanyId = (companyId) => {
         return positions.filter((position) => position.company_id === companyId);
     };
 
-    // search bar
+    // searchbar
     const handleSearch = (e) => {
         e.preventDefault();
         const filter = companies.filter((companies) => companies.name === search);
         setCompanies(filter);
     };
+    // reset the searchbar
     const handleReset = () => {
         setSearch("");
         fetchCompanies();
@@ -91,8 +95,7 @@ function CompanyList() {
             {/* Embrace your worth banner */}
             {showBanner && <WorthBanner ban={checkForToken} />}
             {/* main content */}
-            <div className="grid grid-rows-2 gap-6 sm:grid-rows-2 md:grid-rows-3 lg:grid-rows-4 xl:grid-rows-3"
-            // style={{ backgroundImage: `url(${buildingsky})` }}
+            <div className="grid grid-rows-2 gap-6 sm:grid-rows-2 md:grid-rows-3 lg:grid-rows-3 xl:grid-rows-3"
             >
             <div></div>
             <form onSubmit={handleSearch} className="mx-10 px-5 grid-row-2/3">
@@ -300,9 +303,9 @@ function CompanyList() {
                                 dark:bg-darkblue
                                 "
                 >
-                <div className="">
+                <div className="w-full">
                     {/* the table buttons */}
-                    <div className="grid grid-cols-1 gap-6 mt-6 mb-6  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
+                    <div className="grid grid-cols-1 gap-6 mt-6 mb-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
                     <button className="rounded-full py-3 px-5 text-xl font-bold text-gray-50 hover:text-slate-500 dark:hover:text-darktext dark:focus:bg-darkgray dark:focus:hover:text-gray-300">
                         Overview
                     </button>
@@ -313,7 +316,7 @@ function CompanyList() {
                         Salary Trends
                     </button>
                     <button className="rounded-full py-3 px-5 text-xl font-bold text-gray-50 hover:text-slate-500 dark:hover:text-darktext dark:focus:bg-darkgray dark:focus:hover:text-gray-300">
-                        More News
+                        More
                     </button>
                     </div>
 
@@ -329,99 +332,66 @@ function CompanyList() {
                                 dark:text-gray-50
                                 border-b-2
                                 border-lightgrey
-                                dark:border-moredark"
+                                dark:border-moredark
+                                "
                     >
                     COMPANY LIST
                     </h1>
-                    <div className="max-h-[1700px] overflow-y-auto">
-                    {/* mapping by company first */}
-
-                    {companies.map((company) => (
-                    <div key={company.id} className="flex flex-col">
-                            <div className="flex items-center justify-between px-20
-
-                            ">
-                            <h2 className="my-5 rounded-t-lg text-gray-50 font-bold text-5xl px-10 dark:text-gray-50 ">
-                                {company.name}
-                            </h2>
-                                <div>
-                                    <LearnMoreButton companyId={company.id} />
-                                </div>
-                            </div>
-                        <table
-                        className="
-                                    table-fixed w-full bg-gray-100
-                                    rounded-md
-                                    border-b-2
-                                    bg-slate-300
-
-                                    dark:bg-darkblue
-                                    dark:border-moredark
-                                    "
-                        >
-                        <thead>
-                            <tr
-                            className="
-                                    text-3xl font-bold font-warownia border-b-2 border-gray-50
-
-                                    dark:text-darktext
-                                    dark:border-moredark"
-                            >
-                            <th>Position</th>
-                            <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {/* mapping positions by their company id */}
-                            {getPositionsByCompanyId(company.id).slice(0,3).map(
-                            (position, index) => (
-                                <tr
-                                key={position.id}
-                                className=" hover:dark:opacity-50
-                                            ml-5 font-warownia font-bold text-xl
-                                            "
-                                >
-                                <td
-                                    className="
-                                            p-10 bg-gray-50
-                                            rounded-md
-                                            bg-slate-300
-
-
-                                            dark:bg-darkblue
-                                            dark:text-darktext
-                                            "
-                                >
-                                    <div className="flex flex-col items-center">
-                                    <div>{position.name}</div>
-                                    <div className="text-s text-gray-50 dark:text-gray-50">
-                                        {position.description}
-                                    </div>
-                                    </div>
-                                </td>
-                                {/* <td className="px-10 py-10 bg-gray-50 rounded-md border border-white text-center">{position.name}</td>*/}
-                                <td
-                                    className="
-                                        px-10 py-10 bg-gray-50
-                                        rounded-md
-                                        text-center
-                                        bg-slate-300
-
-
-                                        dark:bg-darkblue
-                                        dark:text-darktext
-                                        "
-                                >
-                                    Salary TBD
-                                </td>
-                                </tr>
-                            )
-                            )}
-                        </tbody>
-                        </table>
+        <div className="grid mb-8 shadow-sm sm:grid-cols-1 md:mb-12 md:grid-cols-2 lg:grid-cols-3">
+        {/* Table */}
+        {companies.map((company) => {
+        const companyPositions = getPositionsByCompanyId(company.id);
+        return (
+            <figure key={company.id} className="flex items-center justify-center p-8 text-center bg-white dark:bg-darkblue"
+                >
+                <div className="flex items-center rounded-large drop-shadow-lg dark:bg-moredark min-h-[350px] lg:w-[320px] transition ease-in delay-50 hover:scale-101 hover:translate-x-1">
+                <div className="">
+                    <div className="flex justify-center">
+                    {company.img !== "" ? (
+                        <img
+                        className="rounded-sm w-[150px] h-50 p-5"
+                        src={company.img}
+                        alt=""
+                        />
+                    ) : (
+                        <img
+                        className="rounded-sm w-[150px] h-50 p-5"
+                        src={companyImages[company.name]}
+                        alt=""
+                        />
+                    )}
                     </div>
-                    ))}
+                    <div className="p-5">
+                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                        {company.name}
+                    </h5>
+                    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400"></p>
+                    <div className="">
+                        <LearnMoreButton companyId={company.id} />
+                    </div>
+                    </div>
                 </div>
+                <div className="mx-8 lg:max-w-[120px]">
+                    <h2 className="text-2xl text-gray-700 font-bold mt-5 dark:text-gray-50">POSITIONS</h2>
+                    {companyPositions.length !== 0 ? (
+                    companyPositions.slice(0, 3).map((position) => (
+                        <div key={position.id} className="dark:border-moredark hover:text-darkgray">
+                        <div className="text-lg text-gray-700 dark:text-gray-400 font-bold mt-5">{position.name}</div>
+                        <div className="text-md text-gray-700 dark:text-gray-400 mb-5">{position.description}</div>
+                        </div>
+                    ))
+                    ) : (
+                    <div className="dark:border-moredark hover:text-darkgray">
+                        <h3 className="text-xl text-gray-700 font-bold dark:text-gray-400 mb-5">See nothing?</h3>
+                        <h3 className="text-md text-gray-700 dark:text-gray-400 mb-5">That means we couldn't find any position data.</h3>
+                        <h3 className="text-md text-gray-700 dark:text-gray-400 mb-5">But fret not! A new role can open at any moment.</h3>
+                    </div>
+                    )}
+                </div>
+                </div>
+            </figure>
+            );
+        })}
                 </div>
                 </div>
             </div>
@@ -429,6 +399,8 @@ function CompanyList() {
         </div>
         <div className="flex items-center justify-center w-full bg-darkblue min-h-[500px]">
             <Reviews />
+        </div>
+
         </div>
         <Footer />
         </>

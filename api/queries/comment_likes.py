@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import List, Optional, Union
+from typing import List, Union
 from queries.pool import pool
 from fastapi import HTTPException
 
@@ -36,7 +36,7 @@ class CommentLikeRepo:
                     if result.fetchone() is None:
                         raise HTTPException(
                             status_code=400,
-                            detail="account_id exists not in this earthly realm",
+                            detail="account_id does not exist"
                         )
                     result = db.execute(
                         """

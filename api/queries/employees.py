@@ -8,10 +8,6 @@ class Error(BaseModel):
     message: str
 
 
-class Error(BaseModel):
-    message: str
-
-
 class EmployeeIn(BaseModel):
     salary: int
     years_exp: str
@@ -49,7 +45,7 @@ class EmployeeRepository:
                     [employee.company_id],
                 )
                 pids = [row[0] for row in result]
-                if not employee.position_id in pids:
+                if employee.position_id not in pids:
                     raise HTTPException(status_code=400)
                 result = db.execute(
                     """
@@ -66,7 +62,14 @@ class EmployeeRepository:
                 result = db.execute(
                     """
                     INSERT INTO employees
-                        (salary, years_exp, location, account_id, company_id, position_id)
+                        (
+                        salary,
+                        years_exp,
+                        location,
+                        account_id,
+                        company_id,
+                        position_id
+                        )
                     VALUES
                         (%s, %s, %s, %s, %s, %s)
                     RETURNING id;

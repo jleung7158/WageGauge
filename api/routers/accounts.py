@@ -1,5 +1,3 @@
-from typing import Union
-
 from fastapi import (
     Depends,
     HTTPException,
@@ -57,6 +55,7 @@ async def create_account(
     token = await authenticator.login(response, request, form, repo)
     return AccountToken(account=account, **token.dict())
 
+
 @router.get("/api/accounts", response_model=list[AccountOut])
 def list_accounts(repo: AccountRepository = Depends()):
     return repo.get_all()
@@ -75,7 +74,7 @@ def list_accounts(repo: AccountRepository = Depends()):
 @router.get("/token", response_model=AccountToken | None)
 async def get_token(
     request: Request,
-    account: dict= Depends(authenticator.try_get_current_account_data)
+    account: dict = Depends(authenticator.try_get_current_account_data),
 ) -> AccountToken | None:
     if account and authenticator.cookie_name in request.cookies:
         return {
@@ -85,6 +84,7 @@ async def get_token(
         }
     if not account:
         raise HTTPException(status.HTTP_400_BAD_REQUEST)
+
 
 @router.put("/api/accounts/{account_id}", response_model=AccountOut)
 def update_account(

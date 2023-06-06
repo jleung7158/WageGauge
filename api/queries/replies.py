@@ -1,23 +1,27 @@
 from pydantic import BaseModel
-from typing import List, Optional, Union
+from typing import List, Union
 from queries.pool import pool
 from fastapi import HTTPException
+
 
 class Error(BaseModel):
     message: str
 
+
 class ReplyIn(BaseModel):
-    comment_id : int
-    account_id : int
-    topic_id : int
-    text : str
+    comment_id: int
+    account_id: int
+    topic_id: int
+    text: str
+
 
 class ReplyOut(BaseModel):
     id: int
-    comment_id : int
-    account_id : int
-    topic_id : int
-    text : str
+    comment_id: int
+    account_id: int
+    topic_id: int
+    text: str
+
 
 class ReplyUpdate(BaseModel):
     text: str
@@ -38,7 +42,9 @@ class ReplyRepo:
                         [reply.comment_id],
                     )
                     if result.fetchone() is None:
-                        raise HTTPException(status_code=400, detail="comment_id does not exist")
+                        raise HTTPException(
+                            status_code=400, detail="comment_id does not exist"
+                        )
                     result = db.execute(
                         """
                         SELECT
@@ -49,7 +55,9 @@ class ReplyRepo:
                         [reply.account_id],
                     )
                     if result.fetchone() is None:
-                        raise HTTPException(status_code=400, detail="account_id does not exist")
+                        raise HTTPException(
+                            status_code=400, detail="account_id does not exist"
+                        )
                     result = db.execute(
                         """
                         SELECT
@@ -60,7 +68,9 @@ class ReplyRepo:
                         [reply.topic_id],
                     )
                     if result.fetchone() is None:
-                        raise HTTPException(status_code=400, detail="topic_id does not exist")
+                        raise HTTPException(
+                            status_code=400, detail="topic_id does not exist"
+                        )
                     result = db.execute(
                         """
                         INSERT INTO replies
@@ -69,14 +79,20 @@ class ReplyRepo:
                             (%s, %s, %s, %s)
                         RETURNING id;
                         """,
-                        [reply.comment_id, reply.account_id, reply.topic_id, reply.text],
+                        [
+                            reply.comment_id,
+                            reply.account_id,
+                            reply.topic_id,
+                            reply.text,
+                        ],
                     )
                     id = result.fetchone()[0]
                     return ReplyOut(id=id, **reply.dict())
         except Exception as e:
             print(e)
-            raise HTTPException(status_code=500, detail="Could not create reply")
-
+            raise HTTPException(
+                status_code=500, detail="Could not create reply"
+            )
 
     def get_all(self) -> Union[List[ReplyOut], Error]:
         try:
@@ -106,8 +122,9 @@ class ReplyRepo:
                     ]
         except Exception as e:
             print(e)
-            raise HTTPException(status_code=500, detail="Could not get replies")
-
+            raise HTTPException(
+                status_code=500, detail="Could not get replies"
+            )
 
     def update(self, id: int, update: ReplyUpdate) -> bool:
         with pool.connection() as conn:
@@ -120,13 +137,14 @@ class ReplyRepo:
                     """,
                     [update.text, id],
                 )
-                if db.rowcount==0:
-                    raise HTTPException(status_code=404, detail= "There is no reply to update")
+                if db.rowcount == 0:
+                    raise HTTPException(
+                        status_code=404, detail="There is no reply to update"
+                    )
                 else:
                     return True
 
-
-    def delete(self, id:int)->bool:
+    def delete(self, id: int) -> bool:
         with pool.connection() as conn:
             with conn.cursor() as db:
                 db.execute(
@@ -136,7 +154,9 @@ class ReplyRepo:
                     """,
                     [id],
                 )
-                if db.rowcount==0:
-                    raise HTTPException(status_code=500, detail= "There is no reply to delete")
+                if db.rowcount == 0:
+                    raise HTTPException(
+                        status_code=500, detail="There is no reply to delete"
+                    )
                 else:
                     return True

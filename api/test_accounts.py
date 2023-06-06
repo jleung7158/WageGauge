@@ -4,7 +4,9 @@ from queries.accounts import AccountRepository
 from pydantic import BaseModel
 from authenticator import authenticator
 
+
 client = TestClient(app)
+
 
 class AccountOut(BaseModel):
     id: int
@@ -12,18 +14,18 @@ class AccountOut(BaseModel):
     last_name: str
     email: str
 
+
 class EmptyAccountRepo:
     def get_all(self, id=None):
         return []
 
+
 def fake_current_account_data():
     account = AccountOut(
-        id=1,
-        first_name="Mo",
-        last_name="Rahman",
-        email="mo@mo.com"
+        id=1, first_name="Mo", last_name="Rahman", email="mo@mo.com"
     )
     return account.__dict__
+
 
 def test_list_accounts():
     app.dependency_overrides[AccountRepository] = EmptyAccountRepo

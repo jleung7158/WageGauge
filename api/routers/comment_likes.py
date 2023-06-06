@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, Response
+from fastapi import APIRouter, Depends
 from typing import Union
 from queries.comment_likes import (
     Error,

@@ -1,5 +1,5 @@
-from fastapi import APIRouter, Depends, Response
-from typing import Union, Optional
+from fastapi import APIRouter, Depends
+from typing import Union
 from queries.topic_likes import Error, TopicLikeIn, TopicLikeOut, TopicLikeRepo
 
 router = APIRouter()

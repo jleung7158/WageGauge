@@ -12,7 +12,7 @@ services:
       PORT: 8000
       SIGNING_KEY: 7091da32cfdd6b4eb2991d9b9885860bdedc1de05d972b416791b941ad25a721
     ports:
-      - 8000:8000
+      - 8000:80
     volumes:
       - ./api:/app
 

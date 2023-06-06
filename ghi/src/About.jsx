@@ -13,7 +13,7 @@ export default function About() {
               <img
                 className="rounded-full w-[150px] h-50 p-5"
                 src="https://i.postimg.cc/pr0HdTFH/Screenshot-20230519-173621.jpg"
-                alt=""
+                alt="Mo"
               />
             </div>
             <div className="p-5">
@@ -26,12 +26,14 @@ export default function About() {
               <div className="flex justify-center space-x-4">
                 <NavLink to="https://gitlab.com/BrohammedR">
                   <img
+                    alt="logo"
                     className="w-7 h-7"
                     src="https://www.vectorlogo.zone/logos/gitlab/gitlab-icon.svg"
                   />
                 </NavLink>
                 <NavLink to="https://www.linkedin.com/in/morahman5/">
                   <img
+                    alt="logo"
                     className="w-6 h-6"
                     src="https://cdn-icons-png.flaticon.com/512/174/174857.png"
                   />
@@ -47,7 +49,7 @@ export default function About() {
               <img
                 className="rounded-full w-[150px] h-50 p-5"
                 src="https://ca.slack-edge.com/T047XGQ15B6-U04J75Q9YJC-8e67cf3b8d03-512"
-                alt=""
+                alt="James"
               />
             </div>
             <div className="p-5">
@@ -60,12 +62,14 @@ export default function About() {
               <div className="flex justify-center space-x-4">
                 <NavLink to="https://gitlab.com/JamesLeung7158">
                   <img
+                    alt="logo"
                     className="w-7 h-7"
                     src="https://www.vectorlogo.zone/logos/gitlab/gitlab-icon.svg"
                   />
                 </NavLink>
                 <NavLink to="https://www.linkedin.com/in/jleung007/">
                   <img
+                    alt="logo"
                     className="w-6 h-6"
                     src="https://cdn-icons-png.flaticon.com/512/174/174857.png"
                   />
@@ -81,7 +85,7 @@ export default function About() {
               <img
                 className="rounded-full w-[150px] h-50 p-5"
                 src="https://ca.slack-edge.com/T047XGQ15B6-U04HVCKBCDQ-0832a13c7168-512"
-                alt=""
+                alt="Jonathan"
               />
             </div>
             <div className="p-5">
@@ -94,12 +98,14 @@ export default function About() {
               <div className="flex justify-center space-x-4">
                 <NavLink to="https://gitlab.com/jrkillian11">
                   <img
+                    alt="logo"
                     className="w-7 h-7"
                     src="https://www.vectorlogo.zone/logos/gitlab/gitlab-icon.svg"
                   />
                 </NavLink>
                 <NavLink to="https://www.linkedin.com/in/jonathan-killian-9175971bb/">
                   <img
+                    alt="logo"
                     className="w-6 h-6"
                     src="https://cdn-icons-png.flaticon.com/512/174/174857.png"
                   />
@@ -115,7 +121,7 @@ export default function About() {
               <img
                 className="rounded-full w-[150px] h-50 p-5"
                 src="https://ca.slack-edge.com/T047XGQ15B6-U04HEG3L2S1-09ebc7a646b5-512"
-                alt=""
+                alt="Andrew"
               />
             </div>
             <div className="p-5">
@@ -128,12 +134,14 @@ export default function About() {
               <div className="flex justify-center space-x-4">
                 <NavLink to="https://gitlab.com/andrewipsen">
                   <img
+                    alt="logo"
                     className="w-7 h-7"
                     src="https://www.vectorlogo.zone/logos/gitlab/gitlab-icon.svg"
                   />
                 </NavLink>
                 <NavLink to="https://www.linkedin.com/in/andrew-ipsen/">
                   <img
+                    alt="logo"
                     className="w-6 h-6"
                     src="https://cdn-icons-png.flaticon.com/512/174/174857.png"
                   />

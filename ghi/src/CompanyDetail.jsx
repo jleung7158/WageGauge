@@ -77,7 +77,11 @@ const CompanyDetail = () => {
           "
           >
             Positions
-            <img src={user} className="w-[30px] opacity-50 mx-2" />
+            <img
+              alt="positions"
+              src={user}
+              className="w-[30px] opacity-50 mx-2"
+            />
           </h1>
           <div
             className="
@@ -106,7 +110,11 @@ const CompanyDetail = () => {
                   }}
                 >
                   {position.company} - {position.name}
-                  <img src={circleRight} className="w-[30px] opacity-50" />
+                  <img
+                    alt="companies"
+                    src={circleRight}
+                    className="w-[30px] opacity-50"
+                  />
                 </button>
               );
             })}
@@ -127,6 +135,7 @@ const CompanyDetail = () => {
             ) : (
               <>
                 <img
+                  alt="chart"
                   src={chart}
                   className="w-[25px] opacity-50 mx-2 rotate-90 -scale-100"
                 />

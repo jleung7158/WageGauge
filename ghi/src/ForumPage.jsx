@@ -7,7 +7,6 @@ import thumbsup from "./img/thumbsup.svg";
 import TopicForm from "./components/TopicForm";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleIsOpen } from "./slices/topicFormSlice";
-import { topicLiked, topicUnliked } from "./slices/topicLikeSlice";
 import {
   useGetTopicLikesQuery,
   useCreateTopicLikesMutation,
@@ -22,8 +21,8 @@ function ForumPage() {
   const toggled = useSelector((state) => state.topicFormToggler.isOpen);
   const [text, setText] = useState("");
   const [account_id, setAccount_id] = useState("");
-  const [createTopicLike, cresult] = useCreateTopicLikesMutation();
-  const [deleteTopicLike, dresult] = useDeleteTopicLikesMutation();
+  const [createTopicLike] = useCreateTopicLikesMutation();
+  const [deleteTopicLike] = useDeleteTopicLikesMutation();
 
   const currentAccount = async () => {
     const url = `http://localhost:8000/token`;

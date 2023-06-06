@@ -15,6 +15,9 @@ import UpdateAccountInfo from './UpdateAccount';
 import AccountToCompany from './AccountToCompany.js';
 
 function App() {
+	const domain = /https:\/\/[^/]+/;
+	const basename = process.env.PUBLIC_URL.replace(domain, '');
+
 	return (
 		<div
 			className="
@@ -27,8 +30,8 @@ function App() {
 			dark:to-[#0a192f] "
 		>
 			<div>
-				<BrowserRouter>
-					<AuthProvider baseUrl="http://localhost:8000">
+				<BrowserRouter basename={basename}>
+					<AuthProvider baseUrl={process.env.REACT_APP_API_HOST}>
 						<Nav />
 						<div className="container-flex">
 							<Routes>

@@ -1,12 +1,17 @@
 from fastapi import APIRouter, Depends
 from typing import Union
 from queries.replies import Error, ReplyIn, ReplyOut, ReplyUpdate, ReplyRepo
+from authenticator import authenticator
 
 router = APIRouter()
 
 
 @router.post("/api/reply", response_model=Union[ReplyOut, Error])
-def create_reply(reply: ReplyIn, repo: ReplyRepo = Depends()):
+def create_reply(
+    reply: ReplyIn,
+    repo: ReplyRepo = Depends(),
+    account_data: dict = Depends(authenticator.get_current_account_data)
+    ):
     return repo.create(reply)
 
 
@@ -17,7 +22,10 @@ def list_replies(repo: ReplyRepo = Depends()):
 
 @router.put("/api/reply/{reply_id}", response_model=Union[ReplyOut, bool])
 def update_reply(
-    reply_id: int, reply: ReplyUpdate, repo: ReplyRepo = Depends()
+    reply_id: int,
+    reply: ReplyUpdate,
+    repo: ReplyRepo = Depends(),
+    account_data: dict = Depends(authenticator.get_current_account_data)
 ) -> bool:
     return repo.update(reply_id, reply)
 
@@ -26,5 +34,6 @@ def update_reply(
 def delete_reply(
     reply_id: int,
     repo: ReplyRepo = Depends(),
+    account_data: dict = Depends(authenticator.get_current_account_data)
 ) -> bool:
     return repo.delete(reply_id)

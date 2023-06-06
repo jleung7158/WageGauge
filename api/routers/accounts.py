@@ -88,7 +88,7 @@ async def get_token(
 
 @router.put("/api/accounts/{account_id}", response_model=AccountOut)
 def update_account(
-    account_id: int, account: AccountIn, repo: AccountRepository = Depends()
+    account_id: int, account: AccountIn, repo: AccountRepository = Depends(),account_data: dict = Depends(authenticator.get_current_account_data)
 ) -> AccountOut:
     hashed_password = authenticator.hash_password(account.password)
     return repo.update_account(account_id, hashed_password, account)

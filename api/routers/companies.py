@@ -11,8 +11,8 @@ depend = Depends()
 def create_company(
     company: CompanyIn,
     repo: CompanyRepository = depend,
-    account_data: dict = Depends(authenticator.get_current_account_data)
-    ):
+    account_data: dict = Depends(authenticator.get_current_account_data),
+):
     return repo.create(company)
 
 
@@ -26,7 +26,7 @@ def update_company(
     company_id: int,
     company: CompanyIn,
     repo: CompanyRepository = depend,
-    account_data: dict = Depends(authenticator.get_current_account_data)
+    account_data: dict = Depends(authenticator.get_current_account_data),
 ) -> Union[CompanyOut, Error]:
     return repo.update(company_id, company)
 
@@ -35,7 +35,7 @@ def update_company(
 def delete_company(
     company_id: int,
     repo: CompanyRepository = depend,
-    account_data: dict = Depends(authenticator.get_current_account_data)
+    account_data: dict = Depends(authenticator.get_current_account_data),
 ) -> bool:
     return repo.delete(company_id)
 

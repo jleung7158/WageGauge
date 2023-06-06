@@ -13,7 +13,11 @@ router = APIRouter()
 
 
 @router.post("/comments", response_model=Union[CommentOut, Error])
-def create_comment(comment: CommentIn, repo: CommentRepository = Depends(),account_data: dict = Depends(authenticator.get_current_account_data)):
+def create_comment(
+    comment: CommentIn,
+    repo: CommentRepository = Depends(),
+    account_data: dict = Depends(authenticator.get_current_account_data),
+):
     return repo.create(comment)
 
 
@@ -29,7 +33,7 @@ def update_comment(
     comment_id: int,
     comment: CommentIn,
     repo: CommentRepository = Depends(),
-    account_data: dict = Depends(authenticator.get_current_account_data)
+    account_data: dict = Depends(authenticator.get_current_account_data),
 ) -> Union[CommentOut, Error]:
     return repo.update(comment_id, comment)
 
@@ -38,7 +42,7 @@ def update_comment(
 def delete_comment(
     comment_id: int,
     repo: CommentRepository = Depends(),
-    account_data: dict = Depends(authenticator.get_current_account_data)
+    account_data: dict = Depends(authenticator.get_current_account_data),
 ) -> bool:
     return repo.delete(comment_id)
 

@@ -35,8 +35,7 @@ class ReplyLikeRepo:
                     )
                     if result.fetchone() is None:
                         raise HTTPException(
-                            status_code=400,
-                            detail="account_id does not exist"
+                            status_code=400, detail="account_id does not exist"
                         )
                     result = db.execute(
                         """

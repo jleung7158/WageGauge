@@ -61,8 +61,8 @@ class TopicRepository:
                         t.body AS body,
                         t.account_id AS account_id,
                         t.company_id AS company_id,
-                        (SELECT COUNT(account_id) 
-                            FROM topic_likes l 
+                        (SELECT COUNT(account_id)
+                            FROM topic_likes l
                             WHERE (l.topic_id = t.id)) AS likes
                         FROM topics AS t
                         LEFT JOIN topic_likes AS l

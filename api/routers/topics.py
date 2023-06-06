@@ -16,7 +16,8 @@ depend = Depends()
 def create_topic(
     topic: TopicIn,
     repo: TopicRepository = depend,
-    account_data: dict = Depends(authenticator.get_current_account_data)):
+    account_data: dict = Depends(authenticator.get_current_account_data),
+):
     return repo.create(topic)
 
 
@@ -42,7 +43,7 @@ def update_one(
     topic_id: int,
     topic: TopicIn,
     repo: TopicRepository = depend,
-    account_data: dict = Depends(authenticator.get_current_account_data)
+    account_data: dict = Depends(authenticator.get_current_account_data),
 ) -> Union[TopicOut, Error]:
     return repo.update(topic_id, topic)
 
@@ -51,6 +52,6 @@ def update_one(
 def delete(
     topic_id: int,
     repo: TopicRepository = depend,
-    account_data: dict = Depends(authenticator.get_current_account_data)
+    account_data: dict = Depends(authenticator.get_current_account_data),
 ) -> bool:
     return repo.delete(topic_id)

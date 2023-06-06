@@ -5,8 +5,6 @@ import Banner from './components/Banner';
 import LoginForm from './Login';
 import { useState, useEffect } from 'react';
 import useToken from '@galvanize-inc/jwtdown-for-react';
-import UserDropDown from './components/UserDropDown';
-import AccountToCompany from './AccountToCompany.js';
 
 function Nav() {
 	const { token, logout } = useToken();
@@ -36,7 +34,7 @@ function Nav() {
 		logout();
 		setShowDropdown(false);
 		setShowLogin(true);
-    setShowBanner(true);
+		setShowBanner(true);
 	};
 
 	const handleCloseLoginForm = () => {

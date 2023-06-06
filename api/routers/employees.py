@@ -15,7 +15,7 @@ depend = Depends()
 def create_employee(
     employee: EmployeeIn,
     repo: EmployeeRepository = Depends(),
-    account_data: dict = Depends(authenticator.get_current_account_data)
+    account_data: dict = Depends(authenticator.get_current_account_data),
 ):
     return repo.create(employee)
 
@@ -32,7 +32,7 @@ def update_employee(
     employee_id: int,
     employee: EmployeeIn,
     repo: EmployeeRepository = Depends(),
-    account_data: dict = Depends(authenticator.get_current_account_data)
+    account_data: dict = Depends(authenticator.get_current_account_data),
 ) -> Union[EmployeeOut, bool]:
     return repo.update(employee_id, employee)
 
@@ -41,7 +41,7 @@ def update_employee(
 def delete_employee(
     employee_id: int,
     repo: EmployeeRepository = Depends(),
-    account_data: dict = Depends(authenticator.get_current_account_data)
+    account_data: dict = Depends(authenticator.get_current_account_data),
 ) -> bool:
     return repo.delete(employee_id)
 

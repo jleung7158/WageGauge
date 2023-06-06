@@ -68,6 +68,26 @@ function SignUpForm() {
 				background: 'linear-gradient(to bottom, #87CEEB, #42098E)',
 			}}
 		>
+			{successAlert && (
+				<div
+					className="alert alert-success"
+					role="alert"
+					style={{
+						position: 'fixed',
+						top: '1rem',
+						right: '1rem',
+						zIndex: 1000,
+						color: 'white',
+						backgroundColor: 'green',
+						borderColor: 'darkgreen',
+						border: '1px solid',
+						borderRadius: '5px',
+						padding: '0.75rem 1.25rem',
+					}}
+				>
+					Account created! Logging in...
+				</div>
+			)}
 			<div
 				className="max-w-md w-full p-8 bg-white rounded-xl shadow-md"
 				style={{

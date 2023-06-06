@@ -10,8 +10,8 @@ router = APIRouter()
 def create_reply(
     reply: ReplyIn,
     repo: ReplyRepo = Depends(),
-    account_data: dict = Depends(authenticator.get_current_account_data)
-    ):
+    account_data: dict = Depends(authenticator.get_current_account_data),
+):
     return repo.create(reply)
 
 
@@ -25,7 +25,7 @@ def update_reply(
     reply_id: int,
     reply: ReplyUpdate,
     repo: ReplyRepo = Depends(),
-    account_data: dict = Depends(authenticator.get_current_account_data)
+    account_data: dict = Depends(authenticator.get_current_account_data),
 ) -> bool:
     return repo.update(reply_id, reply)
 
@@ -34,6 +34,6 @@ def update_reply(
 def delete_reply(
     reply_id: int,
     repo: ReplyRepo = Depends(),
-    account_data: dict = Depends(authenticator.get_current_account_data)
+    account_data: dict = Depends(authenticator.get_current_account_data),
 ) -> bool:
     return repo.delete(reply_id)

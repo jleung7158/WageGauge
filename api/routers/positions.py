@@ -16,7 +16,7 @@ router = APIRouter()
 def create_position(
     position: PositionIn,
     repo: PositionRepository = Depends(),
-    account_data: dict = Depends(authenticator.get_current_account_data)
+    account_data: dict = Depends(authenticator.get_current_account_data),
 ):
     return repo.create(position)
 
@@ -35,7 +35,7 @@ def update_position(
     position_id: int,
     position: PositionIn,
     repo: PositionRepository = Depends(),
-    account_data: dict = Depends(authenticator.get_current_account_data)
+    account_data: dict = Depends(authenticator.get_current_account_data),
 ) -> Union[PositionOut, Error]:
     return repo.update(position_id, position)
 
@@ -44,7 +44,7 @@ def update_position(
 def delete_position(
     position_id: int,
     repo: PositionRepository = Depends(),
-    account_data: dict = Depends(authenticator.get_current_account_data)
+    account_data: dict = Depends(authenticator.get_current_account_data),
 ) -> bool:
     return repo.delete(position_id)
 

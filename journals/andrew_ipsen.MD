@@ -1,3 +1,5 @@
+Week 14
+
 05/15/23
 Most of today was spent detailing workflow and delegating work to different members. The issue i'm currently working on is creating the Company table and its endpoints.
 
@@ -44,3 +46,12 @@ A achieved this by sending {company} via state on the Link button, which can be 
 Today, I completed the database structures for the likes. I decided that each object that likes will exist on should have their own likes table: Topics Likes table, Comments Likes table, and Replies Likes table. Each table only consists of its id, account_id, and id of the object. The endpoints include a post, a get all and delete.
 
 I also designed out a simple about us page. It exists with four cards consisting of a profile picture, title and links to their respective gitlabs and linkedins.
+
+Week 17
+
+06/05/23
+
+Over the weekend, I completed the task of converting our company tables on the dashboard to cards. It looks much cleaner. I've also added a field for an image url for the company, and created a JS file that house an object of img urls linked to Company names, so if someone added a company and didn't include an URL for the image, the Dashboard will compare the name of the company added with the keys in the object, and if there's a match, use the URL in the value to populate the Company image.
+
+06/06/23
+Today, our app is half deployed. I've adjusted the navbar to include an "update account" button and "report your salary" button to the profile dropdown menu. Today, I will be trying to implement a unit test for a company post. I also want to research how to properly implement a functional dashboard button feature, that changes what is displayed based on the button pressed.

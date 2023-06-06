@@ -25,7 +25,7 @@ services:
     ports:
       - '15432:5432'
     volumes:
-      - wagegauge-data:/var/lib/postgresql/data
+      - wagegauge-data:/var/lib/postgresql
 
   ghi:
     image: node:lts-bullseye

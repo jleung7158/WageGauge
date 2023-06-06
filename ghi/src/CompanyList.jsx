@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 import bookmarkIcon from "./img/bookmark.svg";
 
@@ -13,7 +13,6 @@ import { companyImages } from './img/companyimgs.js';
 function CompanyList() {
     const [companies, setCompanies] = useState([]);
     const [positions, setPositions] = useState([]);
-    const [employees, setEmployees] = useState([]);
     const [topics, setTopics] = useState([]);
     const [search, setSearch] = useState("");
     const { token } = useToken();
@@ -39,15 +38,6 @@ function CompanyList() {
         }
     };
 
-    //get the employee data
-    const fetchEmployees = async () => {
-        const url = "http://localhost:8000/employees";
-        const response = await fetch(url);
-        if (response.ok) {
-        const EData = await response.json();
-        setEmployees(EData);
-        }
-    };
     // get the topics data
     const fetchTopics = async () => {
         const url = "http://localhost:8000/topics";
@@ -264,16 +254,18 @@ function CompanyList() {
                     <tbody className="font-bold text-3xl border-b-2 border-lightgrey dark:border-moredark">
                         <tr
                         className="
-                                        mx-4 px-5 mt-10
+                                        text-center
+                                        mx-4 px-5 pt-[10px]
                                         text-md font-medium
 
                                         text-gray-600
                                         dark:text-white
                                         h-20
                                         "
-                        >
+                        >{topic.title}
                         <td
                             className="
+                                            text-center
                                             flex flex-col
                                             px-5 pt-10 pb-10 bg-slate-200
                                             flex
@@ -282,7 +274,7 @@ function CompanyList() {
                         >
 
                             <p className="justify-center text-sm text-center text-gray-500 dark:text-darktext opacity-80">
-                            {topic.text}
+                            {topic.body}
                             </p>
                         </td>
                         </tr>
@@ -367,7 +359,12 @@ function CompanyList() {
                     </h5>
                     <p className="mb-3 font-normal text-gray-700 dark:text-gray-400"></p>
                     <div className="">
+                        { token ? (
                         <LearnMoreButton companyId={company.id} />
+        ) : (
+            <p className="text-md text-gray-700 dark:text-gray-400 mb-5"> Sign In to See More Position Data</p>
+        )
+        }
                     </div>
                     </div>
                 </div>

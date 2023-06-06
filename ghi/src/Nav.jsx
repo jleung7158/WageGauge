@@ -36,33 +36,7 @@ function Nav() {
 		logout();
 		setShowDropdown(false);
 		setShowLogin(true);
-	};
-
-	const LogoutButton = () => {
-		if (token) {
-			return (
-				<div>
-					<NavLink
-						to="#"
-						className="
-                    text-gray-50
-                    hover:bg-gray-100
-                    hover:text-wageblue block
-                    block rounded-full px-5 py-3
-                    bg-wageblue
-                    text-base font-bold
-
-                    dark:text-wageblue
-                    dark:bg-moredark
-                    dark:shadow-inner
-                    dark:hover:shadow-slate-500/20"
-						onClick={handleLogout}
-					>
-						Logout
-					</NavLink>
-				</div>
-			);
-		}
+    setShowBanner(true);
 	};
 
 	const handleCloseLoginForm = () => {

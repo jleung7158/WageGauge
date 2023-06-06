@@ -1,4 +1,5 @@
 import { NavLink, useNavigate } from 'react-router-dom';
+import React from 'react';
 import HomePageIcon from './img/icon.png';
 import Switcher from './components/Switcher';
 import Banner from './components/Banner';

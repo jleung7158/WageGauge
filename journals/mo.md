@@ -23,3 +23,5 @@
 6/2- I was having a different error where a user wasnt able to sign in after updating their account. It turns out, when updating the account, I have to re-hash the password being updated. This is fixed now. I made a new feature today, It was the ability for users to post a comment to a topic. The most challenging portion was getting the page to refresh the comment list upon submission so the new comment is there.
 
 6/5- Created a unit test today, not sure if its correct but I asked the team to take a look. We are going to try deployment today.
+
+6/6- We are trying front end deployment today. Running into some ESLINT errors. Trying to fix.

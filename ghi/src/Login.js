@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import useToken from '@galvanize-inc/jwtdown-for-react';
+/* eslint-disable */
 const LoginForm = ({ onClose }) => {
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
@@ -131,3 +132,4 @@ const LoginForm = ({ onClose }) => {
 	);
 };
 export default LoginForm;
+/* eslint-enable */

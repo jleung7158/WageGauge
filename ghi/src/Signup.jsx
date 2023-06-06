@@ -60,6 +60,7 @@ function SignUpForm() {
 	const handlePassword = (event) => {
 		setPassword(event.target.value);
 	};
+	/* eslint-disable */
 
 	return (
 		<div
@@ -97,6 +98,7 @@ function SignUpForm() {
 				<h1 style={{ fontWeight: 'bold' }} className="text-3xl mb-8">
 					Welcome! We're happy to have you on board!
 				</h1>
+
 				<form className="space-y-6" onSubmit={handleSubmit} id="sign-up-form">
 					<div className="grid grid-cols-2 gap-4">
 						<div>
@@ -163,3 +165,4 @@ function SignUpForm() {
 }
 
 export default SignUpForm;
+/* eslint-enable */

@@ -96,6 +96,9 @@ As for aha! moments, it was nice to finally program the automated refetch via re
 6/5/23
 Today I am adding the likes functionality to the topics. Once I get this down, it should be semi-transferable to the comments and replies.
 
+We also set up the back-end and DB deployment.
+
 As for aha! moments, reasoning out the logic to connect the topic and topic likes database was pretty good.
 
 6/6/23
+Today we are working on front-end deployment!

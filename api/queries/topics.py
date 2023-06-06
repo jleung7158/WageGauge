@@ -20,6 +20,7 @@ class TopicOut(BaseModel):
     body: str
     account_id: int
     company_id: int
+    likes: Optional[int]
 
 
 class TopicRepository:
@@ -55,9 +56,18 @@ class TopicRepository:
                 with conn.cursor() as db:
                     result = db.execute(
                         """
-                        SELECT *
-                        FROM topics
-                        ORDER BY id;
+                        SELECT DISTINCT t.id AS id,
+                        t.title AS title,
+                        t.body AS body,
+                        t.account_id AS account_id,
+                        t.company_id AS company_id,
+                        (SELECT COUNT(account_id) 
+                            FROM topic_likes l 
+                            WHERE (l.topic_id = t.id)) AS likes
+                        FROM topics AS t
+                        LEFT JOIN topic_likes AS l
+                        ON (l.topic_id = t.id)
+                        ORDER BY t.id;
                         """
                     )
                     return [
@@ -140,4 +150,5 @@ class TopicRepository:
             body=record[2],
             account_id=record[3],
             company_id=record[4],
+            likes=record[5],
         )

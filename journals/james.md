@@ -92,3 +92,10 @@ Today I finished setting up a form to post a new topic in the forum page. I had 
 I plan on adding a company filter function to filter topics by company as well. Then add more styling, and maybe add a user name.
 
 As for aha! moments, it was nice to finally program the automated refetch via redux for my forum page.
+
+6/5/23
+Today I am adding the likes functionality to the topics. Once I get this down, it should be semi-transferable to the comments and replies.
+
+As for aha! moments, reasoning out the logic to connect the topic and topic likes database was pretty good.
+
+6/6/23

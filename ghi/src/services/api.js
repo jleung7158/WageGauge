@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const api = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:8000" }),
-  tagTypes: ["TopicsList"],
+  tagTypes: ["TopicsList", "TopicLikesList"],
   endpoints: (builder) => ({
     getPositions: builder.query({
       query: () => `/positions/`,
@@ -38,6 +38,26 @@ export const api = createApi({
       }),
       invalidatesTags: ["TopicsList"],
     }),
+    getTopicLikes: builder.query({
+      query: () => `/api/topic_likes/`,
+      providesTags: ["TopicLikesList"],
+    }),
+    createTopicLikes: builder.mutation({
+      query: (data) => ({
+        url: `/api/topic_likes/`,
+        body: data,
+        method: "post",
+      }),
+      invalidatesTags: ["TopicsList", "TopicLikesList"],
+    }),
+    deleteTopicLikes: builder.mutation({
+      query: ({ topic_like_id }) => ({
+        url: `/api/topic_likes/${topic_like_id}`,
+        method: "delete",
+        body: topic_like_id,
+      }),
+      invalidatesTags: ["TopicsList", "TopicLikesList"],
+    }),
     getComments: builder.query({
       query: () => `/comments/`,
     }),
@@ -57,6 +77,9 @@ export const {
   useGetTopicsQuery,
   useGetTopicQuery,
   useCreateTopicMutation,
+  useGetTopicLikesQuery,
+  useCreateTopicLikesMutation,
+  useDeleteTopicLikesMutation,
   useGetCommentsQuery,
   useGetCommentQuery,
 } = api;

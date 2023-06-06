@@ -1,19 +1,47 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Dropdown from "./components/Dropdown";
 import { useGetCompaniesQuery, useGetTopicsQuery } from "./services/api";
 import commentdot from "./img/commentdot.svg";
+import thumbsup from "./img/thumbsup.svg";
 import TopicForm from "./components/TopicForm";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleIsOpen } from "./slices/topicFormSlice";
+import { topicLiked, topicUnliked } from "./slices/topicLikeSlice";
+import {
+  useGetTopicLikesQuery,
+  useCreateTopicLikesMutation,
+  useDeleteTopicLikesMutation,
+} from "./services/api";
 
 function ForumPage() {
   const { data: cData } = useGetCompaniesQuery();
   const { data: tData } = useGetTopicsQuery();
+  const { data: tlData } = useGetTopicLikesQuery();
   const dispatch = useDispatch();
   const toggled = useSelector((state) => state.topicFormToggler.isOpen);
-
   const [text, setText] = useState("");
+  const [account_id, setAccount_id] = useState("");
+  const [createTopicLike, cresult] = useCreateTopicLikesMutation();
+  const [deleteTopicLike, dresult] = useDeleteTopicLikesMutation();
+
+  const currentAccount = async () => {
+    const url = `http://localhost:8000/token`;
+    const response = await fetch(url, {
+      credentials: "include",
+      method: "get",
+    });
+    if (response.ok) {
+      const data = await response.json();
+      setAccount_id(data.account.id);
+    }
+  };
+
+  useEffect(() => {
+    if (!account_id) {
+      currentAccount();
+    }
+  }, [account_id]);
 
   const handleTextChange = (event) => {
     const value = event.target.value.toLowerCase();
@@ -25,8 +53,8 @@ function ForumPage() {
     } else {
       return tData?.filter((t) => {
         for (const [key, value] of Object.entries([t])) {
-          if (t.text.toLowerCase().includes(text)) {
-            return t.text.toLowerCase().includes(text);
+          if (t.body.toLowerCase().includes(text)) {
+            return t.body.toLowerCase().includes(text);
           }
         }
       });
@@ -34,8 +62,33 @@ function ForumPage() {
   };
   const filteredTopics = getFilteredTopics(text, tData);
 
+  const getFilteredTopicLikes = (topic_id, tlData) => {
+    return tlData?.filter((t) => {
+      return t?.topic_id === topic_id;
+    });
+  };
+
   const handleNewClick = () => {
     dispatch(toggleIsOpen());
+  };
+
+  const checkLike = (topic_id) => {
+    let isLiked = false;
+    const filteredTopicLikes = getFilteredTopicLikes(topic_id, tlData);
+    for (let like of filteredTopicLikes) {
+      if (like.account_id === account_id) {
+        isLiked = true;
+      }
+    }
+    return isLiked;
+  };
+
+  const handleLike = (topic_id) => {
+    createTopicLike({ account_id, topic_id });
+  };
+
+  const handleUnlike = (topic_like_id) => {
+    deleteTopicLike({ topic_like_id });
   };
 
   const navigate = useNavigate();
@@ -48,6 +101,7 @@ function ForumPage() {
       <div
         className="
       flex flex-row
+      justify-between
       m-4 h-full
       "
       >
@@ -68,19 +122,25 @@ function ForumPage() {
         bg-slate-200 rounded
         "
         >
-          <div className="flex flex-row items-center">
+          <div className="flex flex-row items-center justify-between">
             <div
               className="
+            flex
             mx-4 my-2 p-2 
-            flex items-center
+            items-center 
+            justify-between
             w-max shadow-lg
             text-2xl font-bold
-            bg-gradient-to-r bg-slate-500 rounded
+            bg-wageblue rounded
             dark:text-darktext
             "
             >
-              Topics List
-              <img src={commentdot} className="w-[30px] opacity-50 m-2" />
+              <div className="m-2">Topics List</div>
+              <img
+                alt="newtopic"
+                src={commentdot}
+                className="w-[30px] opacity-50 m-2"
+              />
             </div>
             <input
               type="text"
@@ -110,22 +170,69 @@ function ForumPage() {
           </div>
 
           {filteredTopics?.map((topic) => {
+            let likes = getFilteredTopicLikes(topic.id, tlData);
             return (
-              <button
-                type="button"
-                onClick={() => handleTopicClick(topic.id)}
-                key={topic.id}
+              <div
                 className="
-              ml-16 my-2 p-2
-              text-left shadow-lg
-              max-w-prose
-              bg-slate-100 rounded
-              hover:bg-slate-200
-              "
+                ml-16 my-2 p-2
+                text-left shadow-lg
+                max-w-prose
+                bg-slate-100 rounded
+                "
+                key={topic.id}
               >
-                <div className="font-bold text-lg">{topic.title}</div>
-                <div className="ml-4">{topic.body}</div>
-              </button>
+                <button
+                  type="button"
+                  onClick={() => handleTopicClick(topic.id)}
+                >
+                  <div className="font-bold text-xl hover:text-wageblue">
+                    {topic.title}
+                  </div>
+                </button>
+                <div className="ml-4">
+                  <div className="flex flex-row justify-between">
+                    {topic.body}
+                    <div className="flex flex-row justify-between">
+                      {checkLike(topic.id) ? (
+                        // <img
+                        //   src={thumbsup}
+                        //   className="w-[25px] justify-right"
+                        // />
+                        <button
+                          onClick={() =>
+                            handleUnlike(
+                              likes.filter(
+                                (like) => like.account_id === account_id
+                              )[0]?.id
+                            )
+                          }
+                        >
+                          <img
+                            alt="unlike"
+                            src={thumbsup}
+                            className="w-[25px] justify-right"
+                          />
+                        </button>
+                      ) : (
+                        // <img
+                        //   alt="like"
+                        //   src={thumbsup}
+                        //   className="w-[25px] justify-right opacity-25 hover:opacity-100"
+                        // />
+                        <button onClick={() => handleLike(topic.id)}>
+                          <img
+                            alt="like"
+                            src={thumbsup}
+                            className="w-[25px] justify-right opacity-25 hover:opacity-100"
+                          />
+                        </button>
+                      )}
+
+                      <div className="mx-2">{topic?.likes}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             );
           })}
         </div>

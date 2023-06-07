@@ -11,6 +11,7 @@ export const companyImages = {
     "Disney": "https://www.svgrepo.com/show/443014/brand-disney.svg",
     "Instagram": "https://www.svgrepo.com/show/303145/instagram-2-1-logo.svg",
     "Amazon": "https://www.svgrepo.com/show/303168/amazon-icon-logo.svg",
+    "Spotify": "https://www.svgrepo.com/show/475684/spotify-color.svg",
     "Microsoft": "https://www.svgrepo.com/show/303143/microsoft-logo.svg",
 
 

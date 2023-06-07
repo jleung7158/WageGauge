@@ -12,5 +12,29 @@ steps = [
         """
         DROP TABLE company;
         """,
-    ]
+    ],
+    [
+        ## Insert data into the table
+        """
+        INSERT INTO company
+            (name, img)
+        VALUES
+            ('Google', ''),
+            ('Airbnb', ''),
+            ('Amazon', ''),
+            ('Spotify', ''),
+            ('Nintendo', ''),
+            ('Apple', ''),
+            ('Meta', ''),
+            ('Twitter', ''),
+            ('Steam', ''),
+            ('Instagram', ''),
+            ('Microsoft', ''),
+            ('Facebook', ''),
+            ('Disney', ''),
+            ('Netflix', ''),
+            ('Airbnb', '');
+        """,
+        None,
+    ],
 ]

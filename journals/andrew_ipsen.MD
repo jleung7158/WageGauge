@@ -54,4 +54,9 @@ Week 17
 Over the weekend, I completed the task of converting our company tables on the dashboard to cards. It looks much cleaner. I've also added a field for an image url for the company, and created a JS file that house an object of img urls linked to Company names, so if someone added a company and didn't include an URL for the image, the Dashboard will compare the name of the company added with the keys in the object, and if there's a match, use the URL in the value to populate the Company image.
 
 06/06/23
+
 Today, our app is half deployed. I've adjusted the navbar to include an "update account" button and "report your salary" button to the profile dropdown menu. Today, I will be trying to implement a unit test for a company post. I also want to research how to properly implement a functional dashboard button feature, that changes what is displayed based on the button pressed.
+
+06/07/23
+
+Today, I've successfully implemented data inserts to the company table migrations, so upon building the database there will automatically be companies to display.

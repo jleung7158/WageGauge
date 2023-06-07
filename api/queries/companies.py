@@ -43,16 +43,15 @@ class CompanyRepository:
         try:
             with pool.connection() as conn:
                 with conn.cursor() as db:
-                    result = db.execute(
+                    db.execute(
                         """
                         SELECT *
                         FROM company
                         ORDER BY id;
                         """
                     )
-                    return [
-                        self.record_to_company_out(record) for record in result
-                    ]
+                    rows = db.fetchall()
+                    return [self.record_to_company_out(row) for row in rows]
         except Exception as e:
             print(e)
             return {"message": "Could not get all companies"}

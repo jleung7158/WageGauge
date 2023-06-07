@@ -49,8 +49,8 @@ build-front-end-job:
     # CI/CD variables, that value will override the value here.
     # You need to substitute in your real values for
     # GROUP_NAME, PROJECT_NAME, & WEBSERVICE_NAME below.
-    PUBLIC_URL: https://wagegauge.gitlab.io/wagegauge/
-    REACT_APP_API_HOST: http://localhost:8000
+    PUBLIC_URL: https://wagegauge.gitlab.io/WageGauge/
+    REACT_APP_API_HOST: https://feb-23-pt-3-fastapi.mod3projects.com/
   script:
     - cd ghi
     - npm install

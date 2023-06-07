@@ -274,7 +274,7 @@ function CompanyList() {
 											<tr
 												className="
                                         text-center
-                                        mx-4 px-5 pt-[10px]
+                                        mx-4 px-5 mt-[10px]
                                         text-md font-medium
 
                                         text-gray-600

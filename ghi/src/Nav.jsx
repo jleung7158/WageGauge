@@ -131,7 +131,7 @@ function Nav() {
 						<div
 							className="mt-6
                     rounded-full px-3
-                    dark:shadow-lg
+                    dark:shadow-inner
                     dark:hover:shadow-slate-500/20"
 						>
 							<Switcher />

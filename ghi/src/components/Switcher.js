@@ -14,14 +14,13 @@ export default function Switcher() {
     setDarkMode(checked);
   };
 
-  return (
-    <>
-      <DarkModeSwitch
-        // style={{ marginBottom: "2rem" }}
-        checked={darkMode}
-        onChange={toggleDarkMode}
-        size={30}
-      />
-    </>
-  );
+    return (
+        <>
+            <DarkModeSwitch
+            checked={darkMode}
+            onChange={toggleDarkMode}
+            size={30}
+            />
+        </>
+    );
 }

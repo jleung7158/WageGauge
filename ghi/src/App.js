@@ -15,7 +15,7 @@ import AccountToCompany from "./AccountToCompany.js";
 
 function App() {
   const domain = /https:\/\/[^/]+/;
-  const basename = process.env.PUBLIC_URL.replace(domain, "");
+  const basename = process.env.PUBLIC_URL.replace(domain, "/wagegauge");
 
   return (
     <div

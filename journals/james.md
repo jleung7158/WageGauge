@@ -102,3 +102,10 @@ As for aha! moments, reasoning out the logic to connect the topic and topic like
 
 6/6/23
 Today we are working on front-end deployment!
+
+I will also be working on my unit tests.
+
+6/7/23
+Today we are finishing deployment and unit tests.
+
+I need to go back and connect the company dropdown in my forum page to actually filter by companies.

@@ -2,7 +2,10 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const api = createApi({
   reducerPath: "api",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:8000" }),
+  baseQuery: fetchBaseQuery({
+    // baseUrl: process.env.REACT_APP_API_HOST,
+    baseUrl: "http://localhost:8000",
+  }),
   tagTypes: ["TopicsList", "TopicLikesList"],
   endpoints: (builder) => ({
     getPositions: builder.query({
@@ -68,6 +71,7 @@ export const api = createApi({
 });
 
 export const {
+  useGetTokenQuery,
   useGetPositionsQuery,
   useGetPositionQuery,
   useGetCompaniesQuery,

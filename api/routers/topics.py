@@ -16,7 +16,6 @@ depend = Depends()
 def create_topic(
     topic: TopicIn,
     repo: TopicRepository = depend,
-    account_data: dict = Depends(authenticator.get_current_account_data),
 ):
     return repo.create(topic)
 

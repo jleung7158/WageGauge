@@ -25,3 +25,5 @@
 6/5- Created a unit test today, not sure if its correct but I asked the team to take a look. We are going to try deployment today.
 
 6/6- We are trying front end deployment today. Running into some ESLINT errors. Trying to fix.
+
+6/7- We finally deployed our back and front end, we have to change all of our api calls to match the env variable, and work on our readme.

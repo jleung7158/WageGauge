@@ -84,9 +84,19 @@ class TopicRepository:
                 with conn.cursor() as db:
                     result = db.execute(
                         """
-                        SELECT *
-                        FROM topics
-                        WHERE id = %s
+                        SELECT DISTINCT t.id AS id,
+                        t.title AS title,
+                        t.body AS body,
+                        t.account_id AS account_id,
+                        t.company_id AS company_id,
+                        (SELECT COUNT(account_id)
+                            FROM topic_likes l
+                            WHERE (l.topic_id = t.id)) AS likes
+                        FROM topics AS t
+                        LEFT JOIN topic_likes AS l
+                        ON (l.topic_id = t.id)
+                        WHERE t.id = %s
+                        ORDER BY t.id;
                         """,
                         [topic_id],
                     )

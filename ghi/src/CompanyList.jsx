@@ -21,7 +21,7 @@ function CompanyList() {
 
 	// get the company data
 	const fetchCompanies = async () => {
-		const url = 'http://localhost:8000/companies';
+		const url = `${process.env.REACT_APP_API_HOST}/companies`;
 		const response = await fetch(url);
 		if (response.ok) {
 			const CData = await response.json();
@@ -31,7 +31,7 @@ function CompanyList() {
 
 	// get the positions data
 	const fetchPositions = async () => {
-		const url = 'http://localhost:8000/positions';
+		const url = `${process.env.REACT_APP_API_HOST}/positions`;
 		const response = await fetch(url);
 		if (response.ok) {
 			const PData = await response.json();
@@ -41,7 +41,7 @@ function CompanyList() {
 
 	// get the topics data
 	const fetchTopics = async () => {
-		const url = 'http://localhost:8000/topics';
+		const url = `${process.env.REACT_APP_API_HOST}/topics`;
 		const response = await fetch(url);
 		if (response.ok) {
 			const TData = await response.json();
@@ -317,11 +317,11 @@ function CompanyList() {
 							<div className="w-full">
 								{/* the table buttons */}
 								<div className="grid grid-cols-1 gap-6 mt-6 mb-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
-									<button className="rounded-full py-3 px-5 text-xl font-bold text-gray-50 hover:text-slate-500 dark:hover:text-darktext dark:focus:bg-darkgray dark:focus:hover:text-gray-300">
-										Overview
+									<button className="rounded-full py-3 px-5 text-xl font-bold text-gray-50 hover:text-slate-500 dark:hover:text-darktext dark:focus:bg-darkgray dark:focus:hover:text-gray-300 defaultchecked">
+										Company List
 									</button>
 									<button className="rounded-full py-3 px-5 text-xl font-bold text-gray-50 hover:text-slate-500 dark:hover:text-darktext dark:focus:bg-darkgray dark:focus:hover:text-gray-300">
-										Company List
+										Overview
 									</button>
 									<button className="rounded-full py-3 px-5 text-xl font-bold text-gray-50 hover:text-slate-500 dark:hover:text-darktext dark:focus:bg-darkgray dark:focus:hover:text-gray-300">
 										Salary Trends

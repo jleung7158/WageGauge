@@ -12,6 +12,8 @@ import Topic from './Topic';
 import Test from './test';
 import UpdateAccountInfo from './UpdateAccount';
 import AccountToCompany from './AccountToCompany.js';
+import AccountCompanyList from './AccountCompanyList.jsx';
+
 
 function App() {
 	const domain = /https:\/\/[^/]+/;
@@ -58,6 +60,9 @@ function App() {
 								</Route>
 								<Route path="AccountToCompany">
 									<Route path="" element={<AccountToCompany />} />
+								</Route>
+								<Route path="AccountCompanyList">
+									<Route path="" element={<AccountCompanyList />} />
 								</Route>
 							</Routes>
 						</div>

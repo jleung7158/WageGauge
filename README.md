@@ -140,3 +140,42 @@ in GitLab.
 Merge a change into main to kick off the initial deploy. Once the build pipeline
 finishes you should be able to see an "under construction" page on your GitLab
 pages site.
+
+# **WageGauge**
+
+WageGauge is an informational app for tech industry professionals to help with gauging average salaries accross various companies. In addition to salary info, users can communicate on our commmunity forums to discuss salary negotiation, company trends, and more.
+
+## WageGauge was built with the following technologies
+
+![https://img.shields.io/badge/React%20JS-20232A?style=for-the-badge&logo=react&logoColor=61DAFB](https://img.shields.io/badge/React%20JS-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) ![https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black) ![https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+
+Frontend
+
+- React.js
+- Redux
+- JavaScript
+
+Backend
+
+- FastApi
+  - JWTdown Authentication
+  - SQL
+  - Python
+
+## Contributors
+
+- Mo Rahman [@BrohammedR](<[https://gitlab.com/BrohammedR](https://gitlab.com/BrohammedR)>)
+- James Leung [@JamesLeung7158](<[https://gitlab.com/JamesLeung7158](https://gitlab.com/JamesLeung7158)>)
+- Jonathan Killian [@jrkillian11](<[https://gitlab.com/jrkillian11](https://gitlab.com/jrkillian11)>)
+- Andrew Ipsen [@andrewipsen](<[https://gitlab.com/andrewipsen](https://gitlab.com/andrewipsen)>)
+
+<br />
+<p align="center">
+<a href="https://gitlab.com/BrohammedR"><kbd><img width="125" alt="Mo" src="https://i.postimg.cc/pr0HdTFH/Screenshot-20230519-173621.jpg"></kbd></a>
+<a href="https://gitlab.com/JamesLeung7158"><kbd><img width="125" alt="James" src="https://ca.slack-edge.com/T047XGQ15B6-U04J75Q9YJC-8e67cf3b8d03-512"></kbd></a>
+<a href="https://gitlab.com/jrkillian11"><kbd><img width="125" alt="Jonathan" src="https://ca.slack-edge.com/T047XGQ15B6-U04HVCKBCDQ-0832a13c7168-512"></kbd></a>
+<a href="https://gitlab.com/andrewipsen"><kbd><img width="125" alt="Andrew" src="https://ca.slack-edge.com/T047XGQ15B6-U04HEG3L2S1-09ebc7a646b5-512"></kbd></a>
+
+## Key Features
+
+### something

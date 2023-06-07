@@ -25,4 +25,8 @@ Finally finshed up AccountToCompany form last night. Nested list are difficult t
 I am not a fan of docker.
 I made some more changes to AccountToCompany. There were sublty bugs that I spent the entire day fixing. James and Mo helped solve the problem
 
-06/03/23
+06/05/23
+Over the weekend I spent time reading about unit testing. Today I plan to work on showing the list of former positions per account.
+
+06/06/23
+We are working on deployment of the front-end today. Ideally we will have the entire project deployed today. After this is done I will continue working on displaying the list of former positions.

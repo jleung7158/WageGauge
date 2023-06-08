@@ -8,25 +8,25 @@ export const api = createApi({
 	tagTypes: ['TopicsList', 'TopicLikesList'],
 	endpoints: (builder) => ({
 		getPositions: builder.query({
-			query: () => `/positions/`,
+			query: () => `/positions`,
 		}),
 		getPosition: builder.query({
 			query: (position_id) => `/positions/${position_id}`,
 		}),
 		getCompanies: builder.query({
-			query: () => `/companies/`,
+			query: () => `/companies`,
 		}),
 		getCompany: builder.query({
 			query: (company_id) => `/companies/${company_id}`,
 		}),
 		getEmployees: builder.query({
-			query: () => `/employees/`,
+			query: () => `/employees`,
 		}),
 		getEmployee: builder.query({
 			query: (employee_id) => `/employees/${employee_id}`,
 		}),
 		getTopics: builder.query({
-			query: () => `/topics/`,
+			query: () => `/topics`,
 			providesTags: ['TopicsList'],
 		}),
 		getTopic: builder.query({
@@ -34,19 +34,19 @@ export const api = createApi({
 		}),
 		createTopic: builder.mutation({
 			query: (data) => ({
-				url: `/topics/`,
+				url: `/topics`,
 				body: data,
 				method: 'post',
 			}),
 			invalidatesTags: ['TopicsList'],
 		}),
 		getTopicLikes: builder.query({
-			query: () => `/api/topic_likes/`,
+			query: () => `/api/topic_likes`,
 			providesTags: ['TopicLikesList'],
 		}),
 		createTopicLikes: builder.mutation({
 			query: (data) => ({
-				url: `/api/topic_likes/`,
+				url: `/api/topic_likes`,
 				body: data,
 				method: 'post',
 			}),
@@ -61,7 +61,7 @@ export const api = createApi({
 			invalidatesTags: ['TopicsList', 'TopicLikesList'],
 		}),
 		getComments: builder.query({
-			query: () => `/comments/`,
+			query: () => `/comments`,
 		}),
 		getComment: builder.query({
 			query: (comment_id) => `/comments/${comment_id}`,

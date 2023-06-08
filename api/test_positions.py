@@ -118,7 +118,7 @@ def test_create_position3():
     print(response.json())
 
 
-def test_create_position3():
+def test_create_position4():
     app.dependency_overrides[PositionRepository] = EmptyPositionRepo
     app.dependency_overrides[
         authenticator.get_current_account_data

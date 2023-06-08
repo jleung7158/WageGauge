@@ -4,13 +4,15 @@ WageGauge is an informational app for tech industry professionals to help with g
 
 ## WageGauge was built with the following technologies
 
-![https://img.shields.io/badge/React%20JS-20232A?style=for-the-badge&logo=react&logoColor=61DAFB](https://img.shields.io/badge/React%20JS-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) ![https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black) ![https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white) ![https://img.shields.io/badge/Python-14354C?style=for-the-badge&logo=python&logoColor=white](https://img.shields.io/badge/Python-14354C?style=for-the-badge&logo=python&logoColor=white) ![https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white](https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white) ![https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white) ![https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=FastAPI&logoColor=white](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=FastAPI&logoColor=white)
+![https://img.shields.io/badge/React%20JS-20232A?style=for-the-badge&logo=react&logoColor=61DAFB](https://img.shields.io/badge/React%20JS-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) ![https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white](https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white) ![https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black) ![https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white) ![https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white) ![https://img.shields.io/badge/Python-14354C?style=for-the-badge&logo=python&logoColor=white](https://img.shields.io/badge/Python-14354C?style=for-the-badge&logo=python&logoColor=white) ![https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=FastAPI&logoColor=white](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=FastAPI&logoColor=white) ![https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white) ![https://img.shields.io/badge/Chart.js-ff69b4?style=for-the-badge&logo=chart.js&logoColor=white](https://img.shields.io/badge/Chart.js-ff69b4?style=for-the-badge&logo=chart.js&logoColor=white)
 
 Frontend
 
 - React.js
 - Redux
+- Chart.js
 - JavaScript
+- Tailwind
 
 Backend
 
@@ -19,7 +21,7 @@ Backend
 - PostgreSQL
 - Python
 
-## Contributors
+## The Development Team
 
 - Mo Rahman [@BrohammedR](<[https://gitlab.com/BrohammedR](https://gitlab.com/BrohammedR)>)
 - James Leung [@JamesLeung7158](<[https://gitlab.com/JamesLeung7158](https://gitlab.com/JamesLeung7158)>)
@@ -56,3 +58,76 @@ Backend
 -The Forum Page serves as an interactive space for users to engage in discussions and post topics related to various companies. Users can share insights, seek advice, and connect with others by commenting on existing topics. This collaborative feature encourages knowledge-sharing and fosters a sense of community within the Wage Gauge platform.
 
 These key features collectively enhance the Wage Gauge experience, providing users with valuable salary data, intuitive navigation, secure authentication, and opportunities for engagement and discussion.
+
+# API Endpoints
+
+## Accounts
+
+<kbd><img src= 'https://i.postimg.cc/DzrsZBHH/image.png'></kbd>
+<kbd><img src= 'https://i.postimg.cc/fLXwZrPS/image.png'></kbd>
+<kbd><img src= 'https://i.postimg.cc/SKfr5SSn/image.png'></kbd>
+
+### Auth
+
+<kbd><img src= 'https://i.postimg.cc/s2WFZZ4t/image.png'></kbd>
+<kbd><img src= 'https://i.postimg.cc/66YPq0N8/image.png'></kbd>
+<kbd><img src= 'https://i.postimg.cc/rsPgJf8g/image.png'></kbd>
+
+## Companies
+
+<kbd><img src= 'https://i.postimg.cc/YC1fGrmd/image.png'></kbd>
+<kbd><img src= 'https://i.postimg.cc/cCpwC21q/image.png'></kbd>
+<kbd><img src= 'https://i.postimg.cc/3w8pkghw/image.png'></kbd>
+<kbd><img src= 'https://i.postimg.cc/KjM36fP0/image.png'></kbd>
+<kbd><img src= 'https://i.postimg.cc/ryKbPPbq/image.png'></kbd>
+
+## Positions
+
+<kbd><img src= 'https://i.postimg.cc/t4tm6Q1N/image.png'></kbd>
+<kbd><img src= 'https://i.postimg.cc/zvgxX9ZW/image.png'></kbd>
+<kbd><img src= 'https://i.postimg.cc/XY8QJfh2/image.png'></kbd>
+<kbd><img src= 'https://i.postimg.cc/7P2978dJ/image.png'></kbd>
+<kbd><img src= 'https://i.postimg.cc/25yFSPn6/image.png'></kbd>
+
+## Employees
+
+<kbd><img src= 'https://i.postimg.cc/MKw7Qc1g/image.png'></kbd>
+<kbd><img src= 'https://i.postimg.cc/xCHmkY80/image.png'></kbd>
+<kbd><img src= 'https://i.postimg.cc/pXkF5sWn/image.png'></kbd>
+<kbd><img src= 'https://i.postimg.cc/rp4sjjkj/image.png'></kbd>
+<kbd><img src= 'https://i.postimg.cc/Bb4jXKRg/image.png'></kbd>
+
+## Topics
+
+<kbd><img src= 'https://i.postimg.cc/DyzzHnh8/image.png'></kbd>
+<kbd><img src= 'https://i.postimg.cc/1zDRwzGY/image.png'></kbd>
+<kbd><img src= 'https://i.postimg.cc/HW6YQRMH/image.png'></kbd>
+<kbd><img src= 'https://i.postimg.cc/pdMRWtwQ/image.png'></kbd>
+<kbd><img src= 'https://i.postimg.cc/CMr0ZDyx/image.png'></kbd>
+
+## Comments
+
+<kbd><img src= 'https://i.postimg.cc/zfkZqHS5/image.png'></kbd>
+<kbd><img src= 'https://i.postimg.cc/YCcJgzdM/image.png'></kbd>
+<kbd><img src= 'https://i.postimg.cc/zDyzFpFg/image.png'></kbd>
+<kbd><img src= 'https://i.postimg.cc/JzLRm8VN/image.png'></kbd>
+<kbd><img src= 'https://i.postimg.cc/g2sbW6Kp/image.png'></kbd>
+
+## Replies
+
+<kbd><img src= 'https://i.postimg.cc/jj19x6wp/image.png'></kbd>
+<kbd><img src= 'https://i.postimg.cc/TYxs3313/image.png'></kbd>
+<kbd><img src= 'https://i.postimg.cc/mgXpj3wP/image.png'></kbd>
+<kbd><img src= 'https://i.postimg.cc/wjv01ypg/image.png'></kbd>
+
+## Comment Likes
+
+<kbd><img src= 'https://i.postimg.cc/G2rDsVyG/image.png'></kbd>
+<kbd><img src= 'https://i.postimg.cc/tJc7DMYr/image.png'></kbd>
+<kbd><img src= 'https://i.postimg.cc/YCYjf8k3/image.png'></kbd>
+
+## Reply Likes
+
+<kbd><img src= 'https://i.postimg.cc/d1pLjf75/image.png'></kbd>
+<kbd><img src= 'https://i.postimg.cc/jjk5R1hR/image.png'></kbd>
+<kbd><img src= 'https://i.postimg.cc/SRcN7xbK/image.png'></kbd>

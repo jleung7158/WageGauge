@@ -2,6 +2,9 @@ import React from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useToken from '@galvanize-inc/jwtdown-for-react';
+import Reviews from './components/Reviews';
+import { NavLink } from 'react-router-dom';
+import Video from './splash_ad.mp4';
 
 function SignUpForm() {
 	const [firstName, setFirstName] = useState('');
@@ -63,12 +66,7 @@ function SignUpForm() {
 	/* eslint-disable */
 
 	return (
-		<div
-			className="flex items-center justify-center min-h-screen bg-gray-100 bg-gradient-to-b from-white to-wagblue"
-			style={{
-				background: 'linear-gradient(to bottom, #87CEEB, #42098E)',
-			}}
-		>
+		<div className="flex items-center justify-center min-h-screen bg-gray-100 bg-gradient-to-b from-[#d7e4ef] from-50% to-wageblue dark:bg-gradient-to-b dark:from-moredark dark:to-moredark">
 			{successAlert && (
 				<div
 					className="alert alert-success"
@@ -89,17 +87,26 @@ function SignUpForm() {
 					Account created! Logging in...
 				</div>
 			)}
-			<div
-				className="max-w-md w-full p-8 bg-white rounded-xl shadow-md"
-				style={{
-					width: '400px',
-				}}
-			>
-				<h1 style={{ fontWeight: 'bold' }} className="text-3xl mb-8">
+			<div className="flex flex-col items-center">
+				<div className="w-[500px]">
+					<video autoPlay muted className="w-full">
+						<source src={Video} type="video/mp4" />
+						Your browser does not support the video tag.
+					</video>
+				</div>
+				<h1
+					style={{ fontWeight: 'bold', paddingTop: '50px' }}
+					className="text-3xl mb-8 text-center dark:text-white"
+				>
 					Welcome! We're happy to have you on board!
 				</h1>
 
-				<form className="space-y-6" onSubmit={handleSubmit} id="sign-up-form">
+				<form
+					className="space-y-6  mx-auto"
+					onSubmit={handleSubmit}
+					id="sign-up-form"
+					style={{ width: '400px' }}
+				>
 					<div className="grid grid-cols-2 gap-4">
 						<div>
 							<input
@@ -153,12 +160,23 @@ function SignUpForm() {
 					<div>
 						<button
 							type="submit"
-							className="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+							className="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-large text-white bg-wageblue hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
 						>
 							Sign Up
 						</button>
 					</div>
+					<div className="mt-2">
+						<NavLink
+							to="/companies"
+							className="flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-large text-white bg-wageblue hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+						>
+							Continue without signing up
+						</NavLink>
+					</div>
 				</form>
+				<div className="w-[2000px]">
+					<Reviews />
+				</div>
 			</div>
 		</div>
 	);

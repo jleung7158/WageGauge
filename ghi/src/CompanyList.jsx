@@ -17,6 +17,8 @@ function CompanyList() {
 	const [topics, setTopics] = useState([]);
 	const [search, setSearch] = useState('');
 	const { token } = useToken();
+	const [showBanner] = useState(true);
+	const [alert, setAlert] = useState(false);
 
 	// get the company data
 	const fetchCompanies = async () => {
@@ -48,12 +50,25 @@ function CompanyList() {
 		}
 	};
 
+	//check for token
+	const checkForToken = () => {
+		if (!token) {
+			setAlert(true);
+			const alertTimeout = setTimeout(() => {
+				setAlert(false);
+			}, 4000);
+			return () => {
+				clearTimeout(alertTimeout);
+			};
+		}
+	};
 
 	useEffect(() => {
+		checkForToken();
 		fetchCompanies();
 		fetchPositions();
 		fetchTopics();
-	}, [token]);
+	}, []);
 
 	// filter positions by company.id
 	const getPositionsByCompanyId = (companyId) => {
@@ -77,7 +92,27 @@ function CompanyList() {
 		<>
 			<div className="relative">
 				{/* Embrace your worth banner */}
-				<WorthBanner />
+				{showBanner && <WorthBanner ban={checkForToken} />}
+				{alert && (
+					<div
+						className="alert alert-success"
+						role="alert"
+						style={{
+							position: 'fixed',
+							top: '1rem',
+							right: '1rem',
+							zIndex: 1000,
+							color: 'white',
+							backgroundColor: 'green',
+							borderColor: 'darkgreen',
+							border: '1px solid',
+							borderRadius: '5px',
+							padding: '0.75rem 1.25rem',
+						}}
+					>
+						Full funtionality is available after login or signup
+					</div>
+				)}
 				{/* main content */}
 				<div className="grid grid-rows-2 gap-6 py-12 sm:grid-rows-2 md:grid-rows-3 lg:grid-rows-3 xl:grid-rows-3">
 					<div></div>
@@ -134,11 +169,12 @@ function CompanyList() {
 							>
 								<button
 									type="submit"
+									style={{ marginRight: '10px' }}
 									className="
-                                text-white absolute right-5
+                                text-white absolute right-20
                                 bottom-4 bg-wageblue hover:bg-blue-800
                                 focus:ring-4 focus:outline-none focus:ring-blue-300
-                                font-medium rounded-full text-sm px-4 py-2 pr-[60px]
+                                font-medium rounded-full text-sm px-4 py-2
                                 dark:bg-wageblue dark:hover:bg-blue-700 dark:focus:ring-blue-800"
 								>
 									Search
@@ -235,8 +271,9 @@ function CompanyList() {
 														<h2 className="text-center">{company.name}</h2>
 														<p className="text-sm text-center text-gray-500 px-[20px] dark:text-darktext opacity-80">
 															Here we can have company news display under the
-															name. news news news so much news! whoa can you believe all the news that's here?
-															News readers beware. More news ahead. Ye have been warned!!
+															name. news news news so much news! whoa can you
+															believe all the news that's here? News readers
+															beware. More news ahead. Ye have been warned!!
 														</p>
 													</td>
 												</tr>
@@ -266,12 +303,12 @@ function CompanyList() {
 									</Link>
 									<div></div>
 								</div>
-								<div className='max-h-[830px] overflow-y-auto'>
-								{topics.map((topic) => (
-									<table key={topic.id} className="w-full">
-										<tbody className="font-bold text-3xl border-b-2 border-lightgrey dark:border-moredark">
-											<tr
-												className="
+								<div className="max-h-[830px] overflow-y-auto">
+									{topics.map((topic) => (
+										<table key={topic.id} className="w-full">
+											<tbody className="font-bold text-3xl border-b-2 border-lightgrey dark:border-moredark">
+												<tr
+													className="
                                         text-center
                                         mx-4 px-5 mt-[10px]
                                         text-md font-medium
@@ -280,27 +317,29 @@ function CompanyList() {
                                         dark:text-white
                                         h-20
                                         "
-											>
-												<td
-													className="
+												>
+													<td
+														className="
                                             text-center
                                             flex flex-col
                                             px-5 pt-10 pb-10 bg-white
 
                                             dark:bg-darkblue
                                             "
-												>   <h2 className="text-center">{topic.title}</h2>
-													<p className="justify-center flex text-sm text-center text-gray-500 dark:text-darktext ">
-														{topic.body}
-													</p>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-								))}
+													>
+														{' '}
+														<h2 className="text-center">{topic.title}</h2>
+														<p className="justify-center flex text-sm text-center text-gray-500 dark:text-darktext ">
+															{topic.body}
+														</p>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									))}
+								</div>
 							</div>
-							</div>
-						{/* The bottom left */}
+							{/* The bottom left */}
 
 							<div className="flex flex-col flex-grow overflow-y-auto pt-6 pb-12 px-0 mx-0 mt-5 overflow-x-hidden bg-wageblue rounded-large shadow-lg items-center px-0 dark:bg-darkblue">
 								<div
@@ -308,53 +347,52 @@ function CompanyList() {
                                     grid grid-cols-1 gap-1 mt-4
                                     rounded-full dark:bg-moredark dark:text-darktext font-bold justify-center"
 								>
-										<h1
-											className="
+									<h1
+										className="
                                             rounded-full pt-3 px-5 text-2xl font-bold
                                             text-white dark:bg-darkblue text-center
                                             focus:hover:text-gray-200"
-										>
-											TOP POSITIONS
-										</h1>
+									>
+										TOP POSITIONS
+									</h1>
 								</div>
-								<div className='text-center bg-wageblue dark:bg-darkblue mt-3'>
+								<div className="text-center bg-wageblue dark:bg-darkblue mt-3">
 									<p className="text-md font-bold text-center text-white px-[20px] pb-6 dark:text-darktext opacity-80 border-b-2 dark:border-moredark transition ease-in delay-50 hover:scale-105">
-										These positions have seen significant spikes in pay this quarter, taking into consideration location costs-of-living and national trends.
+										These positions have seen significant spikes in pay this
+										quarter, taking into consideration location costs-of-living
+										and national trends.
 									</p>
-								</div >
-									<div className='bg-white dark:bg-darkblue w-full'>
-										<div className='overflow-x-hidden'>
-											<p className="text-lg text-center pb-0 text-gray-600 pt-3 px-[20px] pb-6 dark:text-white opacity-80 transition ease-in delay-50 hover:translate-x-3">
-												Full Stack Developer
-											</p>
-											<p className="text-md text-center text-gray-500 px-[20px] pb-6 dark:text-darktext opacity-80 w-full border-b-2 dark:border-moredark ">
-												Tier 1 | New York, NY
-											</p>
-											<p className="text-lg text-center pb-0 text-gray-600 pt-3 px-[20px] pb-6 dark:text-white opacity-80 transition ease-in delay-50 hover:translate-x-3">
-												Back End Developer
-											</p>
-											<p className="text-md text-center text-gray-500 px-[20px] pb-6 dark:text-darktext opacity-80 w-full border-b-2 dark:border-moredark">
-												Tier 2 | Los Angeles, CA
-											</p>
-											<p className="text-lg text-center pb-0 text-gray-600 pt-3 px-[20px] pb-6 dark:text-white opacity-80 transition ease-in delay-50 hover:translate-x-3">
-												QA Tester
-											</p>
-											<p className="text-md text-center text-gray-500 px-[20px] pb-6 dark:text-darktext opacity-80 w-full border-b-2 dark:border-moredark">
-												Tier 2 | San Fransisco, CA
-											</p>
-											<p className="text-lg text-center pb-0 text-gray-600 pt-3 px-[20px] pb-6 dark:text-white opacity-80 transition ease-in delay-50 hover:translate-x-3">
-												Dev Ops
-											</p>
-											<p className="text-md text-center text-gray-500 px-[20px] pb-6 dark:text-darktext opacity-80 w-full border-b-2 dark:border-moredark">
-												Tier 3 | Austin, TX
-											</p>
-										</div>
+								</div>
+								<div className="bg-white dark:bg-darkblue w-full">
+									<div className="overflow-x-hidden">
+										<p className="text-lg text-center pb-0 text-gray-600 pt-3 px-[20px] pb-6 dark:text-white opacity-80 transition ease-in delay-50 hover:translate-x-3">
+											Full Stack Developer
+										</p>
+										<p className="text-md text-center text-gray-500 px-[20px] pb-6 dark:text-darktext opacity-80 w-full border-b-2 dark:border-moredark ">
+											Tier 1 | New York, NY
+										</p>
+										<p className="text-lg text-center pb-0 text-gray-600 pt-3 px-[20px] pb-6 dark:text-white opacity-80 transition ease-in delay-50 hover:translate-x-3">
+											Back End Developer
+										</p>
+										<p className="text-md text-center text-gray-500 px-[20px] pb-6 dark:text-darktext opacity-80 w-full border-b-2 dark:border-moredark">
+											Tier 2 | Los Angeles, CA
+										</p>
+										<p className="text-lg text-center pb-0 text-gray-600 pt-3 px-[20px] pb-6 dark:text-white opacity-80 transition ease-in delay-50 hover:translate-x-3">
+											QA Tester
+										</p>
+										<p className="text-md text-center text-gray-500 px-[20px] pb-6 dark:text-darktext opacity-80 w-full border-b-2 dark:border-moredark">
+											Tier 2 | San Fransisco, CA
+										</p>
+										<p className="text-lg text-center pb-0 text-gray-600 pt-3 px-[20px] pb-6 dark:text-white opacity-80 transition ease-in delay-50 hover:translate-x-3">
+											Dev Ops
+										</p>
+										<p className="text-md text-center text-gray-500 px-[20px] pb-6 dark:text-darktext opacity-80 w-full border-b-2 dark:border-moredark">
+											Tier 3 | Austin, TX
+										</p>
 									</div>
+								</div>
 							</div>
 						</div>
-
-
-
 
 						{/* the main container */}
 						<div
@@ -372,48 +410,56 @@ function CompanyList() {
 							<div className="w-full">
 								{/* the table buttons */}
 								<div className="grid grid-cols-1 gap-6 mt-6 mb-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
-                                    <div></div>
-									<button className="
+									<div></div>
+									<button
+										className="
 												rounded-full py-3 text-xl
 												font-bold text-wageblue
 												hover:text-slate-500
 												focus:bg-white bg-white
 												focus:text-wageblue dark:bg-moredark dark:text-white
 												dark:hover:text-darktext dark:focus:bg-moredark
-												dark:focus:text-white dark:focus:hover:text-gray-300">
+												dark:focus:text-white dark:focus:hover:text-gray-300"
+									>
 										Company List
 									</button>
-									<button className="
+									<button
+										className="
 												rounded-full py-3 text-xl
 												font-bold text-gray-50
 												hover:text-slate-500
 												focus:bg-white
 												focus:text-wageblue
 												dark:hover:text-darktext dark:focus:bg-moredark
-												dark:focus:text-white dark:focus:hover:text-gray-300">
+												dark:focus:text-white dark:focus:hover:text-gray-300"
+									>
 										Overview
 									</button>
-									<button className="
+									<button
+										className="
 												rounded-full py-3 text-xl
 												font-bold text-gray-50
 												hover:text-slate-500
 												focus:bg-white
 												focus:text-wageblue
 												dark:hover:text-darktext dark:focus:bg-moredark
-												dark:focus:text-white dark:focus:hover:text-gray-300">
+												dark:focus:text-white dark:focus:hover:text-gray-300"
+									>
 										Salary Trends
 									</button>
-									<button className="
+									<button
+										className="
 												rounded-full py-3 text-xl
 												font-bold text-gray-50
 												hover:text-slate-500
 												focus:bg-white
 												focus:text-wageblue
 												dark:hover:text-darktext dark:focus:bg-moredark
-												dark:focus:text-white dark:focus:hover:text-gray-300">
+												dark:focus:text-white dark:focus:hover:text-gray-300"
+									>
 										More
 									</button>
-                                    <div></div>
+									<div></div>
 								</div>
 								{/* the main table */}
 								<h1
@@ -520,6 +566,7 @@ function CompanyList() {
 						</div>
 					</div>
 				</div>
+
 				<div className="flex items-center justify-center w-full bg-white min-h-[500px] dark:bg-darkblue">
 					<Reviews />
 				</div>

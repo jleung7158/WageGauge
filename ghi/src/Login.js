@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 import useToken from '@galvanize-inc/jwtdown-for-react';
 /* eslint-disable */
 const LoginForm = ({ onClose }) => {
@@ -54,10 +54,11 @@ const LoginForm = ({ onClose }) => {
 				</div>
 			)}
 			<div
-				className="relative z-10 max-w-md w-full space-y-8 p-10 bg-opacity-85 rounded-xl shadow-md overflow-hidden"
-				style={{
-					background: 'linear-gradient(to bottom, #87CEEB, #42098E)',
-				}}
+				className="relative z-10 max-w-md w-full space-y-8 p-10 bg-opacity-85 rounded-xl shadow-md overflow-hidden bg-gradient-to-b
+			from-white from-5% to-indigo-700"
+				// style={{
+				// 	background: 'linear-gradient(to bottom, #87CEEB, #42098E)',
+				// }}
 			>
 				<button
 					onClick={onClose}
@@ -113,18 +114,10 @@ const LoginForm = ({ onClose }) => {
 					<div>
 						<button
 							type="submit"
-							className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-500 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+							className="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-large text-white bg-wageblue hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
 						>
 							Login
 						</button>
-					</div>
-					<div className="mt-2">
-						<NavLink
-							to="/signup"
-							className="flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-large text-white bg-wageblue hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-						>
-							Signup
-						</NavLink>
 					</div>
 				</form>
 			</div>

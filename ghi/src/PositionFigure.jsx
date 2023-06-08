@@ -47,7 +47,6 @@ function PositionFigure({ position }) {
     }
   };
   const filteredEData = getFilteredEData(position.id, eData);
-
   function avg(array) {
     let s = 0;
     for (let n of array) {
@@ -142,7 +141,7 @@ function PositionFigure({ position }) {
       {
         type: "bar",
         label: "Average salaries",
-        data: averageEData.map((tier) => Object.values(tier)[0]),
+        data: averageEData?.map((tier) => Object.values(tier)[0]),
         backgroundColor: "#1999ff",
         borderColor: ["rgb(0, 0, 0, 1)"],
         borderWidth: 1,
@@ -150,7 +149,7 @@ function PositionFigure({ position }) {
       },
       {
         label: "Median salaries",
-        data: medianEData.map((tier) => Object.values(tier)[0]),
+        data: medianEData?.map((tier) => Object.values(tier)[0]),
         pointBackgroundColor: "rgb(160, 32, 240, 0.5)",
         backgroundColor: "rgb(160, 32, 240, 0.5)",
         borderColor: "rgb(160, 32, 240, 0.5)",
@@ -164,7 +163,7 @@ function PositionFigure({ position }) {
       },
       {
         label: "High salaries",
-        data: highEData.map((tier) => Object.values(tier)[0]),
+        data: highEData?.map((tier) => Object.values(tier)[0]),
         pointBackgroundColor: "rgb(0, 128, 0, 0.5)",
         backgroundColor: "rgb(0, 128, 0, 0.5)",
         borderColor: "rgb(0, 128, 0, 0.5)",
@@ -178,7 +177,7 @@ function PositionFigure({ position }) {
       },
       {
         label: "Low salaries",
-        data: lowEData.map((tier) => Object.values(tier)[0]),
+        data: lowEData?.map((tier) => Object.values(tier)[0]),
         pointBackgroundColor: "rgb(128, 0, 0, 0.5)",
         backgroundColor: "rgb(128, 0, 0, 0.5)",
         borderColor: "rgb(128, 0, 0, 0.5)",
@@ -201,7 +200,7 @@ function PositionFigure({ position }) {
         mr-2 mt-2 mb-2 mr-8 p-2 w-max h-max
         bg-wageblue rounded
         text-2xl font-bold
-        text-black dark:text-darktext
+        text-black
         "
         >
           {position.company}
@@ -210,16 +209,16 @@ function PositionFigure({ position }) {
           className="
         mr-2 mt-2 mb-2 pl-2 pr-2
         text-lg font-bold
-        text-black dark:text-darktext
+        text-black
         "
         >
           {position.name}
         </div>
         <div
           className="
-        mr-2 mt-2 mb-2 pl-2 pr-2 
+        mr-2 mt-2 mb-2 pl-2 pr-2
         text-sm
-        text-black dark:text-darktext
+        text-black
         "
         >
           {position.description}

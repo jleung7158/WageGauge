@@ -11,7 +11,7 @@ class Error(BaseModel):
 class EmployeeIn(BaseModel):
     salary: int
     years_exp: str
-    location: str
+    location: Optional[str]
     account_id: Optional[int]
     company_id: Optional[int]
     position_id: Optional[int]
@@ -21,7 +21,7 @@ class EmployeeOut(BaseModel):
     id: int
     salary: int
     years_exp: str
-    location: str
+    location: Optional[str]
     account_id: Optional[int]
     company_id: Optional[int]
     position_id: Optional[int]
@@ -55,8 +55,6 @@ class EmployeeRepository:
                     """,
                     [employee.account_id],
                 )
-                # rows = [row for row in result]
-                # rows = result.fetchall()
                 if len(result.fetchall()) == 0:
                     raise HTTPException(status_code=400)
                 result = db.execute(
@@ -86,15 +84,11 @@ class EmployeeRepository:
                 id = result.fetchone()[0]
                 return self.employee_in_to_out(id, employee)
 
-    # except Exception as e:
-    #     print(e)
-    #     return {"message": "Could not create employee"}
-
     def get_all(self) -> Union[List[EmployeeOut], Error]:
         try:
             with pool.connection() as conn:
                 with conn.cursor() as db:
-                    result = db.execute(
+                    db.execute(
                         """
                         SELECT
                             e.id as employee,
@@ -112,10 +106,8 @@ class EmployeeRepository:
                         ORDER BY e.id;
                         """
                     )
-                    return [
-                        self.record_to_employee_out(record)
-                        for record in result
-                    ]
+                    rows = db.fetchall()
+                    return [self.record_to_employee_out(row) for row in rows]
         except Exception as e:
             print(e)
             return {"message": "Could not get all employees"}

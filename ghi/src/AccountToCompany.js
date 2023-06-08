@@ -24,10 +24,8 @@ const AccountToCompany = () => {
       credentials: "include",
       method: "get",
     });
-    console.log(response);
     if (response.ok) {
       const data = await response.json();
-      console.log("asdfasdfasdf", data);
       setAccount_id(data.account.id);
     }
   };
@@ -42,7 +40,6 @@ const AccountToCompany = () => {
       company_id: company,
       position_id: position,
     };
-    console.log("eggs", data);
     const url = `${process.env.REACT_APP_API_HOST}/employees`;
     const config = {
       method: "POST",
@@ -50,11 +47,8 @@ const AccountToCompany = () => {
       headers: { "Content-Type": "application/json" },
       credentials: "include",
     };
-    // try {
     const response = await fetch(url, config);
-    //console.log("beans", response)
     if (response.ok) {
-      //console.log(response)
       event.target.reset();
       setSuccessAlert(true);
       const alertTimeout = setTimeout(() => {
@@ -71,7 +65,6 @@ const AccountToCompany = () => {
     const response = await fetch(companyUrl);
     if (response.ok) {
       const data = await response.json();
-      console.log("company data", data);
       setCompanies(data);
     } else {
       console.log("Error fetching companies", response.statusText);
@@ -82,7 +75,6 @@ const AccountToCompany = () => {
     const response = await fetch(positionUrl);
     if (response.ok) {
       const data = await response.json();
-      console.log("position", data);
       setPositions(data);
     } else {
       console.log("Error fetching positions", response.statusText);
@@ -107,15 +99,12 @@ const AccountToCompany = () => {
 
   const handleYearsChange = (event) => {
     setYears_Exp(event.target.value);
-    console.log(event.target.value);
   };
   const handleCompanyChange = (event) => {
     setCompany(parseInt(event.target.value));
-    console.log(event.target.value);
   };
   const handlePositionChange = (event) => {
     setPosition(parseInt(event.target.value));
-    console.log(event.target.value);
   };
 
   return (
@@ -152,13 +141,11 @@ const AccountToCompany = () => {
           onSubmit={handleSubmit}
           id="Account To Company"
         >
-          {/* <div className="rounded-md shadow-sm -space-y-px"> */}
           <div>
             <select
               id="Company Name"
               name="Company Name"
               required
-              // value={company}
               className="form-select appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10"
               onChange={(event) => handleCompanyChange(event)}
             >
@@ -177,7 +164,6 @@ const AccountToCompany = () => {
               id="Position"
               name="Position"
               required
-              // value={position}
               className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 form-control"
               onChange={(event) => handlePositionChange(event)}
             >

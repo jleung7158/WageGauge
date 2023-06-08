@@ -23,7 +23,6 @@ function AccountCompanyList() {
     const response = await fetch(eUrl);
     if (response.ok) {
       const eData = await response.json();
-      console.log("beans", eData);
       setEmployee(eData);
     } else {
       console.log("Error fetching employees", response.statusText);

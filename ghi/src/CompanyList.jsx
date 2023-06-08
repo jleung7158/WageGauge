@@ -490,7 +490,7 @@ function CompanyList() {
 																	<div className="text-lg text-gray-700 dark:text-gray-400 font-bold mt-5">
 																		{position.name}
 																	</div>
-																	<div className="text-md text-gray-700 dark:text-gray-400 mb-5">
+																	<div className="text-md text-gray-700 dark:text-gray-400 mb-5 truncate">
 																		{position.description}
 																	</div>
 																</div>

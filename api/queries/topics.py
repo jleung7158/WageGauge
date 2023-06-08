@@ -20,6 +20,7 @@ class TopicOut(BaseModel):
     body: str
     account_id: int
     company_id: int
+    company: Optional[str]
     likes: Optional[int]
 
 
@@ -61,12 +62,15 @@ class TopicRepository:
                         t.body AS body,
                         t.account_id AS account_id,
                         t.company_id AS company_id,
+                        c.name AS company,
                         (SELECT COUNT(account_id)
                             FROM topic_likes l
                             WHERE (l.topic_id = t.id)) AS likes
                         FROM topics AS t
                         LEFT JOIN topic_likes AS l
                         ON (l.topic_id = t.id)
+                        LEFT JOIN company AS c
+                        ON (c.id = t.company_id)
                         ORDER BY t.id;
                         """
                     )
@@ -89,12 +93,15 @@ class TopicRepository:
                         t.body AS body,
                         t.account_id AS account_id,
                         t.company_id AS company_id,
+                        c.name AS company,
                         (SELECT COUNT(account_id)
                             FROM topic_likes l
                             WHERE (l.topic_id = t.id)) AS likes
                         FROM topics AS t
                         LEFT JOIN topic_likes AS l
                         ON (l.topic_id = t.id)
+                        LEFT JOIN company AS c
+                        ON (c.id = t.company_id)
                         WHERE t.id = %s
                         ORDER BY t.id;
                         """,
@@ -125,6 +132,7 @@ class TopicRepository:
                             topic.title,
                             topic.body,
                             topic.account_id,
+                            topic.company_id,
                             topic_id,
                         ],
                     )
@@ -160,5 +168,6 @@ class TopicRepository:
             body=record[2],
             account_id=record[3],
             company_id=record[4],
-            likes=record[5],
+            company=record[5],
+            likes=record[6],
         )

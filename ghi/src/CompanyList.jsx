@@ -247,7 +247,7 @@ function CompanyList() {
 							</div>
 							{/* topics section */}
 
-							<div className="flex flex-col flex-grow overflow-y-auto pt-6 pb-12 px-0 mx-0 mt-5 bg-wageblue rounded-large shadow-lg items-center px-0 dark:bg-darkblue">
+							<div className="flex flex-col flex-grow overflow-y-auto pt-6 pb-12 px-0 mx-0 mt-5 bg-wageblue rounded-large shadow-lg items-center px-0 dark:bg-darkblue ">
 								<div
 									className="
                                     grid grid-cols-3 mt-2 mb-5
@@ -266,6 +266,7 @@ function CompanyList() {
 									</Link>
 									<div></div>
 								</div>
+								<div className='max-h-[830px] overflow-y-auto'>
 								{topics.map((topic) => (
 									<table key={topic.id} className="w-full">
 										<tbody className="font-bold text-3xl border-b-2 border-lightgrey dark:border-moredark">
@@ -285,11 +286,11 @@ function CompanyList() {
                                             text-center
                                             flex flex-col
                                             px-5 pt-10 pb-10 bg-white
-                                            flex
+
                                             dark:bg-darkblue
                                             "
 												>   <h2 className="text-center">{topic.title}</h2>
-													<p className="justify-center text-sm text-center text-gray-500 dark:text-darktext opacity-80">
+													<p className="justify-center flex text-sm text-center text-gray-500 dark:text-darktext ">
 														{topic.body}
 													</p>
 												</td>
@@ -298,9 +299,10 @@ function CompanyList() {
 									</table>
 								))}
 							</div>
+							</div>
 						{/* The bottom left */}
 
-							<div className="flex flex-col flex-grow overflow-y-auto pt-6 pb-12 px-0 mx-0 mt-5 bg-wageblue rounded-large shadow-lg items-center px-0 dark:bg-darkblue">
+							<div className="flex flex-col flex-grow overflow-y-auto pt-6 pb-12 px-0 mx-0 mt-5 overflow-x-hidden bg-wageblue rounded-large shadow-lg items-center px-0 dark:bg-darkblue">
 								<div
 									className="
                                     grid grid-cols-1 gap-1 mt-4

@@ -115,9 +115,9 @@ const Topic = () => {
       )}
 
       <div>
-        <div className="text-2xl font-semibold m-4 p-2 max-w-prose bg-slate-100 rounded-xl hover:bg-slate-200">
+        <div className="text-2xl m-4 p-2 max-w-prose bg-slate-100 rounded-xl hover:bg-slate-200">
           <div className="font-bold text-lg">{tData?.title}</div>
-          <div className="ml-4">{tData?.body}</div>
+          <div className="ml-4 font-normal text-sm">{tData?.body}</div>
         </div>
         <button
           onClick={handleForumClick}
@@ -165,6 +165,7 @@ const Topic = () => {
               max-w-prose
               bg-slate-100 rounded-xl
               hover:bg-slate-200
+              text-sm
               "
               >
                 {comment.text}

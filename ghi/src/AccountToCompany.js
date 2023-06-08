@@ -48,6 +48,7 @@ const AccountToCompany = () => {
       method: "POST",
       body: JSON.stringify(data),
       headers: { "Content-Type": "application/json" },
+      credentials: "include",
     };
     // try {
     const response = await fetch(url, config);
@@ -62,12 +63,6 @@ const AccountToCompany = () => {
       return () => {
         clearTimeout(alertTimeout);
       };
-      //     } else {
-      //         throw new Error('network response error');
-      //     }
-      // } catch (error) {
-      //     console.log('Error adding employee', error);
-      // }
     }
   };
 

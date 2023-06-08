@@ -30,3 +30,6 @@ Over the weekend I spent time reading about unit testing. Today I plan to work o
 
 06/06/23
 We are working on deployment of the front-end today. Ideally we will have the entire project deployed today. After this is done I will continue working on displaying the list of former positions.
+
+06/07/23
+Finshing up deployement of both the front-end and back-end. Adding unit testing for employees by the end of the day.

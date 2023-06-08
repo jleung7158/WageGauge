@@ -90,8 +90,8 @@ function Nav() {
                 hover:bg-gray-100
                 hover:text-wageblue block
                 block rounded-full px-5 py-3
-                bg-wageblue
-                text-base font-bold
+                bg-wageblue text-lg
+                font-bold
 
                 dark:text-wageblue
                 dark:bg-moredark
@@ -107,19 +107,19 @@ function Nav() {
 							<NavLink
 								to="ForumPage"
 								className="
-                  text-gray-50
-                  hover:bg-gray-100
-                  hover:text-wageblue
-                  block rounded-full px-5 py-3
-                  bg-wageblue
-                  text-base font-bold
+										text-gray-50
+										hover:bg-gray-100
+										hover:text-wageblue
+										block rounded-full px-5 py-3
+										bg-wageblue text-lg
+										text-base font-bold
 
-                  dark:text-wageblue
-                  dark:bg-moredark
-                  dark:shadow-inner
-                  dark:hover:shadow-slate-500/20
-                  dark:hover:text-gray-300
-                  "
+										dark:text-wageblue
+										dark:bg-moredark
+										dark:shadow-inner
+										dark:hover:shadow-slate-500/20
+										dark:hover:text-gray-300
+										"
 							>
 								FORUM
 							</NavLink>
@@ -130,9 +130,7 @@ function Nav() {
 					<div className="flex flex-row space-x-4 justify-start">
 						<div
 							className="mt-6
-                    rounded-full px-3
-                    dark:shadow-inner
-                    dark:hover:shadow-slate-500/20"
+                    rounded-full px-3"
 						>
 							<Switcher />
 						</div>
@@ -144,9 +142,10 @@ function Nav() {
                     hover:bg-gray-100
                     hover:text-wageblue block
                     block rounded-full px-5 py-3
-                    bg-wageblue
+                    bg-wageblue text-lg
                     text-base font-bold
 
+					dark:hover:text-white
                     dark:text-wageblue
                     dark:bg-moredark
                     dark:shadow-inner
@@ -165,9 +164,10 @@ function Nav() {
                     hover:bg-gray-100
                     hover:text-wageblue block
                     block rounded-full px-5 py-3
-                    bg-wageblue
+                    bg-wageblue text-lg
                     text-base font-bold
 
+					dark:hover:text-white
                     dark:text-wageblue
                     dark:bg-moredark
                     dark:shadow-inner
@@ -189,7 +189,7 @@ function Nav() {
                         hover:bg-gray-100
                         hover:text-wageblue block
                         block rounded-full px-5 py-3
-                        bg-wageblue
+                        bg-wageblue text-lg
                         text-base font-bold
 
                         dark:text-wageblue
@@ -206,7 +206,7 @@ function Nav() {
 											UPDATE ACCOUNT
 										</option>
 										<option className="font-bold" value="AccountToCompany">
-											REPORT YOUR SALARY
+											REPORT SALARY
 										</option>
 										<option className="font-bold" value="logout">
 											LOGOUT

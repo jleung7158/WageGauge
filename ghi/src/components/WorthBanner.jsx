@@ -5,13 +5,13 @@ export default function WorthBanner() {
 	return (
 		<div
 			className=" grid grid-cols-1 gap-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3
-                    py-10 mb-40
+                    py-10 mb-15
                     bg-gradient-to-r
-                    from-wageblue via-weedgreen to-white
+                    from-wageblue to-white
 
                     dark:bg-gradient-to-r
                     dark:from-moredark
-                    dark:to-darkgreen
+                    dark:to-wageblue
                 "
 		>
 			<div

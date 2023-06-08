@@ -8,7 +8,7 @@ function Footer() {
 	return (
 		<div>
 			<footer
-				className="flex bg-white dark:bg-gray-900"
+				className="flex bg-white dark:bg-moredark"
 				// style={{ backgroundImage: `url(${buildingsky})` }}
 			>
 				<div className="container px-6 py-12 mx-auto">
@@ -80,7 +80,7 @@ function Footer() {
 							</h3>
 
 							<div className="flex flex-col items-start mt-4 space-y-4">
-								<Link to="about">
+								<Link to="/about">
 									<button className="text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-blue-400 hover:underline hover:text-blue-600">
 										About us
 									</button>

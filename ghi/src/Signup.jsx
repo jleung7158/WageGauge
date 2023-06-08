@@ -64,7 +64,7 @@ function SignUpForm() {
 
 	return (
 		<div
-			className="flex items-center justify-center min-h-screen bg-gray-100"
+			className="flex items-center justify-center min-h-screen bg-gray-100 bg-gradient-to-b from-white to-wagblue"
 			style={{
 				background: 'linear-gradient(to bottom, #87CEEB, #42098E)',
 			}}

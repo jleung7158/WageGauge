@@ -2,7 +2,6 @@ steps = [
     [
         ##Create the table
         """
-
         CREATE TABLE employees (
             id SERIAL PRIMARY KEY NOT NULL,
             salary INT NOT NULL,

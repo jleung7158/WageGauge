@@ -29,6 +29,7 @@ module.exports = {
         },
         scale: {
           '101': '1.01',
+          '105': '1.05'
         },
         keyframes: {
           slideUp: {

@@ -299,19 +299,25 @@ function ForumPage() {
                               </div>
                             </div>
                             <div className="flex flex-row mt-2 justify-between">
-                              <button
-                                disabled={account_id === ""}
-                                className="px-2 font-semibold bg-wageblue rounded"
-                                onClick={() =>
-                                  handleEditClick(
-                                    topic.id,
-                                    topic.title,
-                                    topic.body
-                                  )
-                                }
-                              >
-                                Edit
-                              </button>
+                              {account_id === topic.account_id ? (
+                                <div>
+                                  <button
+                                    disabled={account_id === ""}
+                                    className="px-2 font-semibold bg-wageblue rounded"
+                                    onClick={() =>
+                                      handleEditClick(
+                                        topic.id,
+                                        topic.title,
+                                        topic.body
+                                      )
+                                    }
+                                  >
+                                    Edit
+                                  </button>
+                                </div>
+                              ) : (
+                                <div></div>
+                              )}
                               <div className="flex flex-row items-center">
                                 {checkLike(topic.id) ? (
                                   <button

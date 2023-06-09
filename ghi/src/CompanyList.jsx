@@ -18,7 +18,6 @@ function CompanyList() {
 	const [search, setSearch] = useState('');
 	const { token } = useToken();
 	const [showBanner] = useState(true);
-	const [alert, setAlert] = useState(false);
 
 	// get the company data
 	const fetchCompanies = async () => {
@@ -50,25 +49,11 @@ function CompanyList() {
 		}
 	};
 
-	//check for token
-	const checkForToken = () => {
-		if (!token) {
-			setAlert(true);
-			const alertTimeout = setTimeout(() => {
-				setAlert(false);
-			}, 4000);
-			return () => {
-				clearTimeout(alertTimeout);
-			};
-		}
-	};
-
 	useEffect(() => {
-		checkForToken();
 		fetchCompanies();
 		fetchPositions();
 		fetchTopics();
-	}, []);
+	}, [token]);
 
 	// filter positions by company.id
 	const getPositionsByCompanyId = (companyId) => {
@@ -92,27 +77,7 @@ function CompanyList() {
 		<>
 			<div className="relative">
 				{/* Embrace your worth banner */}
-				{showBanner && <WorthBanner ban={checkForToken} />}
-				{alert && (
-					<div
-						className="alert alert-success"
-						role="alert"
-						style={{
-							position: 'fixed',
-							top: '1rem',
-							right: '1rem',
-							zIndex: 1000,
-							color: 'white',
-							backgroundColor: 'green',
-							borderColor: 'darkgreen',
-							border: '1px solid',
-							borderRadius: '5px',
-							padding: '0.75rem 1.25rem',
-						}}
-					>
-						Full funtionality is available after login or signup
-					</div>
-				)}
+				{showBanner && <WorthBanner />}
 				{/* main content */}
 				<div className="grid grid-rows-2 gap-6 py-12 sm:grid-rows-2 md:grid-rows-3 lg:grid-rows-3 xl:grid-rows-3">
 					<div></div>

@@ -91,30 +91,6 @@ class TopicLikeRepo:
             print(e)
             return {"message": "Could not retrieve topics"}
 
-    # def get_one(self, topic_like_id: int) -> Optional[TopicLikeOut]:
-    #     try:
-    #         with pool.connection() as conn:
-    #             with conn.cursor() as db:
-    #                 result = db.execute(
-    #                     """
-    #                     SELECT *
-    #                     FROM topics
-    #                     WHERE id = %s
-    #                     """,
-    #                     [topic_like_id],
-    #                 )
-    #                 return [
-    #                     TopicLikeOut(
-    #                         id=i[0],
-    #                         account_id=i[1],
-    #                         topic_id=i[2],
-    #                     )
-    #                     for i in result
-    #                 ]
-    #     except Exception as e:
-    #         print(e)
-    #         return {"message": "Could not get that like"}
-
     def delete(self, topic_like_id: int) -> bool:
         try:
             with pool.connection() as conn:

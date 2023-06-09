@@ -14,9 +14,8 @@ from pydantic import BaseModel
 from queries.accounts import (
     AccountIn,
     AccountOut,
-    # AccountOutWithPassword,
     AccountRepository,
-    DuplicateAccountError,
+    DuplicateAccountError
 )
 
 
@@ -59,16 +58,6 @@ async def create_account(
 @router.get("/api/accounts", response_model=list[AccountOut])
 def list_accounts(repo: AccountRepository = Depends()):
     return repo.get_all()
-
-
-# @router.post("/api/protected")
-# async def create_protected(
-#     account_data: dict = Depends(authenticator.get_current_account_data),
-# ):
-#     if status.HTTP_200_OK:
-#         return True
-#     elif status.HTTP_401_UNAUTHORIZED:
-#         return False
 
 
 @router.get("/token", response_model=AccountToken | None)

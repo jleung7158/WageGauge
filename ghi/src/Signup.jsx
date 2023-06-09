@@ -39,7 +39,7 @@ function SignUpForm() {
 				}, 3000);
 				const navigateTime = setTimeout(() => {
 					login(email, password);
-					navigate('/companies');
+					navigate('/dashboard');
 				}, 2000);
 				return () => {
 					clearTimeout(alertTimeout);
@@ -167,7 +167,7 @@ function SignUpForm() {
 					</div>
 					<div className="mt-2">
 						<NavLink
-							to="/companies"
+							to="/dashboard"
 							className="flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-large text-white bg-wageblue hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
 						>
 							Continue without signing up

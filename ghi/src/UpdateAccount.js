@@ -58,14 +58,12 @@ function UpdateAccountInfo() {
 		const response = await fetch(url, config);
 		console.log(response);
 		if (response.ok) {
-			// newAcctInfo = await response.json();
 			setSuccessAlert(true);
 			logout();
-			// e.target.reset();
 			const alertTimeout = setTimeout(() => {
 				login(email, password);
 				setSuccessAlert(false);
-				navigate('/updateACcount'); //Change this later to my profile page
+				navigate('/dashboard');
 			}, 3000);
 			return () => {
 				clearTimeout(alertTimeout);

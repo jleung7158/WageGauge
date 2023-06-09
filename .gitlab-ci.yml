@@ -26,17 +26,21 @@ build-fastapi-service-image:
     - docker push $GITLAB_IMAGE:latest
   only:
     - main
-#
-# # Run the unit tests
-# api-unit-tests-job:
-#   image: python:3-bullseye
-#   stage: test
-#   needs:
-#     - lint-test-job
-#   script:
-#     - cd sample_service
-#     - pip install -r requirements.txt
-#     - python -m pytest
+
+# Run the unit tests
+api-unit-tests-job:
+  image: python:3-bullseye
+  stage: test
+  needs:
+    - lint-test-job
+  script:
+    - cd api
+    - pip install -r requirements.txt
+    - python -m pytest
+  variables:
+    DATABASE_URL: postgresql://wagegauge:secret@db/wagegauge-data
+    WAIT_HOSTS: db:5432
+    SIGNING_KEY: 7091da32cfdd6b4eb2991d9b9885860bdedc1de05d972b416791b941ad25a721
 
 # # Build the React/JavaScript front-end
 build-front-end-job:

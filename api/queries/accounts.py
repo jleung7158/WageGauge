@@ -66,7 +66,6 @@ class AccountRepository:
                     ],
                 )
                 id = result.fetchone()[0]
-                # old_account = info.dict()
                 return AccountOutWithPassword(
                     id=id,
                     first_name=info.first_name,

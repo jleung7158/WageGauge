@@ -9,7 +9,6 @@ import SignUpForm from './Signup';
 import About from './About';
 import ForumPage from './ForumPage';
 import Topic from './Topic';
-import Test from './test';
 import UpdateAccountInfo from './UpdateAccount';
 import AccountToCompany from './AccountToCompany.js';
 import AccountCompanyList from './AccountCompanyList.jsx';
@@ -36,7 +35,7 @@ function App() {
 						<div className="container-flex">
 							<Routes>
 								<Route>
-									<Route path="companies" element={<CompanyList />} />
+									<Route path="dashboard" element={<CompanyList />} />
 								</Route>
 								<Route path="positions">
 									<Route path="" element={<CompanyDetail />} />
@@ -50,9 +49,6 @@ function App() {
 								<Route path="ForumPage">
 									<Route path="" element={<ForumPage />} />
 									<Route path=":topic_id" element={<Topic />} />
-								</Route>
-								<Route path="test">
-									<Route path="" element={<Test />} />
 								</Route>
 								<Route path="updateAccount">
 									<Route path="" element={<UpdateAccountInfo />} />

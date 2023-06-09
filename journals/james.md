@@ -109,3 +109,9 @@ I will also be working on my unit tests.
 Today we are finishing deployment and unit tests.
 
 I need to go back and connect the company dropdown in my forum page to actually filter by companies.
+
+6/8/23
+Deployment is done!!! We just added stylistic stuff now. Just waiting for presentation.
+
+6/9/23
+PRESENTATION DONE. LETS GO!

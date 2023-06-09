@@ -1,6 +1,5 @@
 import React from 'react';
 import { useState } from 'react';
-// import { NavLink } from 'react-router-dom';
 import useToken from '@galvanize-inc/jwtdown-for-react';
 /* eslint-disable */
 const LoginForm = ({ onClose }) => {
@@ -56,9 +55,6 @@ const LoginForm = ({ onClose }) => {
 			<div
 				className="relative z-10 max-w-md w-full space-y-8 p-10 bg-opacity-85 rounded-xl shadow-md overflow-hidden bg-gradient-to-b
 			from-white from-5% to-indigo-700"
-				// style={{
-				// 	background: 'linear-gradient(to bottom, #87CEEB, #42098E)',
-				// }}
 			>
 				<button
 					onClick={onClose}

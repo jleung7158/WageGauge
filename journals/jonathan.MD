@@ -33,3 +33,6 @@ We are working on deployment of the front-end today. Ideally we will have the en
 
 06/07/23
 Finshing up deployement of both the front-end and back-end. Adding unit testing for employees by the end of the day.
+
+06/08/23
+Will spend most of the day wrapping up all loose ends for our presentation. Last checks before final deployment. Fixed pathing issue with to AccountCompanyList on the nav bar. The data base must be populated with employees. I am doing this to have data to display on the front-end for our presentation.

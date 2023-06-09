@@ -61,10 +61,10 @@ function Nav() {
 			{/* the background of the nav */}
 			<div
 				className="
-          container-flex flex-row p-2
-          bg-white
-          dark:bg-moredark
-          "
+				container-flex flex-row p-2
+				bg-white
+				dark:bg-moredark
+				"
 			>
 				{/* makes the buttons horizontal */}
 				<div className="flex px-2 rounded space-x-4 mt-4 mb-5 justify-between">
@@ -72,7 +72,7 @@ function Nav() {
 					<div className="flex flex-row space-x-4 justify-start">
 						<div>
 							<NavLink
-								to="companies"
+								to="dashboard"
 								className="
                 hover:opacity-25
                 transition-opacity
@@ -85,7 +85,7 @@ function Nav() {
 						</div>
 						<div className="mt-5">
 							<NavLink
-								to="companies"
+								to="dashboard"
 								className="text-gray-50
                 hover:bg-gray-100
                 hover:text-wageblue block
@@ -126,7 +126,6 @@ function Nav() {
 						</div>
 					</div>
 					{/* nav buttons on the right side* */}
-					{/* </div> */}
 					<div className="flex flex-row space-x-4 justify-start">
 						<div
 							className="mt-6
@@ -180,7 +179,6 @@ function Nav() {
 						)}
 						<div className="">
 							{showDropdown && (
-								// <UserDropDown logout={handleLogout}/>
 								<div className="mt-5">
 									<select
 										className="
@@ -207,6 +205,9 @@ function Nav() {
 										</option>
 										<option className="font-bold" value="AccountToCompany">
 											REPORT SALARY
+										</option>
+										<option className="font-bold" value="AccountCompanyList">
+											MY SALARIES
 										</option>
 										<option className="font-bold" value="logout">
 											LOGOUT

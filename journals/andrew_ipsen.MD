@@ -60,3 +60,11 @@ Today, our app is half deployed. I've adjusted the navbar to include an "update 
 06/07/23
 
 Today, I've successfully implemented data inserts to the company table migrations, so upon building the database there will automatically be companies to display.
+
+06/08/23
+
+Today was for final stylings. I made sure the sizes of all teh sections wer complementary to each other on the dashboard, so nothing got needlessly stretched. I added "truncate" to the position descriptiong because it was stretching the company cards. I finally approached the light mode so that the colors were more consistent. I utilized the wageblue color schemes on dashboard.
+
+06/08/23
+
+We just presented. I feel really good about our project. we achieved some great functionality and plenty of features. Today, we're going through all of our code files and cleaning up commented out code and unused assets.

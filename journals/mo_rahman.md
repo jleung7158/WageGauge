@@ -27,3 +27,5 @@
 6/6- We are trying front end deployment today. Running into some ESLINT errors. Trying to fix.
 
 6/7- We finally deployed our back and front end, we have to change all of our api calls to match the env variable, and work on our readme.
+
+6/8- Finalized our landing page and I integrated a splash ad with a sign up form, and a cleaner UI. We made other various code changes related

@@ -54,7 +54,7 @@ const LoginForm = ({ onClose }) => {
 			)}
 			<div
 				className="relative z-10 max-w-md w-full space-y-8 p-10 bg-opacity-85 rounded-xl shadow-md overflow-hidden bg-gradient-to-b
-			from-white from-5% to-indigo-700"
+			from-white from-5% to-wageblue"
 			>
 				<button
 					onClick={onClose}
@@ -110,7 +110,7 @@ const LoginForm = ({ onClose }) => {
 					<div>
 						<button
 							type="submit"
-							className="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-large text-white bg-wageblue hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+							className="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-large text-wageblue bg-white hover:bg-wageblue  hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
 						>
 							Login
 						</button>

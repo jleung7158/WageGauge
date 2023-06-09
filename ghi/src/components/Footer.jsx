@@ -18,7 +18,7 @@ function Footer() {
 							Join us to get started.
 						</p>
 						<div className="flex flex-col mt-6 sm:flex-row sm:items-center sm:justify-center">
-							<NavLink to="">
+							<NavLink to="/">
 								<button
 									className="
                     w-full px-5 py-2 text-sm

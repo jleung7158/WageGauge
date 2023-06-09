@@ -7,9 +7,7 @@ function Footer() {
 
 	return (
 		<div>
-			<footer
-				className="flex bg-white dark:bg-moredark"
-			>
+			<footer className="flex bg-white dark:bg-moredark">
 				<div className="container px-6 py-12 mx-auto">
 					<div className="text-center">
 						<h2 className="text-2xl font-semibold text-gray-800 dark:text-white">
@@ -20,7 +18,7 @@ function Footer() {
 							Join us to get started.
 						</p>
 						<div className="flex flex-col mt-6 sm:flex-row sm:items-center sm:justify-center">
-							<NavLink to="/signup">
+							<NavLink to="">
 								<button
 									className="
                     w-full px-5 py-2 text-sm
@@ -135,7 +133,6 @@ function Footer() {
 								>
 									Help center
 								</a>
-
 							</div>
 						</div>
 
@@ -202,7 +199,6 @@ function Footer() {
 								>
 									Licenses
 								</a>
-
 							</div>
 						</div>
 					</div>
@@ -210,7 +206,6 @@ function Footer() {
 					<hr className="my-6 border-gray-200 md:my-10 dark:border-gray-700" />
 
 					<div className="flex flex-col items-center justify-between sm:flex-row">
-
 						<p className="mt-4 text-sm text-gray-500 sm:mt-0 dark:text-gray-300">
 							© Copyright 2023. All Rights Reserved.
 						</p>

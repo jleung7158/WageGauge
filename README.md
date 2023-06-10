@@ -1,3 +1,7 @@
+# Wireframe
+
+<kbd><img src= 'https://i.postimg.cc/j2VDS01J/image.png'></kbd>
+
 # **WageGauge**
 
 WageGauge is an informational app for tech industry professionals to help with gauging average salaries accross various companies. In addition to salary info, users can communicate on our commmunity forums to discuss salary negotiation, company trends, and more.
